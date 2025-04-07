@@ -1,0 +1,525 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x5A4F30DE70DF67BA",
+      "device": "xc7z010clg400-1",
+      "name": "design_1",
+      "synth_flow_mode": "None",
+      "tool_version": "2018.3",
+      "validated": "true"
+    },
+    "design_tree": {
+      "blk_mem_gen_0": "",
+      "Freez": "",
+      "xlconstant_1": "",
+      "branch_addr": "",
+      "IF_0": "",
+      "xlconstant_3": "",
+      "if_id": "",
+      "id_exe": "",
+      "ex_mem": "",
+      "mem_wb": ""
+    },
+    "ports": {
+      "clk_0": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "rst_0"
+          },
+          "CLK_DOMAIN": {
+            "value": "design_1_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "rst_0": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "douta_0": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "Prog_cnter_0": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "WB_PC": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "WB_Dest": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      }
+    },
+    "components": {
+      "blk_mem_gen_0": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "design_1_blk_mem_gen_0_0",
+        "parameters": {
+          "Coe_File": {
+            "value": "../../../../../../../OneDrive/Desktop/output.coe"
+          },
+          "Enable_32bit_Address": {
+            "value": "false"
+          },
+          "Enable_A": {
+            "value": "Always_Enabled"
+          },
+          "Load_Init_File": {
+            "value": "true"
+          },
+          "Memory_Type": {
+            "value": "Single_Port_ROM"
+          },
+          "Port_A_Write_Rate": {
+            "value": "0"
+          },
+          "Register_PortA_Output_of_Memory_Primitives": {
+            "value": "true"
+          },
+          "Use_RSTA_Pin": {
+            "value": "false"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
+      },
+      "Freez": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "design_1_xlconstant_0_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          }
+        }
+      },
+      "xlconstant_1": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "design_1_xlconstant_1_0"
+      },
+      "branch_addr": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "design_1_xlconstant_2_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          },
+          "CONST_WIDTH": {
+            "value": "32"
+          }
+        }
+      },
+      "IF_0": {
+        "vlnv": "xilinx.com:module_ref:IF:1.0",
+        "xci_name": "design_1_IF_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "IF",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "Frz": {
+            "direction": "I"
+          },
+          "mux_ctl": {
+            "direction": "I"
+          },
+          "Branch_Address": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "Prog_cnter": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "pc_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "xlconstant_3": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "design_1_xlconstant_3_0"
+      },
+      "if_id": {
+        "vlnv": "xilinx.com:module_ref:Register:1.0",
+        "xci_name": "design_1_Register_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Register",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "in_1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "in_2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "out_1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "out_2": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "id_exe": {
+        "vlnv": "xilinx.com:module_ref:Register:1.0",
+        "xci_name": "design_1_Register_1_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Register",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "in_1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "in_2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "out_1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "out_2": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "ex_mem": {
+        "vlnv": "xilinx.com:module_ref:Register:1.0",
+        "xci_name": "design_1_Register_2_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Register",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "in_1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "in_2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "out_1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "out_2": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "mem_wb": {
+        "vlnv": "xilinx.com:module_ref:Register:1.0",
+        "xci_name": "design_1_mem_wb_2",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Register",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "in_1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "in_2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "out_1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "out_2": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      }
+    },
+    "nets": {
+      "xlconstant_0_dout": {
+        "ports": [
+          "Freez/dout",
+          "IF_0/Frz"
+        ]
+      },
+      "mux_ctl": {
+        "ports": [
+          "xlconstant_1/dout",
+          "IF_0/mux_ctl"
+        ]
+      },
+      "xlconstant_2_dout": {
+        "ports": [
+          "branch_addr/dout",
+          "IF_0/Branch_Address"
+        ]
+      },
+      "clk_0_1": {
+        "ports": [
+          "clk_0",
+          "blk_mem_gen_0/clka",
+          "IF_0/clk",
+          "if_id/clk",
+          "id_exe/clk",
+          "ex_mem/clk",
+          "mem_wb/clk"
+        ]
+      },
+      "rst_0_1": {
+        "ports": [
+          "rst_0",
+          "IF_0/rst",
+          "if_id/rst",
+          "id_exe/rst",
+          "ex_mem/rst",
+          "mem_wb/rst"
+        ]
+      },
+      "IF_0_pc_out": {
+        "ports": [
+          "IF_0/pc_out",
+          "blk_mem_gen_0/addra",
+          "if_id/in_1"
+        ]
+      },
+      "blk_mem_gen_0_douta": {
+        "ports": [
+          "blk_mem_gen_0/douta",
+          "douta_0",
+          "if_id/in_2"
+        ]
+      },
+      "xlconstant_3_dout": {
+        "ports": [
+          "xlconstant_3/dout",
+          "if_id/en",
+          "id_exe/en",
+          "ex_mem/en",
+          "mem_wb/en"
+        ]
+      },
+      "IF_0_Prog_cnter": {
+        "ports": [
+          "IF_0/Prog_cnter",
+          "Prog_cnter_0"
+        ]
+      },
+      "mem_wb1_out": {
+        "ports": [
+          "mem_wb/out_1",
+          "WB_PC"
+        ]
+      },
+      "ex_mem_out_2": {
+        "ports": [
+          "ex_mem/out_2",
+          "mem_wb/in_2"
+        ]
+      },
+      "ex_mem_out_1": {
+        "ports": [
+          "ex_mem/out_1",
+          "mem_wb/in_1"
+        ]
+      },
+      "id_exe_out_2": {
+        "ports": [
+          "id_exe/out_2",
+          "ex_mem/in_2"
+        ]
+      },
+      "id_exe_out_1": {
+        "ports": [
+          "id_exe/out_1",
+          "ex_mem/in_1"
+        ]
+      },
+      "if_id_out_2": {
+        "ports": [
+          "if_id/out_2",
+          "id_exe/in_2"
+        ]
+      },
+      "if_id_out_1": {
+        "ports": [
+          "if_id/out_1",
+          "id_exe/in_1"
+        ]
+      },
+      "mem_wb_out_2": {
+        "ports": [
+          "mem_wb/out_2",
+          "WB_Dest"
+        ]
+      }
+    }
+  }
+}

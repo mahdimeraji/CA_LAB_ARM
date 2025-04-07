@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1741616635">
+  <File Type="BITSTR-BMM" Name="IF_bd.bmm"/>
+  <File Type="PA-TCL" Name="IF.tcl"/>
+  <File Type="OPT-DCP" Name="IF_opt.dcp"/>
+  <File Type="REPORTS-TCL" Name="IF_reports.tcl"/>
+  <File Type="OPT-HWDEF" Name="IF.hwdef"/>
+  <File Type="PWROPT-DCP" Name="IF_pwropt.dcp"/>
+  <File Type="BG-BGN" Name="IF.bgn"/>
+  <File Type="PLACE-DCP" Name="IF_placed.dcp"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="IF_incremental_reuse_pre_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="IF_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="IF.bin"/>
+  <File Type="PHYSOPT-DCP" Name="IF_physopt.dcp"/>
+  <File Type="BITSTR-MSK" Name="IF.msk"/>
+  <File Type="ROUTE-ERROR-DCP" Name="IF_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="IF_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="IF_routed_bb.dcp"/>
+  <File Type="BITSTR-LTX" Name="IF.ltx"/>
+  <File Type="BITSTR-MMI" Name="IF.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="IF.sysdef"/>
+  <File Type="ROUTE-TIMING-PB" Name="IF_timing_summary_routed.pb"/>
+  <File Type="RDI-RDI" Name="IF.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="IF_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="IF_postroute_physopt_bb.dcp"/>
+  <File Type="BG-BIT" Name="IF.bit"/>
+  <File Type="BITSTR-RBT" Name="IF.rbt"/>
+  <File Type="BITSTR-NKY" Name="IF.nky"/>
+  <File Type="BG-DRC" Name="IF.drc"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/adder.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pc.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/IF.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/design_1/design_1.bd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../OneDrive/Desktop/output.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/arm.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="IF"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>
