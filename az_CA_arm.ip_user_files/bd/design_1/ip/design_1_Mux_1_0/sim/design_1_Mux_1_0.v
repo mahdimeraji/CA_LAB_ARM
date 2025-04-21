@@ -61,13 +61,13 @@ module design_1_Mux_1_0 (
   out
 );
 
-input wire [31 : 0] input1;
-input wire [31 : 0] input2;
+input wire [8 : 0] input1;
+input wire [8 : 0] input2;
 input wire input3;
-output wire [31 : 0] out;
+output wire [8 : 0] out;
 
   Mux #(
-    .WIDTH(32)
+    .WIDTH(9)
   ) inst (
     .input1(input1),
     .input2(input2),

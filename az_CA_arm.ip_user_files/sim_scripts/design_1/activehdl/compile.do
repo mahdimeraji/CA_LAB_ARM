@@ -74,6 +74,16 @@ vlog -work xil_defaultlib  -v2k5 \
 "../../../bd/design_1/ip/design_1_xlconstant_2_3/sim/design_1_xlconstant_2_3.v" \
 "../../../bd/design_1/ip/design_1_xlconstant_2_4/sim/design_1_xlconstant_2_4.v" \
 "../../../bd/design_1/ip/design_1_xlslice_0_5/sim/design_1_xlslice_0_5.v" \
+"../../../bd/design_1/ip/design_1_Adder_32_0_0/sim/design_1_Adder_32_0_0.v" \
+"../../../bd/design_1/ip/design_1_ALU_1_0/sim/design_1_ALU_1_0.v" \
+"../../../bd/design_1/ip/design_1_Val2generate_1_0/sim/design_1_Val2generate_1_0.v" \
+"../../../bd/design_1/ip/design_1_OR_Gate_1_0/sim/design_1_OR_Gate_1_0.v" \
+"../../../bd/design_1/ip/design_1_xlslice_0_6/sim/design_1_xlslice_0_6.v" \
+"../../../bd/design_1/ip/design_1_xlslice_0_7/sim/design_1_xlslice_0_7.v" \
+"../../../bd/design_1/ip/design_1_xlslice_0_11/sim/design_1_xlslice_0_11.v" \
+"../../../bd/design_1/ip/design_1_xlslice_0_12/sim/design_1_xlslice_0_12.v" \
+"../../../bd/design_1/ip/design_1_xlslice_0_13/sim/design_1_xlslice_0_13.v" \
+"../../../bd/design_1/ip/design_1_xlslice_0_14/sim/design_1_xlslice_0_14.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

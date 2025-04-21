@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# Condition_Check, Control_Unit, IF, Mux, Mux, OR_Gate, RegisterFile, Register, Register, Register, Register, not_gate, status_register
+# ALU, Adder_32, Condition_Check, Control_Unit, IF, Mux, Mux, OR_Gate, OR_Gate, RegisterFile, Val2generate, Register, Register, Register, Register, not_gate, status_register
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -170,6 +170,28 @@ proc create_root_design { parentCell } {
  ] $clk_0
   set rst_0 [ create_bd_port -dir I -type rst rst_0 ]
 
+  # Create instance: ALU_1, and set properties
+  set block_name ALU
+  set block_cell_name ALU_1
+  if { [catch {set ALU_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $ALU_1 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: Adder_32_0, and set properties
+  set block_name Adder_32
+  set block_cell_name Adder_32_0
+  if { [catch {set Adder_32_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $Adder_32_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: Condition_Check_0, and set properties
   set block_name Condition_Check
   set block_cell_name Condition_Check_0
@@ -233,7 +255,10 @@ proc create_root_design { parentCell } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
-  
+    set_property -dict [ list \
+   CONFIG.WIDTH {9} \
+ ] $Mux_1
+
   # Create instance: OR_Gate_0, and set properties
   set block_name OR_Gate
   set block_cell_name OR_Gate_0
@@ -245,6 +270,17 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: OR_Gate_1, and set properties
+  set block_name OR_Gate
+  set block_cell_name OR_Gate_1
+  if { [catch {set OR_Gate_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $OR_Gate_1 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: RegisterFile_0, and set properties
   set block_name RegisterFile
   set block_cell_name RegisterFile_0
@@ -252,6 +288,26 @@ proc create_root_design { parentCell } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $RegisterFile_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: Slice_S_exe, and set properties
+  set Slice_S_exe [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 Slice_S_exe ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {8} \
+   CONFIG.DIN_TO {8} \
+   CONFIG.DIN_WIDTH {9} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $Slice_S_exe
+
+  # Create instance: Val2generate_1, and set properties
+  set block_name Val2generate
+  set block_cell_name Val2generate_1
+  if { [catch {set Val2generate_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $Val2generate_1 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -347,6 +403,15 @@ proc create_root_design { parentCell } {
    CONFIG.CONST_VAL {0} \
  ] $reg_write
 
+  # Create instance: slice_B_Exe, and set properties
+  set slice_B_Exe [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_B_Exe ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {7} \
+   CONFIG.DIN_TO {7} \
+   CONFIG.DIN_WIDTH {9} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $slice_B_Exe
+
   # Create instance: slice_Im, and set properties
   set slice_Im [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_Im ]
   set_property -dict [ list \
@@ -378,6 +443,15 @@ proc create_root_design { parentCell } {
    CONFIG.DOUT_WIDTH {1} \
  ] $slice_S
 
+  # Create instance: slice_WB_En_exe, and set properties
+  set slice_WB_En_exe [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_WB_En_exe ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {6} \
+   CONFIG.DIN_TO {6} \
+   CONFIG.DIN_WIDTH {9} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $slice_WB_En_exe
+
   # Create instance: slice_cond, and set properties
   set slice_cond [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_cond ]
   set_property -dict [ list \
@@ -385,6 +459,33 @@ proc create_root_design { parentCell } {
    CONFIG.DIN_TO {28} \
    CONFIG.DOUT_WIDTH {4} \
  ] $slice_cond
+
+  # Create instance: slice_exe_cmd_exe, and set properties
+  set slice_exe_cmd_exe [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_exe_cmd_exe ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {3} \
+   CONFIG.DIN_TO {0} \
+   CONFIG.DIN_WIDTH {9} \
+   CONFIG.DOUT_WIDTH {4} \
+ ] $slice_exe_cmd_exe
+
+  # Create instance: slice_mem_R_En_exe, and set properties
+  set slice_mem_R_En_exe [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_mem_R_En_exe ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {4} \
+   CONFIG.DIN_TO {4} \
+   CONFIG.DIN_WIDTH {9} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $slice_mem_R_En_exe
+
+  # Create instance: slice_mem_W_En_exe, and set properties
+  set slice_mem_W_En_exe [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_mem_W_En_exe ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {5} \
+   CONFIG.DIN_TO {5} \
+   CONFIG.DIN_WIDTH {9} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $slice_mem_W_En_exe
 
   # Create instance: slice_mode, and set properties
   set slice_mode [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_mode ]
@@ -459,6 +560,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net Control_Unit_0_WB_EN [get_bd_pins Control_Unit_0/WB_EN] [get_bd_pins xlconcat_0/In3]
   connect_bd_net -net IF_0_pc_out [get_bd_pins IF_0/pc_out] [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins if_id/in_1]
   connect_bd_net -net Mux_0_out [get_bd_pins Mux_0/out] [get_bd_pins RegisterFile_0/readRegister2]
+  connect_bd_net -net Mux_1_out [get_bd_pins Mux_1/out] [get_bd_pins Slice_S_exe/Din] [get_bd_pins slice_B_Exe/Din] [get_bd_pins slice_WB_En_exe/Din] [get_bd_pins slice_exe_cmd_exe/Din] [get_bd_pins slice_mem_R_En_exe/Din] [get_bd_pins slice_mem_W_En_exe/Din]
   connect_bd_net -net OR_Gate_0_y [get_bd_pins Mux_1/input3] [get_bd_pins OR_Gate_0/y]
   connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins if_id/in_2]
   connect_bd_net -net clk_0_1 [get_bd_ports clk_0] [get_bd_pins Condition_Check_0/clk] [get_bd_pins Control_Unit_0/clk] [get_bd_pins IF_0/clk] [get_bd_pins RegisterFile_0/clk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins ex_mem/clk] [get_bd_pins id_exe/clk] [get_bd_pins if_id/clk] [get_bd_pins mem_wb/clk] [get_bd_pins status_register_0/clk]

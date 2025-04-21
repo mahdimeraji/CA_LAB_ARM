@@ -47,43 +47,27 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:IF:1.0
+// IP VLNV: xilinx.com:module_ref:OR_Gate:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "IF,Vivado 2018.3" *)
-(* CHECK_LICENSE_TYPE = "design_1_IF_0_0,IF,{}" *)
-(* CORE_GENERATION_INFO = "design_1_IF_0_0,IF,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=IF,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* X_CORE_INFO = "OR_Gate,Vivado 2018.3" *)
+(* CHECK_LICENSE_TYPE = "design_1_OR_Gate_0_0,OR_Gate,{}" *)
+(* CORE_GENERATION_INFO = "design_1_OR_Gate_0_0,OR_Gate,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=OR_Gate,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module design_1_IF_0_0 (
-  clk,
-  rst,
-  Frz,
-  mux_ctl,
-  Branch_Address,
-  Prog_cnter,
-  pc_out
+module design_1_OR_Gate_0_0 (
+  a,
+  b,
+  y
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_clk_0, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
-input wire clk;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
-input wire rst;
-input wire Frz;
-input wire mux_ctl;
-input wire [31 : 0] Branch_Address;
-output wire [31 : 0] Prog_cnter;
-output wire [31 : 0] pc_out;
+input wire a;
+input wire b;
+output wire y;
 
-  IF inst (
-    .clk(clk),
-    .rst(rst),
-    .Frz(Frz),
-    .mux_ctl(mux_ctl),
-    .Branch_Address(Branch_Address),
-    .Prog_cnter(Prog_cnter),
-    .pc_out(pc_out)
+  OR_Gate inst (
+    .a(a),
+    .b(b),
+    .y(y)
   );
 endmodule

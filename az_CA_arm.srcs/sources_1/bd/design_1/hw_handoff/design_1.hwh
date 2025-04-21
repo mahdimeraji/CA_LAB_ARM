@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Apr 21 16:11:16 2025" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Apr 21 17:21:10 2025" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -7,28 +7,28 @@
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk_0" SIGIS="clk" SIGNAME="External_Ports_clk_0">
       <CONNECTIONS>
         <CONNECTION INSTANCE="blk_mem_gen_0" PORT="clka"/>
-        <CONNECTION INSTANCE="IF_0" PORT="clk"/>
         <CONNECTION INSTANCE="if_id" PORT="clk"/>
         <CONNECTION INSTANCE="id_exe" PORT="clk"/>
         <CONNECTION INSTANCE="ex_mem" PORT="clk"/>
         <CONNECTION INSTANCE="mem_wb" PORT="clk"/>
-        <CONNECTION INSTANCE="Control_Unit_0" PORT="clk"/>
         <CONNECTION INSTANCE="status_register_0" PORT="clk"/>
         <CONNECTION INSTANCE="Condition_Check_0" PORT="clk"/>
         <CONNECTION INSTANCE="RegisterFile_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Control_Unit_0" PORT="clk"/>
+        <CONNECTION INSTANCE="IF_0" PORT="clk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="rst_0" SIGIS="rst" SIGNAME="External_Ports_rst_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="IF_0" PORT="rst"/>
         <CONNECTION INSTANCE="if_id" PORT="rst"/>
         <CONNECTION INSTANCE="id_exe" PORT="rst"/>
         <CONNECTION INSTANCE="ex_mem" PORT="rst"/>
         <CONNECTION INSTANCE="mem_wb" PORT="rst"/>
-        <CONNECTION INSTANCE="Control_Unit_0" PORT="rst"/>
         <CONNECTION INSTANCE="status_register_0" PORT="rst"/>
         <CONNECTION INSTANCE="Condition_Check_0" PORT="rst"/>
         <CONNECTION INSTANCE="RegisterFile_0" PORT="reset"/>
+        <CONNECTION INSTANCE="Control_Unit_0" PORT="rst"/>
+        <CONNECTION INSTANCE="IF_0" PORT="rst"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -36,6 +36,35 @@
   <EXTERNALINTERFACES/>
 
   <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/ALU_1" HWVERSION="1.0" INSTANCE="ALU_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ALU" VLNV="xilinx.com:module_ref:ALU:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_ALU_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="SrcA1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="31" NAME="SrcB1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="3" NAME="ALUcnt" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="CarryIn" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="ALUResult1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="status_flags" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Adder_32_0" HWVERSION="1.0" INSTANCE="Adder_32_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="Adder_32" VLNV="xilinx.com:module_ref:Adder_32:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_Adder_32_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="a" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="31" NAME="b" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="w" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/Condition_Check_0" HWVERSION="1.0" INSTANCE="Condition_Check_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="Condition_Check" VLNV="xilinx.com:module_ref:Condition_Check:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -240,17 +269,17 @@
     <MODULE COREREVISION="1" FULLNAME="/Mux_1" HWVERSION="1.0" INSTANCE="Mux_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="Mux" VLNV="xilinx.com:module_ref:Mux:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="WIDTH" VALUE="32"/>
+        <PARAMETER NAME="WIDTH" VALUE="9"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_Mux_1_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="input1" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_0_dout">
+        <PORT DIR="I" LEFT="8" NAME="input1" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_0_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="input2" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
+        <PORT DIR="I" LEFT="8" NAME="input2" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconstant_0" PORT="dout"/>
           </CONNECTIONS>
@@ -260,7 +289,16 @@
             <CONNECTION INSTANCE="OR_Gate_0" PORT="y"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="out" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="8" NAME="out" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="slice_exe_cmd_exe" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_mem_R_En_exe" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_mem_W_En_exe" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_WB_En_exe" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_B_Exe" PORT="Din"/>
+            <CONNECTION INSTANCE="Slice_S_exe" PORT="Din"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -286,6 +324,19 @@
             <CONNECTION INSTANCE="Mux_1" PORT="input3"/>
           </CONNECTIONS>
         </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/OR_Gate_1" HWVERSION="1.0" INSTANCE="OR_Gate_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="OR_Gate" VLNV="xilinx.com:module_ref:OR_Gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_OR_Gate_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef"/>
+        <PORT DIR="I" NAME="b" SIGIS="undef"/>
+        <PORT DIR="O" NAME="y" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -333,6 +384,40 @@
             <CONNECTION INSTANCE="External_Ports" PORT="rst_0"/>
           </CONNECTIONS>
         </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Slice_S_exe" HWVERSION="1.0" INSTANCE="Slice_S_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="8"/>
+        <PARAMETER NAME="DIN_TO" VALUE="8"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_11"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Val2generate_1" HWVERSION="1.0" INSTANCE="Val2generate_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="Val2generate" VLNV="xilinx.com:module_ref:Val2generate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_Val2generate_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="25" NAME="VAL2in" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="val2out" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="IO" LEFT="31" NAME="VAL2RM" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="MEM_EN" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -777,6 +862,26 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/slice_B_Exe" HWVERSION="1.0" INSTANCE="slice_B_Exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="7"/>
+        <PARAMETER NAME="DIN_TO" VALUE="7"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_12"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/slice_Im" HWVERSION="1.0" INSTANCE="slice_Im" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -870,6 +975,26 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/slice_WB_En_exe" HWVERSION="1.0" INSTANCE="slice_WB_En_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="6"/>
+        <PARAMETER NAME="DIN_TO" VALUE="6"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_13"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/slice_cond" HWVERSION="1.0" INSTANCE="slice_cond" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -891,6 +1016,66 @@
             <CONNECTION INSTANCE="Condition_Check_0" PORT="Cond"/>
           </CONNECTIONS>
         </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/slice_exe_cmd_exe" HWVERSION="1.0" INSTANCE="slice_exe_cmd_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="3"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_7"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="Dout" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/slice_mem_R_En_exe" HWVERSION="1.0" INSTANCE="slice_mem_R_En_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="4"/>
+        <PARAMETER NAME="DIN_TO" VALUE="4"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_14"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/slice_mem_W_En_exe" HWVERSION="1.0" INSTANCE="slice_mem_W_En_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="5"/>
+        <PARAMETER NAME="DIN_TO" VALUE="5"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_6"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
