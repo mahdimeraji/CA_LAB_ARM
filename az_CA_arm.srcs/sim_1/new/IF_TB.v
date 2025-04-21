@@ -41,7 +41,7 @@ module tb_IF;
     reg [31:0] Branch_Address;  
     wire [31:0] Prog_cnter;  
  //   wire [31:0] pc_out;  
-wire [31:0] d_out;
+wire [31:0] WB_Dest;
 
 //    IF uut (  
 //        .clk(clk),  
@@ -53,9 +53,8 @@ wire [31:0] d_out;
 //        .pc_out(pc_out)  
 //    );  
  design_1_wrapper wraper
-   (.Prog_cnter_0(Prog_cnter),
+   (
     .clk_0(clk),
-    .douta_0(d_out),
     .rst_0(rst));
     
     initial begin  

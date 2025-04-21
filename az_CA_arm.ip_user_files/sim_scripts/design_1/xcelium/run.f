@@ -1,4 +1,5 @@
 -makelib xcelium_lib/xil_defaultlib -sv \
+  "C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
   "C:/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 -endlib
 -makelib xcelium_lib/xpm \
@@ -26,6 +27,8 @@
   "../../../bd/design_1/ip/design_1_Register_1_0/sim/design_1_Register_1_0.v" \
   "../../../bd/design_1/ip/design_1_Register_2_0/sim/design_1_Register_2_0.v" \
   "../../../bd/design_1/ip/design_1_mem_wb_2/sim/design_1_mem_wb_2.v" \
+  "../../../bd/design_1/ip/design_1_ila_0_0/sim/design_1_ila_0_0.v" \
+  "../../../bd/design_1/ip/design_1_debouncer_0_0/sim/design_1_debouncer_0_0.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v

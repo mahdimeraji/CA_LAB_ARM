@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# IF, Register, Register, Register, Register
+# IF, debouncer, Register, Register, Register, Register
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -164,14 +164,10 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
-  set Prog_cnter_0 [ create_bd_port -dir O -from 31 -to 0 Prog_cnter_0 ]
-  set WB_Dest [ create_bd_port -dir O -from 31 -to 0 WB_Dest ]
-  set WB_PC [ create_bd_port -dir O -from 31 -to 0 WB_PC ]
   set clk_0 [ create_bd_port -dir I -type clk clk_0 ]
   set_property -dict [ list \
    CONFIG.ASSOCIATED_RESET {rst_0} \
  ] $clk_0
-  set douta_0 [ create_bd_port -dir O -from 31 -to 0 douta_0 ]
   set rst_0 [ create_bd_port -dir I -type rst rst_0 ]
 
   # Create instance: Freez, and set properties
@@ -215,6 +211,17 @@ proc create_root_design { parentCell } {
    CONFIG.CONST_WIDTH {32} \
  ] $branch_addr
 
+  # Create instance: debouncer_0, and set properties
+  set block_name debouncer
+  set block_cell_name debouncer_0
+  if { [catch {set debouncer_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $debouncer_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: ex_mem, and set properties
   set block_name Register
   set block_cell_name ex_mem
@@ -248,6 +255,25 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: ila_0, and set properties
+  set ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_0 ]
+  set_property -dict [ list \
+   CONFIG.C_ENABLE_ILA_AXI_MON {false} \
+   CONFIG.C_MONITOR_TYPE {Native} \
+   CONFIG.C_NUM_OF_PROBES {6} \
+   CONFIG.C_PROBE0_TYPE {1} \
+   CONFIG.C_PROBE0_WIDTH {32} \
+   CONFIG.C_PROBE1_TYPE {1} \
+   CONFIG.C_PROBE1_WIDTH {32} \
+   CONFIG.C_PROBE2_TYPE {1} \
+   CONFIG.C_PROBE2_WIDTH {32} \
+   CONFIG.C_PROBE3_TYPE {1} \
+   CONFIG.C_PROBE3_WIDTH {32} \
+   CONFIG.C_PROBE4_TYPE {1} \
+   CONFIG.C_PROBE4_WIDTH {32} \
+   CONFIG.C_PROBE5_TYPE {2} \
+ ] $ila_0
+
   # Create instance: mem_wb, and set properties
   set block_name Register
   set block_cell_name mem_wb
@@ -266,20 +292,19 @@ proc create_root_design { parentCell } {
   set xlconstant_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_3 ]
 
   # Create port connections
-  connect_bd_net -net IF_0_Prog_cnter [get_bd_ports Prog_cnter_0] [get_bd_pins IF_0/Prog_cnter]
-  connect_bd_net -net IF_0_pc_out [get_bd_pins IF_0/pc_out] [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins if_id/in_1]
-  connect_bd_net -net blk_mem_gen_0_douta [get_bd_ports douta_0] [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins if_id/in_2]
-  connect_bd_net -net clk_0_1 [get_bd_ports clk_0] [get_bd_pins IF_0/clk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins ex_mem/clk] [get_bd_pins id_exe/clk] [get_bd_pins if_id/clk] [get_bd_pins mem_wb/clk]
-  connect_bd_net -net ex_mem_out_1 [get_bd_pins ex_mem/out_1] [get_bd_pins mem_wb/in_1]
+  connect_bd_net -net IF_0_pc_out [get_bd_pins IF_0/pc_out] [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins if_id/in_1] [get_bd_pins ila_0/probe4]
+  connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins if_id/in_2]
+  connect_bd_net -net clk_0_1 [get_bd_ports clk_0] [get_bd_pins IF_0/clk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins debouncer_0/CLK_I] [get_bd_pins ex_mem/clk] [get_bd_pins id_exe/clk] [get_bd_pins if_id/clk] [get_bd_pins ila_0/clk] [get_bd_pins mem_wb/clk]
+  connect_bd_net -net ex_mem_out_1 [get_bd_pins ex_mem/out_1] [get_bd_pins ila_0/probe1] [get_bd_pins mem_wb/in_1]
   connect_bd_net -net ex_mem_out_2 [get_bd_pins ex_mem/out_2] [get_bd_pins mem_wb/in_2]
-  connect_bd_net -net id_exe_out_1 [get_bd_pins ex_mem/in_1] [get_bd_pins id_exe/out_1]
+  connect_bd_net -net id_exe_out_1 [get_bd_pins ex_mem/in_1] [get_bd_pins id_exe/out_1] [get_bd_pins ila_0/probe2]
   connect_bd_net -net id_exe_out_2 [get_bd_pins ex_mem/in_2] [get_bd_pins id_exe/out_2]
-  connect_bd_net -net if_id_out_1 [get_bd_pins id_exe/in_1] [get_bd_pins if_id/out_1]
+  connect_bd_net -net if_id_out_1 [get_bd_pins id_exe/in_1] [get_bd_pins if_id/out_1] [get_bd_pins ila_0/probe3]
   connect_bd_net -net if_id_out_2 [get_bd_pins id_exe/in_2] [get_bd_pins if_id/out_2]
-  connect_bd_net -net mem_wb1_out [get_bd_ports WB_PC] [get_bd_pins mem_wb/out_1]
-  connect_bd_net -net mem_wb_out_2 [get_bd_ports WB_Dest] [get_bd_pins mem_wb/out_2]
+  connect_bd_net -net mem_wb1_out [get_bd_pins ila_0/probe0] [get_bd_pins mem_wb/out_1]
   connect_bd_net -net mux_ctl [get_bd_pins IF_0/mux_ctl] [get_bd_pins xlconstant_1/dout]
-  connect_bd_net -net rst_0_1 [get_bd_ports rst_0] [get_bd_pins IF_0/rst] [get_bd_pins ex_mem/rst] [get_bd_pins id_exe/rst] [get_bd_pins if_id/rst] [get_bd_pins mem_wb/rst]
+  connect_bd_net -net rst_0_1 [get_bd_pins IF_0/rst] [get_bd_pins debouncer_0/SIGNAL_O] [get_bd_pins ex_mem/rst] [get_bd_pins id_exe/rst] [get_bd_pins if_id/rst] [get_bd_pins ila_0/probe5] [get_bd_pins mem_wb/rst]
+  connect_bd_net -net rst_0_2 [get_bd_ports rst_0] [get_bd_pins debouncer_0/SIGNAL_I]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins Freez/dout] [get_bd_pins IF_0/Frz]
   connect_bd_net -net xlconstant_2_dout [get_bd_pins IF_0/Branch_Address] [get_bd_pins branch_addr/dout]
   connect_bd_net -net xlconstant_3_dout [get_bd_pins ex_mem/en] [get_bd_pins id_exe/en] [get_bd_pins if_id/en] [get_bd_pins mem_wb/en] [get_bd_pins xlconstant_3/dout]
