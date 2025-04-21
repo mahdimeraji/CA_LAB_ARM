@@ -78,7 +78,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 10 13:43:45 UTC 2025</spirit:value>
+            <spirit:value>Mon Apr 21 09:33:23 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
@@ -102,7 +102,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 10 13:43:45 UTC 2025</spirit:value>
+            <spirit:value>Mon Apr 21 09:33:23 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
@@ -122,7 +122,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 10 13:43:45 UTC 2025</spirit:value>
+            <spirit:value>Mon Apr 21 09:33:23 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
@@ -239,6 +239,9 @@
     <xilinx:coreExtensions>
       <xilinx:displayName>Constant</xilinx:displayName>
       <xilinx:coreRevision>5</xilinx:coreRevision>
+      <xilinx:configElementInfos>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.CONST_VAL" xilinx:valueSource="user"/>
+      </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>

@@ -86,7 +86,6 @@ module Control_Unit(clk, rst, Mode, Op_Code, S_In, EXE_CMD, MEM_R_EN, MEM_W_EN, 
 		end
 	end
 	
-	// assign S_Out = S_In;
 	assign S_Out = (Mode == 2'b01 | Mode == 2'b10) ? 1'b0 :
                    (Op_Code == 4'b1010 | Op_Code == 4'b1000) ? 1'b1 : S_In;
 	

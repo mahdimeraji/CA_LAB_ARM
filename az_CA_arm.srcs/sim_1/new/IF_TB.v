@@ -1,78 +1,46 @@
-//`timescale 1ns / 1ps
+`timescale 1ns / 1ps
+
 ////////////////////////////////////////////////////////////////////////////////////
-//// Company: 
-//// Engineer: 
-//// 
-//// Create Date: 03/10/2025 05:12:35 PM
-//// Design Name: 
-//// Module Name: IF_TB
-//// Project Name: 
-//// Target Devices: 
-//// Tool Versions: 
-//// Description: 
-//// 
-//// Dependencies: 
-//// 
-//// Revision:
-//// Revision 0.01 - File Created
-//// Additional Comments:
-//// 
+// Company: 
+// Engineer: 
+// 
+// Create Date: 03/10/2025 05:12:35 PM
+// Design Name: 
+// Module Name: design_1_wrapper_TB
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
 ////////////////////////////////////////////////////////////////////////////////////
 
+module design_1_wrapper_TB();
 
-//module IF_TB(    );
-//wire rst;
-//reg clk;
-
-//endmodule
-
-
-
-
-`timescale 1ns / 1ns  
-
-module tb_IF;  
-
-
-    reg clk;  
-    reg rst;  
-    reg Frz;  
-    reg mux_ctl;  
-    reg [31:0] Branch_Address;  
-    wire [31:0] Prog_cnter;  
- //   wire [31:0] pc_out;  
-wire [31:0] WB_Dest;
-
-//    IF uut (  
-//        .clk(clk),  
-//        .rst(rst),  
-//        .Frz(Frz),  
-//        .mux_ctl(mux_ctl),  
-//        .Branch_Address(Branch_Address),  
-//        .Prog_cnter(Prog_cnter),  
-//        .pc_out(pc_out)  
-//    );  
- design_1_wrapper wraper
-   (
-    .clk_0(clk),
-    .rst_0(rst));
+    reg clk;
+    reg rst;
     
-    initial begin  
-        clk = 0;  
-        Frz=0;
-        mux_ctl=1;
-        rst = 0; 
-        #10;      
-        rst = 1;  
-        #10;     
+    design_1_wrapper uut (
+        .clk_0(clk),
+        .rst_0(rst)
+    );
+    
+    always #5 clk = ~clk;  
+    
+    initial begin
+        clk = 0;
         rst = 0;
+        
+        #10 rst = 1;
+        #20 rst = 0;
+        
         #1000;
-        $stop; 
-    end  
-always #5 clk = ~clk;
+        $stop;
+    end
 
-
- 
-      
-
-endmodule  
+endmodule
