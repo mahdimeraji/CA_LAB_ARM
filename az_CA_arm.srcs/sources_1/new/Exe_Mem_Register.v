@@ -26,6 +26,7 @@ always @(posedge clk) begin
         MEM_W_EN_out  <= 0;
         Val_Rm_out    <= 0;
         Dest_out      <= 0;
+        Alu_Res_Out   <= 0;
     end
     else if (enable) begin
         WB_EN_out     <= WB_EN;
@@ -33,6 +34,7 @@ always @(posedge clk) begin
         MEM_W_EN_out  <= MEM_W_EN;
         Val_Rm_out    <= Val_Rm_In;
         Dest_out      <= Dest;
+        Alu_Res_Out   <= Alu_Res_In;
     end
 end
 

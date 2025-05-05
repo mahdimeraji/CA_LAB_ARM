@@ -60,6 +60,8 @@ module design_1_Register_0_0 (
   clk,
   en,
   rst,
+  flush,
+  freeze,
   out_1,
   out_2
 );
@@ -73,6 +75,8 @@ input wire en;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
+input wire flush;
+input wire freeze;
 output wire [31 : 0] out_1;
 output wire [31 : 0] out_2;
 
@@ -84,6 +88,8 @@ output wire [31 : 0] out_2;
     .clk(clk),
     .en(en),
     .rst(rst),
+    .flush(flush),
+    .freeze(freeze),
     .out_1(out_1),
     .out_2(out_2)
   );

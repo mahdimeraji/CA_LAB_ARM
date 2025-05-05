@@ -13,7 +13,7 @@ module IF(
     wire carry;
     Adder addr(pc_out,adder_out,carry);
 
-    Mux mux(Branch_Address,adder_out,mux_ctl,pc_in);
+    Mux mux(adder_out,Branch_Address,mux_ctl,pc_in);
     PC pc(clk,rst,pc_in,Frz,pc_out);
     assign Prog_cnter =adder_out;
 endmodule

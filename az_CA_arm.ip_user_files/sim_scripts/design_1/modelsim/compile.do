@@ -15,16 +15,13 @@ vmap dist_mem_gen_v8_0_12 modelsim_lib/msim/dist_mem_gen_v8_0_12
 
 vlog -work xil_defaultlib -64 -incr \
 "../../../bd/design_1/ip/design_1_IF_0_0/sim/design_1_IF_0_0.v" \
+"../../../bd/design_1/sim/design_1.v" \
+"../../../bd/design_1/ip/design_1_Register_0_0/sim/design_1_Register_0_0.v" \
 
 vlog -work xlconstant_v1_1_5 -64 -incr \
 "../../../../az_CA_arm.srcs/sources_1/bd/design_1/ipshared/4649/hdl/xlconstant_v1_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib -64 -incr \
-"../../../bd/design_1/ip/design_1_xlconstant_0_0/sim/design_1_xlconstant_0_0.v" \
-"../../../bd/design_1/ip/design_1_xlconstant_1_0/sim/design_1_xlconstant_1_0.v" \
-"../../../bd/design_1/ip/design_1_xlconstant_2_0/sim/design_1_xlconstant_2_0.v" \
-"../../../bd/design_1/sim/design_1.v" \
-"../../../bd/design_1/ip/design_1_Register_0_0/sim/design_1_Register_0_0.v" \
 "../../../bd/design_1/ip/design_1_xlconstant_3_0/sim/design_1_xlconstant_3_0.v" \
 "../../../bd/design_1/ip/design_1_Control_Unit_0_0/sim/design_1_Control_Unit_0_0.v" \
 
@@ -52,7 +49,6 @@ vlog -work xil_defaultlib -64 -incr \
 "../../../bd/design_1/ip/design_1_xlconcat_0_0/sim/design_1_xlconcat_0_0.v" \
 "../../../bd/design_1/ip/design_1_not_gate_0_0/sim/design_1_not_gate_0_0.v" \
 "../../../bd/design_1/ip/design_1_OR_Gate_0_0/sim/design_1_OR_Gate_0_0.v" \
-"../../../bd/design_1/ip/design_1_xlconstant_2_4/sim/design_1_xlconstant_2_4.v" \
 "../../../bd/design_1/ip/design_1_xlslice_0_5/sim/design_1_xlslice_0_5.v" \
 "../../../bd/design_1/ip/design_1_Adder_32_0_0/sim/design_1_Adder_32_0_0.v" \
 "../../../bd/design_1/ip/design_1_ALU_1_0/sim/design_1_ALU_1_0.v" \
@@ -79,6 +75,9 @@ vlog -work xil_defaultlib -64 -incr \
 "../../../bd/design_1/ip/design_1_dist_mem_gen_0_0/sim/design_1_dist_mem_gen_0_0.v" \
 "../../../bd/design_1/ip/design_1_dist_mem_gen_1_0/sim/design_1_dist_mem_gen_1_0.v" \
 "../../../bd/design_1/ip/design_1_Mux_2_0/sim/design_1_Mux_2_0.v" \
+"../../../bd/design_1/ip/design_1_Hazard_unit_0_4/sim/design_1_Hazard_unit_0_4.v" \
+"../../../bd/design_1/ip/design_1_not_gate_0_1/sim/design_1_not_gate_0_1.v" \
+"../../../bd/design_1/ip/design_1_OR_Gate_0_1/sim/design_1_OR_Gate_0_1.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

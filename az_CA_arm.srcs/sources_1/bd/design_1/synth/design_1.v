@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Mon Apr 28 17:11:09 2025
+//Date        : Mon May  5 23:01:15 2025
 //Host        : DESKTOP-GMJTJOR running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=44,numReposBlks=44,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=18,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=43,numReposBlks=43,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=21,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (clk_0,
     rst_0);
@@ -18,6 +18,7 @@ module design_1
 
   wire [31:0]ALU_1_ALUResult1;
   wire [3:0]ALU_1_status_flags;
+  wire [31:0]Adder_32_0_w;
   wire Condition_Check_0_condition_met;
   wire Control_Unit_0_B;
   wire [3:0]Control_Unit_0_EXE_CMD;
@@ -31,8 +32,10 @@ module design_1
   wire Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out;
   wire [31:0]Exe_Mem_Pipeline_Reg_0_Val_Rm_out;
   wire Exe_Mem_Pipeline_Reg_0_WB_EN_Out;
+  wire Hazard_unit_0_hazard_Detected;
   wire [31:0]IF_0_pc_out;
-  wire [3:0]Id_Exe_Pipeline_Regi_0_Dest_out;
+  wire Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe;
+  wire Id_Exe_Pipeline_Regi_0_B_Out;
   wire [3:0]Id_Exe_Pipeline_Regi_0_EXE_CMD_out;
   wire Id_Exe_Pipeline_Regi_0_Im_Out;
   wire Id_Exe_Pipeline_Regi_0_MEM_R_EN_out;
@@ -52,8 +55,10 @@ module design_1
   wire [3:0]Mux_0_out;
   wire [8:0]Mux_1_out;
   wire [31:0]Mux_2_out;
+  wire [3:0]Net;
   wire OR_Gate_0_y;
   wire OR_Gate_1_y;
+  wire OR_Gate_2_y;
   wire [31:0]RegisterFile_0_readData1;
   wire [31:0]RegisterFile_0_readData2;
   wire [0:0]Register_En_dout;
@@ -61,11 +66,10 @@ module design_1
   wire clk_0_1;
   wire [31:0]data_memory_spo;
   wire [31:0]dist_mem_gen_1_spo;
-  wire [0:0]hazard_dout;
   wire [31:0]if_id_out_1;
   wire [31:0]if_id_out_2;
-  wire [0:0]mux_ctl;
   wire not_gate_0_y;
+  wire not_gate_1_y;
   wire rst_0_1;
   wire [0:0]slice_B_Exe_Dout;
   wire [0:0]slice_Cin_Dout;
@@ -81,9 +85,7 @@ module design_1
   wire [3:0]status_register_0_statusout;
   wire [31:0]val2_generator_0_operand_out;
   wire [8:0]xlconcat_0_dout;
-  wire [0:0]xlconstant_0_dout;
-  wire [0:0]xlconstant_0_dout1;
-  wire [31:0]xlconstant_2_dout;
+  wire [8:0]xlconstant_0_dout1;
   wire [0:0]xlconstant_3_dout;
   wire [1:0]xlslice_0_Dout;
   wire [0:0]xlslice_0_Dout1;
@@ -95,13 +97,14 @@ module design_1
   design_1_ALU_1_0 ALU_1
        (.ALUResult1(ALU_1_ALUResult1),
         .ALUcnt(Id_Exe_Pipeline_Regi_0_EXE_CMD_out),
-        .CarryIn(slice_Cin_Dout),
+        .CarryIn(Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe),
         .SrcA1(Id_Exe_Pipeline_Regi_0_Val_Rn_out),
         .SrcB1(val2_generator_0_operand_out),
         .status_flags(ALU_1_status_flags));
   design_1_Adder_32_0_0 Adder_32_0
        (.a(Id_Exe_Pipeline_Regi_0_PC_out),
-        .b(Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out));
+        .b(Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out),
+        .w(Adder_32_0_w));
   design_1_Condition_Check_0_0 Condition_Check_0
        (.Cond(slice_cond_Dout),
         .SR(status_register_0_statusout),
@@ -123,7 +126,7 @@ module design_1
   design_1_Exe_Mem_Pipeline_Reg_0_0 Exe_Mem_Pipeline_Reg_0
        (.Alu_Res_In(ALU_1_ALUResult1),
         .Alu_Res_Out(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out),
-        .Dest(Id_Exe_Pipeline_Regi_0_Dest_out),
+        .Dest(Net),
         .Dest_out(Exe_Mem_Pipeline_Reg_0_Dest_out),
         .MEM_R_EN(Id_Exe_Pipeline_Regi_0_MEM_R_EN_out),
         .MEM_R_EN_out(Exe_Mem_Pipeline_Reg_0_MEM_R_EN_out),
@@ -131,24 +134,34 @@ module design_1
         .MEM_W_EN_out(Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out),
         .Val_Rm_In(Id_Exe_Pipeline_Regi_0_Val_Rm_out),
         .Val_Rm_out(Exe_Mem_Pipeline_Reg_0_Val_Rm_out),
-        .WB_EN(1'b0),
+        .WB_EN(Id_Exe_Pipeline_Regi_0_WB_EN_out),
         .WB_EN_out(Exe_Mem_Pipeline_Reg_0_WB_EN_Out),
         .clk(clk_0_1),
         .enable(Register_En_dout),
         .reset(rst_0_1));
-  design_1_xlconstant_0_0 Freez
-       (.dout(xlconstant_0_dout));
+  design_1_Hazard_unit_0_4 Hazard_unit_0
+       (.Exe_Dest(Net),
+        .Exe_WB_EN(Id_Exe_Pipeline_Regi_0_WB_EN_out),
+        .Mem_Dest(Exe_Mem_Pipeline_Reg_0_Dest_out),
+        .Mem_WB_EN(Exe_Mem_Pipeline_Reg_0_WB_EN_Out),
+        .Two_Src(OR_Gate_2_y),
+        .hazard_Detected(Hazard_unit_0_hazard_Detected),
+        .src1(slice_Rn_Dout),
+        .src2(Mux_0_out));
   design_1_IF_0_0 IF_0
-       (.Branch_Address(xlconstant_2_dout),
-        .Frz(xlconstant_0_dout),
+       (.Branch_Address(Adder_32_0_w),
+        .Frz(Hazard_unit_0_hazard_Detected),
         .clk(clk_0_1),
-        .mux_ctl(mux_ctl),
+        .mux_ctl(Id_Exe_Pipeline_Regi_0_B_Out),
         .pc_out(IF_0_pc_out),
         .rst(rst_0_1));
   design_1_Id_Exe_Pipeline_Regi_0_0 Id_Exe_Pipeline_Regi_0
-       (.B_In(slice_B_Exe_Dout),
+       (.Alu_Carry_In_Exe(Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe),
+        .Alu_Carry_In_Id(slice_Cin_Dout),
+        .B_In(slice_B_Exe_Dout),
+        .B_Out(Id_Exe_Pipeline_Regi_0_B_Out),
         .Dest(xlslice_0_Dout2),
-        .Dest_out(Id_Exe_Pipeline_Regi_0_Dest_out),
+        .Dest_out(Net),
         .EXE_CMD(slice_exe_cmd_exe_Dout),
         .EXE_CMD_out(Id_Exe_Pipeline_Regi_0_EXE_CMD_out),
         .Im_In(slice_Im_Dout),
@@ -173,6 +186,7 @@ module design_1
         .WB_EN_out(Id_Exe_Pipeline_Regi_0_WB_EN_out),
         .clk(clk_0_1),
         .enable(Register_En_dout),
+        .flush(Id_Exe_Pipeline_Regi_0_B_Out),
         .reset(rst_0_1));
   design_1_Mem_Wb_Pipeline_Regi_0_0 Mem_Wb_Pipeline_Regi_0
        (.Alu_Res_In(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out),
@@ -191,7 +205,7 @@ module design_1
   design_1_Mux_0_0 Mux_0
        (.input1(slice_Rn_Dout),
         .input2(xlslice_0_Dout2),
-        .input3(1'b0),
+        .input3(Control_Unit_0_MEM_W_EN),
         .out(Mux_0_out));
   design_1_Mux_1_0 Mux_1
        (.input1(xlconcat_0_dout),
@@ -205,12 +219,16 @@ module design_1
         .out(Mux_2_out));
   design_1_OR_Gate_0_0 OR_Gate_0
        (.a(not_gate_0_y),
-        .b(hazard_dout),
+        .b(Hazard_unit_0_hazard_Detected),
         .y(OR_Gate_0_y));
   design_1_OR_Gate_1_0 OR_Gate_1
        (.a(Id_Exe_Pipeline_Regi_0_MEM_R_EN_out),
         .b(Id_Exe_Pipeline_Regi_0_MEM_W_EN_out),
         .y(OR_Gate_1_y));
+  design_1_OR_Gate_0_1 OR_Gate_2
+       (.a(not_gate_1_y),
+        .b(Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out),
+        .y(OR_Gate_2_y));
   design_1_RegisterFile_0_0 RegisterFile_0
        (.clk(clk_0_1),
         .readData1(RegisterFile_0_readData1),
@@ -226,8 +244,6 @@ module design_1
   design_1_xlslice_0_11 Slice_S_exe
        (.Din(Mux_1_out),
         .Dout(Slice_S_exe_Dout));
-  design_1_xlconstant_2_0 branch_addr
-       (.dout(xlconstant_2_dout));
   design_1_dist_mem_gen_0_0 data_memory
        (.a(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out[12:0]),
         .clk(clk_0_1),
@@ -237,11 +253,11 @@ module design_1
   design_1_dist_mem_gen_1_0 dist_mem_gen_1
        (.a(IF_0_pc_out[12:0]),
         .spo(dist_mem_gen_1_spo));
-  design_1_xlconstant_2_4 hazard
-       (.dout(hazard_dout));
   design_1_Register_0_0 if_id
        (.clk(clk_0_1),
         .en(xlconstant_3_dout),
+        .flush(Id_Exe_Pipeline_Regi_0_B_Out),
+        .freeze(Hazard_unit_0_hazard_Detected),
         .in_1(IF_0_pc_out),
         .in_2(dist_mem_gen_1_spo),
         .out_1(if_id_out_2),
@@ -250,6 +266,9 @@ module design_1
   design_1_not_gate_0_0 not_gate_0
        (.a(Condition_Check_0_condition_met),
         .y(not_gate_0_y));
+  design_1_not_gate_0_1 not_gate_1
+       (.a(slice_Im_Dout),
+        .y(not_gate_1_y));
   design_1_xlslice_0_12 slice_B_Exe
        (.Din(Mux_1_out),
         .Dout(slice_B_Exe_Dout));
@@ -317,8 +336,6 @@ module design_1
         .dout(xlconcat_0_dout));
   design_1_xlconstant_0_1 xlconstant_0
        (.dout(xlconstant_0_dout1));
-  design_1_xlconstant_1_0 xlconstant_1
-       (.dout(mux_ctl));
   design_1_xlconstant_3_0 xlconstant_3
        (.dout(xlconstant_3_dout));
 endmodule

@@ -58,6 +58,8 @@ module design_1_Id_Exe_Pipeline_Regi_0_0 (
   clk,
   reset,
   enable,
+  flush,
+  Alu_Carry_In_Id,
   B_In,
   S_In,
   WB_EN,
@@ -77,6 +79,7 @@ module design_1_Id_Exe_Pipeline_Regi_0_0 (
   MEM_R_EN_out,
   MEM_W_EN_out,
   Im_Out,
+  Alu_Carry_In_Exe,
   EXE_CMD_out,
   Val_Rn_out,
   Val_Rm_out,
@@ -93,6 +96,8 @@ input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *)
 input wire reset;
 input wire enable;
+input wire flush;
+input wire Alu_Carry_In_Id;
 input wire B_In;
 input wire S_In;
 input wire WB_EN;
@@ -112,6 +117,7 @@ output wire WB_EN_out;
 output wire MEM_R_EN_out;
 output wire MEM_W_EN_out;
 output wire Im_Out;
+output wire Alu_Carry_In_Exe;
 output wire [3 : 0] EXE_CMD_out;
 output wire [31 : 0] Val_Rn_out;
 output wire [31 : 0] Val_Rm_out;
@@ -124,6 +130,8 @@ output wire [11 : 0] Shifter_Operand_Out;
     .clk(clk),
     .reset(reset),
     .enable(enable),
+    .flush(flush),
+    .Alu_Carry_In_Id(Alu_Carry_In_Id),
     .B_In(B_In),
     .S_In(S_In),
     .WB_EN(WB_EN),
@@ -143,6 +151,7 @@ output wire [11 : 0] Shifter_Operand_Out;
     .MEM_R_EN_out(MEM_R_EN_out),
     .MEM_W_EN_out(MEM_W_EN_out),
     .Im_Out(Im_Out),
+    .Alu_Carry_In_Exe(Alu_Carry_In_Exe),
     .EXE_CMD_out(EXE_CMD_out),
     .Val_Rn_out(Val_Rn_out),
     .Val_Rm_out(Val_Rm_out),
