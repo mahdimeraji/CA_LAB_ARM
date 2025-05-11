@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2014 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2025 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -47,23 +47,26 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:ip:xlconstant:1.1
+// IP VLNV: xilinx.com:ip:xlslice:1.0
 // IP Revision: 1
 
-#ifndef _xlconstant_v1_1_5_H_
-#define _xlconstant_v1_1_5_H_
+`timescale 1ns/1ps
 
-#include "systemc.h"
-template<int CONST_WIDTH,int CONST_VAL>
-SC_MODULE(xlconstant_v1_1_5) {
-  public:
-  sc_out< sc_bv<CONST_WIDTH> > dout;
-  void init() {
-    dout.write(CONST_VAL);
-  }
-  SC_CTOR(xlconstant_v1_1_5) {
-    SC_METHOD(init);  
-  }
-};
+(* DowngradeIPIdentifiedWarnings = "yes" *)
+module design_1_xlslice_0_15 (
+  Din,
+  Dout
+);
 
-#endif
+input wire [31 : 0] Din;
+output wire [3 : 0] Dout;
+
+  xlslice_v1_0_1_xlslice #(
+    .DIN_WIDTH(32),
+    .DIN_FROM(3),
+    .DIN_TO(0)
+  ) inst (
+    .Din(Din),
+    .Dout(Dout)
+  );
+endmodule

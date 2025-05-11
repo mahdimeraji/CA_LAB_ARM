@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Mon May  5 23:01:15 2025
+//Date        : Sun May 11 16:31:21 2025
 //Host        : DESKTOP-GMJTJOR running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=43,numReposBlks=43,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=21,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=44,numReposBlks=44,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=21,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (clk_0,
     rst_0);
@@ -23,9 +23,9 @@ module design_1
   wire Control_Unit_0_B;
   wire [3:0]Control_Unit_0_EXE_CMD;
   wire Control_Unit_0_MEM_R_EN;
-  wire Control_Unit_0_MEM_W_EN;
   wire Control_Unit_0_S_Out;
   wire Control_Unit_0_WB_EN;
+  wire Control_Unit_0_memWrite;
   wire [31:0]Exe_Mem_Pipeline_Reg_0_Alu_Res_Out;
   wire [3:0]Exe_Mem_Pipeline_Reg_0_Dest_out;
   wire Exe_Mem_Pipeline_Reg_0_MEM_R_EN_out;
@@ -75,6 +75,7 @@ module design_1
   wire [0:0]slice_Cin_Dout;
   wire [23:0]slice_Im_24_Dout;
   wire [0:0]slice_Im_Dout;
+  wire [3:0]slice_Rm_Dout;
   wire [3:0]slice_Rn_Dout;
   wire [11:0]slice_ShOp_Dout;
   wire [0:0]slice_WB_En_exe_Dout;
@@ -112,17 +113,15 @@ module design_1
         .condition_met(Condition_Check_0_condition_met),
         .rst(rst_0_1));
   design_1_Control_Unit_0_0 Control_Unit_0
-       (.B(Control_Unit_0_B),
-        .EXE_CMD(Control_Unit_0_EXE_CMD),
-        .MEM_R_EN(Control_Unit_0_MEM_R_EN),
-        .MEM_W_EN(Control_Unit_0_MEM_W_EN),
-        .Mode(xlslice_0_Dout),
-        .Op_Code(xlslice_1_Dout),
-        .S_In(xlslice_0_Dout1),
-        .S_Out(Control_Unit_0_S_Out),
-        .WB_EN(Control_Unit_0_WB_EN),
-        .clk(clk_0_1),
-        .rst(rst_0_1));
+       (.aluCmd(Control_Unit_0_EXE_CMD),
+        .branch(Control_Unit_0_B),
+        .memRead(Control_Unit_0_MEM_R_EN),
+        .memWrite(Control_Unit_0_memWrite),
+        .mode(xlslice_0_Dout),
+        .opcode(xlslice_1_Dout),
+        .sIn(xlslice_0_Dout1),
+        .sOut(Control_Unit_0_S_Out),
+        .wbEn(Control_Unit_0_WB_EN));
   design_1_Exe_Mem_Pipeline_Reg_0_0 Exe_Mem_Pipeline_Reg_0
        (.Alu_Res_In(ALU_1_ALUResult1),
         .Alu_Res_Out(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out),
@@ -203,9 +202,9 @@ module design_1
         .enable(Register_En_dout),
         .reset(rst_0_1));
   design_1_Mux_0_0 Mux_0
-       (.input1(slice_Rn_Dout),
+       (.input1(slice_Rm_Dout),
         .input2(xlslice_0_Dout2),
-        .input3(Control_Unit_0_MEM_W_EN),
+        .input3(slice_mem_W_En_exe_Dout),
         .out(Mux_0_out));
   design_1_Mux_1_0 Mux_1
        (.input1(xlconcat_0_dout),
@@ -284,6 +283,9 @@ module design_1
   design_1_xlslice_0_4 slice_Rd
        (.Din(if_id_out_1),
         .Dout(xlslice_0_Dout2));
+  design_1_xlslice_0_15 slice_Rm
+       (.Din(if_id_out_1),
+        .Dout(slice_Rm_Dout));
   design_1_xlslice_0_3 slice_Rn
        (.Din(if_id_out_1),
         .Dout(slice_Rn_Dout));
@@ -329,7 +331,7 @@ module design_1
   design_1_xlconcat_0_0 xlconcat_0
        (.In0(Control_Unit_0_EXE_CMD),
         .In1(Control_Unit_0_MEM_R_EN),
-        .In2(Control_Unit_0_MEM_W_EN),
+        .In2(Control_Unit_0_memWrite),
         .In3(Control_Unit_0_WB_EN),
         .In4(Control_Unit_0_B),
         .In5(Control_Unit_0_S_Out),

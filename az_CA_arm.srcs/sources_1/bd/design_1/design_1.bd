@@ -26,7 +26,6 @@
       "not_gate_0": "",
       "OR_Gate_0": "",
       "slice_Im_24": "",
-      "Control_Unit_0": "",
       "Adder_32_0": "",
       "ALU_1": "",
       "OR_Gate_1": "",
@@ -51,7 +50,9 @@
       "IF_0": "",
       "if_id": "",
       "Exe_Mem_Pipeline_Reg_0": "",
-      "Id_Exe_Pipeline_Regi_0": ""
+      "Id_Exe_Pipeline_Regi_0": "",
+      "Control_Unit_0": "",
+      "slice_Rm": ""
     },
     "ports": {
       "clk_0": {
@@ -479,68 +480,6 @@
           },
           "DOUT_WIDTH": {
             "value": "24"
-          }
-        }
-      },
-      "Control_Unit_0": {
-        "vlnv": "xilinx.com:module_ref:Control_Unit:1.0",
-        "xci_name": "design_1_Control_Unit_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "Control_Unit",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "CLK_DOMAIN": {
-                "value": "design_1_clk_0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "Mode": {
-            "direction": "I",
-            "left": "1",
-            "right": "0"
-          },
-          "Op_Code": {
-            "direction": "I",
-            "left": "3",
-            "right": "0"
-          },
-          "S_In": {
-            "direction": "I"
-          },
-          "EXE_CMD": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "MEM_R_EN": {
-            "direction": "O"
-          },
-          "MEM_W_EN": {
-            "direction": "O"
-          },
-          "WB_EN": {
-            "direction": "O"
-          },
-          "B": {
-            "direction": "O"
-          },
-          "S_Out": {
-            "direction": "O"
           }
         }
       },
@@ -1365,6 +1304,62 @@
             "right": "0"
           }
         }
+      },
+      "Control_Unit_0": {
+        "vlnv": "xilinx.com:module_ref:Control_Unit:1.0",
+        "xci_name": "design_1_Control_Unit_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Control_Unit",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "mode": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "opcode": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "sIn": {
+            "direction": "I"
+          },
+          "aluCmd": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "memRead": {
+            "direction": "O"
+          },
+          "memWrite": {
+            "direction": "O"
+          },
+          "wbEn": {
+            "direction": "O"
+          },
+          "branch": {
+            "direction": "O"
+          },
+          "sOut": {
+            "direction": "O"
+          }
+        }
+      },
+      "slice_Rm": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "xci_name": "design_1_xlslice_0_15",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "3"
+          },
+          "DOUT_WIDTH": {
+            "value": "4"
+          }
+        }
       }
     },
     "nets": {
@@ -1374,7 +1369,6 @@
           "status_register_0/clk",
           "Condition_Check_0/clk",
           "RegisterFile_0/clk",
-          "Control_Unit_0/clk",
           "data_memory/clk",
           "Mem_Wb_Pipeline_Regi_0/clk",
           "IF_0/clk",
@@ -1389,7 +1383,6 @@
           "status_register_0/rst",
           "Condition_Check_0/rst",
           "RegisterFile_0/reset",
-          "Control_Unit_0/rst",
           "Mem_Wb_Pipeline_Regi_0/reset",
           "IF_0/rst",
           "if_id/rst",
@@ -1421,25 +1414,26 @@
           "slice_Rd/Din",
           "slice_Im_24/Din",
           "slice_Im/Din",
-          "slice_ShOp/Din"
+          "slice_ShOp/Din",
+          "slice_Rm/Din"
         ]
       },
       "xlslice_0_Dout": {
         "ports": [
           "slice_mode/Dout",
-          "Control_Unit_0/Mode"
+          "Control_Unit_0/mode"
         ]
       },
       "xlslice_1_Dout": {
         "ports": [
           "slice_opc/Dout",
-          "Control_Unit_0/Op_Code"
+          "Control_Unit_0/opcode"
         ]
       },
       "xlslice_0_Dout1": {
         "ports": [
           "slice_S/Dout",
-          "Control_Unit_0/S_In"
+          "Control_Unit_0/sIn"
         ]
       },
       "slice_cond_Dout": {
@@ -1458,7 +1452,6 @@
       "slice_Rn_Dout": {
         "ports": [
           "slice_Rn/Dout",
-          "Mux_0/input1",
           "RegisterFile_0/readRegister1",
           "Hazard_unit_0/src1"
         ]
@@ -1485,38 +1478,31 @@
       },
       "Control_Unit_0_EXE_CMD": {
         "ports": [
-          "Control_Unit_0/EXE_CMD",
+          "Control_Unit_0/aluCmd",
           "xlconcat_0/In0"
         ]
       },
       "Control_Unit_0_MEM_R_EN": {
         "ports": [
-          "Control_Unit_0/MEM_R_EN",
+          "Control_Unit_0/memRead",
           "xlconcat_0/In1"
-        ]
-      },
-      "Control_Unit_0_MEM_W_EN": {
-        "ports": [
-          "Control_Unit_0/MEM_W_EN",
-          "xlconcat_0/In2",
-          "Mux_0/input3"
         ]
       },
       "Control_Unit_0_WB_EN": {
         "ports": [
-          "Control_Unit_0/WB_EN",
+          "Control_Unit_0/wbEn",
           "xlconcat_0/In3"
         ]
       },
       "Control_Unit_0_B": {
         "ports": [
-          "Control_Unit_0/B",
+          "Control_Unit_0/branch",
           "xlconcat_0/In4"
         ]
       },
       "Control_Unit_0_S_Out": {
         "ports": [
-          "Control_Unit_0/S_Out",
+          "Control_Unit_0/sOut",
           "xlconcat_0/In5"
         ]
       },
@@ -1584,7 +1570,8 @@
       "slice_mem_W_En_exe_Dout": {
         "ports": [
           "slice_mem_W_En_exe/Dout",
-          "Id_Exe_Pipeline_Regi_0/MEM_W_EN"
+          "Id_Exe_Pipeline_Regi_0/MEM_W_EN",
+          "Mux_0/input3"
         ]
       },
       "slice_WB_En_exe_Dout": {
@@ -1869,6 +1856,18 @@
         "ports": [
           "Id_Exe_Pipeline_Regi_0/Alu_Carry_In_Exe",
           "ALU_1/CarryIn"
+        ]
+      },
+      "Control_Unit_0_memWrite": {
+        "ports": [
+          "Control_Unit_0/memWrite",
+          "xlconcat_0/In2"
+        ]
+      },
+      "slice_Rm_Dout": {
+        "ports": [
+          "slice_Rm/Dout",
+          "Mux_0/input1"
         ]
       }
     }

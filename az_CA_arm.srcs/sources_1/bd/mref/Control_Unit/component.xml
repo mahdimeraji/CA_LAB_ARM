@@ -4,46 +4,6 @@
   <spirit:library>module_ref</spirit:library>
   <spirit:name>Control_Unit</spirit:name>
   <spirit:version>1.0</spirit:version>
-  <spirit:busInterfaces>
-    <spirit:busInterface>
-      <spirit:name>rst</spirit:name>
-      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
-      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
-      <spirit:slave/>
-      <spirit:portMaps>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>RST</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>rst</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
-      </spirit:portMaps>
-    </spirit:busInterface>
-    <spirit:busInterface>
-      <spirit:name>clk</spirit:name>
-      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
-      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
-      <spirit:slave/>
-      <spirit:portMaps>
-        <spirit:portMap>
-          <spirit:logicalPort>
-            <spirit:name>CLK</spirit:name>
-          </spirit:logicalPort>
-          <spirit:physicalPort>
-            <spirit:name>clk</spirit:name>
-          </spirit:physicalPort>
-        </spirit:portMap>
-      </spirit:portMaps>
-      <spirit:parameters>
-        <spirit:parameter>
-          <spirit:name>ASSOCIATED_RESET</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET">rst</spirit:value>
-        </spirit:parameter>
-      </spirit:parameters>
-    </spirit:busInterface>
-  </spirit:busInterfaces>
   <spirit:model>
     <spirit:views>
       <spirit:view>
@@ -55,7 +15,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>159690c4</spirit:value>
+            <spirit:value>7b20b0b0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -68,7 +28,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>159690c4</spirit:value>
+            <spirit:value>7b20b0b0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -83,33 +43,7 @@
     </spirit:views>
     <spirit:ports>
       <spirit:port>
-        <spirit:name>clk</spirit:name>
-        <spirit:wire>
-          <spirit:direction>in</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>rst</spirit:name>
-        <spirit:wire>
-          <spirit:direction>in</spirit:direction>
-          <spirit:wireTypeDefs>
-            <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
-              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
-              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
-            </spirit:wireTypeDef>
-          </spirit:wireTypeDefs>
-        </spirit:wire>
-      </spirit:port>
-      <spirit:port>
-        <spirit:name>Mode</spirit:name>
+        <spirit:name>mode</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
@@ -126,7 +60,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>Op_Code</spirit:name>
+        <spirit:name>opcode</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
@@ -143,7 +77,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>S_In</spirit:name>
+        <spirit:name>sIn</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -156,7 +90,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>EXE_CMD</spirit:name>
+        <spirit:name>aluCmd</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -173,7 +107,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>MEM_R_EN</spirit:name>
+        <spirit:name>memRead</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -186,7 +120,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>MEM_W_EN</spirit:name>
+        <spirit:name>memWrite</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -199,7 +133,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>WB_EN</spirit:name>
+        <spirit:name>wbEn</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -212,7 +146,7 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>B</spirit:name>
+        <spirit:name>branch</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -225,12 +159,12 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>S_Out</spirit:name>
+        <spirit:name>sOut</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
-              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:typeName>reg</spirit:typeName>
               <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
               <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
             </spirit:wireTypeDef>
@@ -272,7 +206,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2025-04-21T13:19:18Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2025-05-11T10:10:31Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.3</xilinx:xilinxVersion>

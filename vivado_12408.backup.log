@@ -1,0 +1,387 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Mon May  5 23:34:18 2025
+# Process ID: 12408
+# Current directory: C:/Users/meraj/OneDrive/Desktop/az_CA_arm
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12216 C:\Users\meraj\OneDrive\Desktop\az_CA_arm\az_CA_arm.xpr
+# Log file: C:/Users/meraj/OneDrive/Desktop/az_CA_arm/vivado.log
+# Journal file: C:/Users/meraj/OneDrive/Desktop/az_CA_arm\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/meraj/az_CA_arm' since last save.
+WARNING: [Project 1-312] File not found as 'C:/Users/meraj/OneDrive/Desktop/OneDrive/Desktop/debouncer.vhd'; using path 'C:/Users/meraj/OneDrive/Desktop/debouncer.vhd' instead.
+WARNING: [Project 1-312] File not found as 'C:/Users/meraj/OneDrive/Desktop/OneDrive/Desktop/output.coe'; using path 'C:/Users/meraj/OneDrive/Desktop/output.coe' instead.
+WARNING: [Project 1-312] File not found as 'C:/Users/meraj/OneDrive/Desktop/OneDrive/Desktop/ultimate.coe'; using path 'C:/Users/meraj/OneDrive/Desktop/ultimate.coe' instead.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-312] File not found as 'C:/Users/meraj/OneDrive/Desktop/OneDrive/Desktop/debouncer.vhd'; using path 'C:/Users/meraj/OneDrive/Desktop/debouncer.vhd' instead.
+WARNING: [Project 1-312] File not found as 'C:/Users/meraj/OneDrive/Desktop/OneDrive/Desktop/output.coe'; using path 'C:/Users/meraj/OneDrive/Desktop/output.coe' instead.
+WARNING: [Project 1-312] File not found as 'C:/Users/meraj/OneDrive/Desktop/OneDrive/Desktop/debouncer.vhd'; using path 'C:/Users/meraj/OneDrive/Desktop/debouncer.vhd' instead.
+WARNING: [Project 1-312] File not found as 'C:/Users/meraj/OneDrive/Desktop/OneDrive/Desktop/output.coe'; using path 'C:/Users/meraj/OneDrive/Desktop/output.coe' instead.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:21 ; elapsed = 00:00:10 . Memory (MB): peak = 838.973 ; gain = 220.984
+open_bd_design {C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/design_1.bd}
+Adding cell -- xilinx.com:ip:xlconstant:1.1 - xlconstant_3
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_mode
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_opc
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_S
+Adding cell -- xilinx.com:module_ref:status_register:1.0 - status_register_0
+Adding cell -- xilinx.com:module_ref:Condition_Check:1.0 - Condition_Check_0
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_cond
+Adding cell -- xilinx.com:module_ref:RegisterFile:1.0 - RegisterFile_0
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_Rn
+Adding cell -- xilinx.com:module_ref:Mux:1.0 - Mux_0
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_Rd
+Adding cell -- xilinx.com:module_ref:Mux:1.0 - Mux_1
+Adding cell -- xilinx.com:ip:xlconstant:1.1 - xlconstant_0
+Adding cell -- xilinx.com:ip:xlconcat:2.1 - xlconcat_0
+Adding cell -- xilinx.com:module_ref:not_gate:1.0 - not_gate_0
+Adding cell -- xilinx.com:module_ref:OR_Gate:1.0 - OR_Gate_0
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_Im_24
+Adding cell -- xilinx.com:module_ref:Control_Unit:1.0 - Control_Unit_0
+Adding cell -- xilinx.com:module_ref:Adder_32:1.0 - Adder_32_0
+Adding cell -- xilinx.com:module_ref:ALU:1.0 - ALU_1
+Adding cell -- xilinx.com:module_ref:OR_Gate:1.0 - OR_Gate_1
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_mem_W_En_exe
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_exe_cmd_exe
+Adding cell -- xilinx.com:ip:xlslice:1.0 - Slice_S_exe
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_B_Exe
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_WB_En_exe
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_mem_R_En_exe
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_Im
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_ShOp
+Adding cell -- xilinx.com:ip:xlconstant:1.1 - Register_En
+Adding cell -- xilinx.com:module_ref:val2_generator:1.0 - val2_generator_0
+Adding cell -- xilinx.com:ip:xlslice:1.0 - slice_Cin
+Adding cell -- xilinx.com:ip:dist_mem_gen:8.0 - data_memory
+Adding cell -- xilinx.com:ip:dist_mem_gen:8.0 - dist_mem_gen_1
+Adding cell -- xilinx.com:module_ref:Mem_Wb_Pipeline_Register:1.0 - Mem_Wb_Pipeline_Regi_0
+Adding cell -- xilinx.com:module_ref:Mux:1.0 - Mux_2
+Adding cell -- xilinx.com:module_ref:Hazard_unit:1.0 - Hazard_unit_0
+Adding cell -- xilinx.com:module_ref:not_gate:1.0 - not_gate_1
+Adding cell -- xilinx.com:module_ref:OR_Gate:1.0 - OR_Gate_2
+Adding cell -- xilinx.com:module_ref:IF:1.0 - IF_0
+Adding cell -- xilinx.com:module_ref:Register:1.0 - if_id
+Adding cell -- xilinx.com:module_ref:Exe_Mem_Pipeline_Register:1.0 - Exe_Mem_Pipeline_Reg_0
+Adding cell -- xilinx.com:module_ref:Id_Exe_Pipeline_Register:1.0 - Id_Exe_Pipeline_Regi_0
+WARNING: [BD 41-1731] Type mismatch between connected pins: /clk_0(clk) and /data_memory/clk(undef)
+Successfully read diagram <design_1> from BD file <C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/design_1.bd>
+update_compile_order -fileset sources_1
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'C:/Xilinx/Vivado/2018.3/data/xsim/xsim.ini' copied to run dir:'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'design_1_wrapper_TB' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim/design_1_dist_mem_gen_1_0.mif'
+INFO: [SIM-utils-43] Exported 'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim/ultimate.coe'
+INFO: [SIM-utils-43] Exported 'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim/output.coe'
+INFO: [SIM-utils-43] Exported 'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim/output.coe'
+INFO: [SIM-utils-43] Exported 'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim/ultimate.coe'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj design_1_wrapper_TB_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Adder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Mux
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/pc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/IF.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IF
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/register.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Register
+WARNING: [VRFC 10-3380] identifier 'N' is used before its declaration [C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/register.v:2]
+WARNING: [VRFC 10-3380] identifier 'N' is used before its declaration [C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/register.v:3]
+WARNING: [VRFC 10-3380] identifier 'N' is used before its declaration [C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/register.v:5]
+WARNING: [VRFC 10-3380] identifier 'N' is used before its declaration [C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/register.v:6]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Controller_Unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Control_Unit
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/status_register.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module status_register
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Condition_Check.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Condition_Check
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/RegisterFile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RegisterFile
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/not.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module not_gate
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/or_gate.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module OR_Gate
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/adder_32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Adder_32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Id_exe_Register.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Id_Exe_Pipeline_Register
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Val2generate.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module val2_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Exe_Mem_Register.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Exe_Mem_Pipeline_Register
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Mem_Wb_Register.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Mem_Wb_Pipeline_Register
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/hazard_unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Hazard_unit
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_IF_0_0/sim/design_1_IF_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_IF_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/sim/design_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Register_0_0/sim/design_1_Register_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Register_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlconstant_3_0/sim/design_1_xlconstant_3_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlconstant_3_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Control_Unit_0_0/sim/design_1_Control_Unit_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Control_Unit_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_0/sim/design_1_xlslice_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_1_0/sim/design_1_xlslice_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_1_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_1/sim/design_1_xlslice_0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_status_register_0_0/sim/design_1_status_register_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_status_register_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Condition_Check_0_0/sim/design_1_Condition_Check_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Condition_Check_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_2/sim/design_1_xlslice_0_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_2
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Mux_0_0/sim/design_1_Mux_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Mux_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_RegisterFile_0_0/sim/design_1_RegisterFile_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_RegisterFile_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_3/sim/design_1_xlslice_0_3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_3
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_4/sim/design_1_xlslice_0_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_4
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Mux_1_0/sim/design_1_Mux_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Mux_1_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlconstant_0_1/sim/design_1_xlconstant_0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlconstant_0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlconcat_0_0/sim/design_1_xlconcat_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlconcat_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_not_gate_0_0/sim/design_1_not_gate_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_not_gate_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_OR_Gate_0_0/sim/design_1_OR_Gate_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_OR_Gate_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_5/sim/design_1_xlslice_0_5.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_5
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Adder_32_0_0/sim/design_1_Adder_32_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Adder_32_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_ALU_1_0/sim/design_1_ALU_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_ALU_1_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_OR_Gate_1_0/sim/design_1_OR_Gate_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_OR_Gate_1_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_6/sim/design_1_xlslice_0_6.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_6
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_7/sim/design_1_xlslice_0_7.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_7
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_11/sim/design_1_xlslice_0_11.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_11
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_12/sim/design_1_xlslice_0_12.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_12
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_13/sim/design_1_xlslice_0_13.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_13
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_14/sim/design_1_xlslice_0_14.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_14
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_8/sim/design_1_xlslice_0_8.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_8
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_9/sim/design_1_xlslice_0_9.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_9
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Id_Exe_Pipeline_Regi_0_0/sim/design_1_Id_Exe_Pipeline_Regi_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Id_Exe_Pipeline_Regi_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlconstant_2_5/sim/design_1_xlconstant_2_5.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlconstant_2_5
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_val2_generator_0_0/sim/design_1_val2_generator_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_val2_generator_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Exe_Mem_Pipeline_Reg_0_0/sim/design_1_Exe_Mem_Pipeline_Reg_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Exe_Mem_Pipeline_Reg_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Mem_Wb_Pipeline_Regi_0_0/sim/design_1_Mem_Wb_Pipeline_Regi_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Mem_Wb_Pipeline_Regi_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_10/sim/design_1_xlslice_0_10.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xlslice_0_10
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_dist_mem_gen_0_0/sim/design_1_dist_mem_gen_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_dist_mem_gen_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_dist_mem_gen_1_0/sim/design_1_dist_mem_gen_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_dist_mem_gen_1_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Mux_2_0/sim/design_1_Mux_2_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Mux_2_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Hazard_unit_0_4/sim/design_1_Hazard_unit_0_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_Hazard_unit_0_4
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_not_gate_0_1/sim/design_1_not_gate_0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_not_gate_0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/ip/design_1_OR_Gate_0_1/sim/design_1_OR_Gate_0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_OR_Gate_0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sim_1/new/IF_TB.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_wrapper_TB
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 913.312 ; gain = 0.000
+INFO: [USF-XSim-69] 'compile' step finished in '7' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 82ac798062b2499283e6e62cbb6b3f67 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L xlconstant_v1_1_5 -L xlslice_v1_0_1 -L xlconcat_v2_1_1 -L dist_mem_gen_v8_0_12 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot design_1_wrapper_TB_behav xil_defaultlib.design_1_wrapper_TB xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3091] actual bit length 24 differs from formal bit length 32 for port 'b' [C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.ip_user_files/bd/design_1/sim/design_1.v:106]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/ALU.v" Line 1. Module ALU doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/adder_32.v" Line 1. Module Adder_32 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Condition_Check.v" Line 1. Module Condition_Check doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Controller_Unit.v" Line 13. Module Control_Unit doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Exe_Mem_Register.v" Line 1. Module Exe_Mem_Pipeline_Register doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/hazard_unit.v" Line 1. Module Hazard_unit doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/IF.v" Line 1. Module IF doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/adder.v" Line 1. Module Adder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" Line 1. Module Mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/pc.v" Line 1. Module PC doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Id_exe_Register.v" Line 1. Module Id_Exe_Pipeline_Register doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Mem_Wb_Register.v" Line 1. Module Mem_Wb_Pipeline_Register doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" Line 1. Module Mux(WIDTH=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" Line 1. Module Mux(WIDTH=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" Line 1. Module Mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/or_gate.v" Line 1. Module OR_Gate doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/or_gate.v" Line 1. Module OR_Gate doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/or_gate.v" Line 1. Module OR_Gate doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/RegisterFile.v" Line 1. Module RegisterFile doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/register.v" Line 1. Module Register doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/not.v" Line 1. Module not_gate doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/not.v" Line 1. Module not_gate doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/status_register.v" Line 1. Module status_register doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.srcs/sources_1/new/Val2generate.v" Line 1. Module val2_generator doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.design_1_ALU_1_0
+Compiling module xil_defaultlib.Adder_32
+Compiling module xil_defaultlib.design_1_Adder_32_0_0
+Compiling module xil_defaultlib.Condition_Check
+Compiling module xil_defaultlib.design_1_Condition_Check_0_0
+Compiling module xil_defaultlib.Control_Unit
+Compiling module xil_defaultlib.design_1_Control_Unit_0_0
+Compiling module xil_defaultlib.Exe_Mem_Pipeline_Register
+Compiling module xil_defaultlib.design_1_Exe_Mem_Pipeline_Reg_0_...
+Compiling module xil_defaultlib.Hazard_unit
+Compiling module xil_defaultlib.design_1_Hazard_unit_0_4
+Compiling module xil_defaultlib.Adder
+Compiling module xil_defaultlib.Mux
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.IF
+Compiling module xil_defaultlib.design_1_IF_0_0
+Compiling module xil_defaultlib.Id_Exe_Pipeline_Register
+Compiling module xil_defaultlib.design_1_Id_Exe_Pipeline_Regi_0_...
+Compiling module xil_defaultlib.Mem_Wb_Pipeline_Register
+Compiling module xil_defaultlib.design_1_Mem_Wb_Pipeline_Regi_0_...
+Compiling module xil_defaultlib.Mux(WIDTH=4)
+Compiling module xil_defaultlib.design_1_Mux_0_0
+Compiling module xil_defaultlib.Mux(WIDTH=9)
+Compiling module xil_defaultlib.design_1_Mux_1_0
+Compiling module xil_defaultlib.design_1_Mux_2_0
+Compiling module xil_defaultlib.OR_Gate
+Compiling module xil_defaultlib.design_1_OR_Gate_0_0
+Compiling module xil_defaultlib.design_1_OR_Gate_1_0
+Compiling module xil_defaultlib.design_1_OR_Gate_0_1
+Compiling module xil_defaultlib.RegisterFile
+Compiling module xil_defaultlib.design_1_RegisterFile_0_0
+Compiling module xlconstant_v1_1_5.xlconstant_v1_1_5_xlconstant(CON...
+Compiling module xil_defaultlib.design_1_xlconstant_2_5
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_WIDTH...
+Compiling module xil_defaultlib.design_1_xlslice_0_11
+Compiling module dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12(C_FAMILY="z...
+Compiling module xil_defaultlib.design_1_dist_mem_gen_0_0
+Compiling module dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12(C_FAMILY="z...
+Compiling module xil_defaultlib.design_1_dist_mem_gen_1_0
+Compiling module xil_defaultlib.Register
+Compiling module xil_defaultlib.design_1_Register_0_0
+Compiling module xil_defaultlib.not_gate
+Compiling module xil_defaultlib.design_1_not_gate_0_0
+Compiling module xil_defaultlib.design_1_not_gate_0_1
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_WIDTH...
+Compiling module xil_defaultlib.design_1_xlslice_0_12
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_WIDTH...
+Compiling module xil_defaultlib.design_1_xlslice_0_10
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.design_1_xlslice_0_8
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.design_1_xlslice_0_5
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.design_1_xlslice_0_4
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.design_1_xlslice_0_3
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.design_1_xlslice_0_1
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.design_1_xlslice_0_9
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_WIDTH...
+Compiling module xil_defaultlib.design_1_xlslice_0_13
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.design_1_xlslice_0_2
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_WIDTH...
+Compiling module xil_defaultlib.design_1_xlslice_0_7
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_WIDTH...
+Compiling module xil_defaultlib.design_1_xlslice_0_14
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_WIDTH...
+Compiling module xil_defaultlib.design_1_xlslice_0_6
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.design_1_xlslice_0_0
+Compiling module xlslice_v1_0_1.xlslice_v1_0_1_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.design_1_xlslice_1_0
+Compiling module xil_defaultlib.status_register
+Compiling module xil_defaultlib.design_1_status_register_0_0
+Compiling module xil_defaultlib.val2_generator
+Compiling module xil_defaultlib.design_1_val2_generator_0_0
+Compiling module xlconcat_v2_1_1.xlconcat_v2_1_1_xlconcat(IN0_WID...
+Compiling module xil_defaultlib.design_1_xlconcat_0_0
+Compiling module xlconstant_v1_1_5.xlconstant_v1_1_5_xlconstant(CON...
+Compiling module xil_defaultlib.design_1_xlconstant_0_1
+Compiling module xil_defaultlib.design_1_xlconstant_3_0
+Compiling module xil_defaultlib.design_1
+Compiling module xil_defaultlib.design_1_wrapper
+Compiling module xil_defaultlib.design_1_wrapper_TB
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot design_1_wrapper_TB_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/meraj/OneDrive/Desktop/az_CA_arm/az_CA_arm.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "design_1_wrapper_TB_behav -key {Behavioral:sim_1:Functional:design_1_wrapper_TB} -tclbatch {design_1_wrapper_TB.tcl} -protoinst "protoinst_files/design_1.protoinst" -view {C:/Users/meraj/OneDrive/Desktop/az_CA_arm/design_1_wrapper_TB_behav1.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/design_1.protoinst
+Time resolution is 1 ps
+open_wave_config C:/Users/meraj/OneDrive/Desktop/az_CA_arm/design_1_wrapper_TB_behav1.wcfg
+source design_1_wrapper_TB.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
+WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
+WARNING in design_1_wrapper_TB.uut.design_1_i.data_memory.inst at time                35000 ns: 
+Reading from out-of-range address. Max address in design_1_wrapper_TB.uut.design_1_i.data_memory.inst is        8191
+WARNING in design_1_wrapper_TB.uut.design_1_i.dist_mem_gen_1.inst at time               575000 ns: 
+Reading from out-of-range address. Max address in design_1_wrapper_TB.uut.design_1_i.dist_mem_gen_1.inst is        8191
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'design_1_wrapper_TB_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:09 ; elapsed = 00:00:15 . Memory (MB): peak = 947.270 ; gain = 33.957
+run all
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon May  5 23:41:16 2025...

@@ -454,6 +454,13 @@ proc create_root_design { parentCell } {
    CONFIG.DOUT_WIDTH {4} \
  ] $slice_Rd
 
+  # Create instance: slice_Rm, and set properties
+  set slice_Rm [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_Rm ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {3} \
+   CONFIG.DOUT_WIDTH {4} \
+ ] $slice_Rm
+
   # Create instance: slice_Rn, and set properties
   set slice_Rn [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 slice_Rn ]
   set_property -dict [ list \
@@ -581,12 +588,12 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ALU_1_status_flags [get_bd_pins ALU_1/status_flags] [get_bd_pins status_register_0/status]
   connect_bd_net -net Adder_32_0_w [get_bd_pins Adder_32_0/w] [get_bd_pins IF_0/Branch_Address]
   connect_bd_net -net Condition_Check_0_condition_met [get_bd_pins Condition_Check_0/condition_met] [get_bd_pins not_gate_0/a]
-  connect_bd_net -net Control_Unit_0_B [get_bd_pins Control_Unit_0/B] [get_bd_pins xlconcat_0/In4]
-  connect_bd_net -net Control_Unit_0_EXE_CMD [get_bd_pins Control_Unit_0/EXE_CMD] [get_bd_pins xlconcat_0/In0]
-  connect_bd_net -net Control_Unit_0_MEM_R_EN [get_bd_pins Control_Unit_0/MEM_R_EN] [get_bd_pins xlconcat_0/In1]
-  connect_bd_net -net Control_Unit_0_MEM_W_EN [get_bd_pins Control_Unit_0/MEM_W_EN] [get_bd_pins Mux_0/input3] [get_bd_pins xlconcat_0/In2]
-  connect_bd_net -net Control_Unit_0_S_Out [get_bd_pins Control_Unit_0/S_Out] [get_bd_pins xlconcat_0/In5]
-  connect_bd_net -net Control_Unit_0_WB_EN [get_bd_pins Control_Unit_0/WB_EN] [get_bd_pins xlconcat_0/In3]
+  connect_bd_net -net Control_Unit_0_B [get_bd_pins Control_Unit_0/branch] [get_bd_pins xlconcat_0/In4]
+  connect_bd_net -net Control_Unit_0_EXE_CMD [get_bd_pins Control_Unit_0/aluCmd] [get_bd_pins xlconcat_0/In0]
+  connect_bd_net -net Control_Unit_0_MEM_R_EN [get_bd_pins Control_Unit_0/memRead] [get_bd_pins xlconcat_0/In1]
+  connect_bd_net -net Control_Unit_0_S_Out [get_bd_pins Control_Unit_0/sOut] [get_bd_pins xlconcat_0/In5]
+  connect_bd_net -net Control_Unit_0_WB_EN [get_bd_pins Control_Unit_0/wbEn] [get_bd_pins xlconcat_0/In3]
+  connect_bd_net -net Control_Unit_0_memWrite [get_bd_pins Control_Unit_0/memWrite] [get_bd_pins xlconcat_0/In2]
   connect_bd_net -net Exe_Mem_Pipeline_Reg_0_Alu_Res_Out [get_bd_pins Exe_Mem_Pipeline_Reg_0/Alu_Res_Out] [get_bd_pins Mem_Wb_Pipeline_Regi_0/Alu_Res_In] [get_bd_pins data_memory/a]
   connect_bd_net -net Exe_Mem_Pipeline_Reg_0_Dest_out [get_bd_pins Exe_Mem_Pipeline_Reg_0/Dest_out] [get_bd_pins Hazard_unit_0/Mem_Dest] [get_bd_pins Mem_Wb_Pipeline_Regi_0/Dest]
   connect_bd_net -net Exe_Mem_Pipeline_Reg_0_MEM_R_EN_out [get_bd_pins Exe_Mem_Pipeline_Reg_0/MEM_R_EN_out] [get_bd_pins Mem_Wb_Pipeline_Regi_0/MEM_R_EN]
@@ -624,34 +631,35 @@ proc create_root_design { parentCell } {
   connect_bd_net -net RegisterFile_0_readData2 [get_bd_pins Id_Exe_Pipeline_Regi_0/Val_Rm_In] [get_bd_pins RegisterFile_0/readData2]
   connect_bd_net -net Register_En_dout [get_bd_pins Exe_Mem_Pipeline_Reg_0/enable] [get_bd_pins Id_Exe_Pipeline_Regi_0/enable] [get_bd_pins Mem_Wb_Pipeline_Regi_0/enable] [get_bd_pins Register_En/dout]
   connect_bd_net -net Slice_S_exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/S_In] [get_bd_pins Slice_S_exe/Dout]
-  connect_bd_net -net clk_0_1 [get_bd_ports clk_0] [get_bd_pins Condition_Check_0/clk] [get_bd_pins Control_Unit_0/clk] [get_bd_pins Exe_Mem_Pipeline_Reg_0/clk] [get_bd_pins IF_0/clk] [get_bd_pins Id_Exe_Pipeline_Regi_0/clk] [get_bd_pins Mem_Wb_Pipeline_Regi_0/clk] [get_bd_pins RegisterFile_0/clk] [get_bd_pins data_memory/clk] [get_bd_pins if_id/clk] [get_bd_pins status_register_0/clk]
+  connect_bd_net -net clk_0_1 [get_bd_ports clk_0] [get_bd_pins Condition_Check_0/clk] [get_bd_pins Exe_Mem_Pipeline_Reg_0/clk] [get_bd_pins IF_0/clk] [get_bd_pins Id_Exe_Pipeline_Regi_0/clk] [get_bd_pins Mem_Wb_Pipeline_Regi_0/clk] [get_bd_pins RegisterFile_0/clk] [get_bd_pins data_memory/clk] [get_bd_pins if_id/clk] [get_bd_pins status_register_0/clk]
   connect_bd_net -net data_memory_spo [get_bd_pins Mem_Wb_Pipeline_Regi_0/Data_to_WB_In] [get_bd_pins data_memory/spo]
   connect_bd_net -net dist_mem_gen_1_spo [get_bd_pins dist_mem_gen_1/spo] [get_bd_pins if_id/in_2]
-  connect_bd_net -net if_id_out_1 [get_bd_pins if_id/out_2] [get_bd_pins slice_Im/Din] [get_bd_pins slice_Im_24/Din] [get_bd_pins slice_Rd/Din] [get_bd_pins slice_Rn/Din] [get_bd_pins slice_S/Din] [get_bd_pins slice_ShOp/Din] [get_bd_pins slice_cond/Din] [get_bd_pins slice_mode/Din] [get_bd_pins slice_opc/Din]
+  connect_bd_net -net if_id_out_1 [get_bd_pins if_id/out_2] [get_bd_pins slice_Im/Din] [get_bd_pins slice_Im_24/Din] [get_bd_pins slice_Rd/Din] [get_bd_pins slice_Rm/Din] [get_bd_pins slice_Rn/Din] [get_bd_pins slice_S/Din] [get_bd_pins slice_ShOp/Din] [get_bd_pins slice_cond/Din] [get_bd_pins slice_mode/Din] [get_bd_pins slice_opc/Din]
   connect_bd_net -net if_id_out_2 [get_bd_pins Id_Exe_Pipeline_Regi_0/PC] [get_bd_pins if_id/out_1]
   connect_bd_net -net not_gate_0_y [get_bd_pins OR_Gate_0/a] [get_bd_pins not_gate_0/y]
   connect_bd_net -net not_gate_1_y [get_bd_pins OR_Gate_2/a] [get_bd_pins not_gate_1/y]
-  connect_bd_net -net rst_0_1 [get_bd_ports rst_0] [get_bd_pins Condition_Check_0/rst] [get_bd_pins Control_Unit_0/rst] [get_bd_pins Exe_Mem_Pipeline_Reg_0/reset] [get_bd_pins IF_0/rst] [get_bd_pins Id_Exe_Pipeline_Regi_0/reset] [get_bd_pins Mem_Wb_Pipeline_Regi_0/reset] [get_bd_pins RegisterFile_0/reset] [get_bd_pins if_id/rst] [get_bd_pins status_register_0/rst]
+  connect_bd_net -net rst_0_1 [get_bd_ports rst_0] [get_bd_pins Condition_Check_0/rst] [get_bd_pins Exe_Mem_Pipeline_Reg_0/reset] [get_bd_pins IF_0/rst] [get_bd_pins Id_Exe_Pipeline_Regi_0/reset] [get_bd_pins Mem_Wb_Pipeline_Regi_0/reset] [get_bd_pins RegisterFile_0/reset] [get_bd_pins if_id/rst] [get_bd_pins status_register_0/rst]
   connect_bd_net -net slice_B_Exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/B_In] [get_bd_pins slice_B_Exe/Dout]
   connect_bd_net -net slice_Cin_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Alu_Carry_In_Id] [get_bd_pins slice_Cin/Dout]
   connect_bd_net -net slice_Im_24_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Signed_Imm_24_In] [get_bd_pins slice_Im_24/Dout]
   connect_bd_net -net slice_Im_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Im_In] [get_bd_pins not_gate_1/a] [get_bd_pins slice_Im/Dout]
-  connect_bd_net -net slice_Rn_Dout [get_bd_pins Hazard_unit_0/src1] [get_bd_pins Mux_0/input1] [get_bd_pins RegisterFile_0/readRegister1] [get_bd_pins slice_Rn/Dout]
+  connect_bd_net -net slice_Rm_Dout [get_bd_pins Mux_0/input1] [get_bd_pins slice_Rm/Dout]
+  connect_bd_net -net slice_Rn_Dout [get_bd_pins Hazard_unit_0/src1] [get_bd_pins RegisterFile_0/readRegister1] [get_bd_pins slice_Rn/Dout]
   connect_bd_net -net slice_ShOp_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Shifter_Operand_In] [get_bd_pins slice_ShOp/Dout]
   connect_bd_net -net slice_WB_En_exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/WB_EN] [get_bd_pins slice_WB_En_exe/Dout]
   connect_bd_net -net slice_cond_Dout [get_bd_pins Condition_Check_0/Cond] [get_bd_pins slice_cond/Dout]
   connect_bd_net -net slice_exe_cmd_exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/EXE_CMD] [get_bd_pins slice_exe_cmd_exe/Dout]
   connect_bd_net -net slice_mem_R_En_exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/MEM_R_EN] [get_bd_pins slice_mem_R_En_exe/Dout]
-  connect_bd_net -net slice_mem_W_En_exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/MEM_W_EN] [get_bd_pins slice_mem_W_En_exe/Dout]
+  connect_bd_net -net slice_mem_W_En_exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/MEM_W_EN] [get_bd_pins Mux_0/input3] [get_bd_pins slice_mem_W_En_exe/Dout]
   connect_bd_net -net status_register_0_statusout [get_bd_pins Condition_Check_0/SR] [get_bd_pins slice_Cin/Din] [get_bd_pins status_register_0/statusout]
   connect_bd_net -net val2_generator_0_operand_out [get_bd_pins ALU_1/SrcB1] [get_bd_pins val2_generator_0/operand_out]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins Mux_1/input1] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconstant_0_dout1 [get_bd_pins Mux_1/input2] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlconstant_3_dout [get_bd_pins if_id/en] [get_bd_pins xlconstant_3/dout]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins Control_Unit_0/Mode] [get_bd_pins slice_mode/Dout]
-  connect_bd_net -net xlslice_0_Dout1 [get_bd_pins Control_Unit_0/S_In] [get_bd_pins slice_S/Dout]
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins Control_Unit_0/mode] [get_bd_pins slice_mode/Dout]
+  connect_bd_net -net xlslice_0_Dout1 [get_bd_pins Control_Unit_0/sIn] [get_bd_pins slice_S/Dout]
   connect_bd_net -net xlslice_0_Dout2 [get_bd_pins Id_Exe_Pipeline_Regi_0/Dest] [get_bd_pins Mux_0/input2] [get_bd_pins slice_Rd/Dout]
-  connect_bd_net -net xlslice_1_Dout [get_bd_pins Control_Unit_0/Op_Code] [get_bd_pins slice_opc/Dout]
+  connect_bd_net -net xlslice_1_Dout [get_bd_pins Control_Unit_0/opcode] [get_bd_pins slice_opc/Dout]
 
   # Create address segments
 

@@ -62,6 +62,7 @@ verilog xil_defaultlib  \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Hazard_unit_0_4/sim/design_1_Hazard_unit_0_4.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_not_gate_0_1/sim/design_1_not_gate_0_1.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_OR_Gate_0_1/sim/design_1_OR_Gate_0_1.v" \
+"../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_15/sim/design_1_xlslice_0_15.v" \
 "../../../../az_CA_arm.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v" \
 "../../../../az_CA_arm.srcs/sim_1/new/IF_TB.v" \
 

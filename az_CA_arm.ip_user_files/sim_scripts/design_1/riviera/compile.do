@@ -78,6 +78,7 @@ vlog -work xil_defaultlib  -v2k5 \
 "../../../bd/design_1/ip/design_1_Hazard_unit_0_4/sim/design_1_Hazard_unit_0_4.v" \
 "../../../bd/design_1/ip/design_1_not_gate_0_1/sim/design_1_not_gate_0_1.v" \
 "../../../bd/design_1/ip/design_1_OR_Gate_0_1/sim/design_1_OR_Gate_0_1.v" \
+"../../../bd/design_1/ip/design_1_xlslice_0_15/sim/design_1_xlslice_0_15.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

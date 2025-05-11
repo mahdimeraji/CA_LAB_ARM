@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="491240000fs"></ZoomStartTime>
-      <ZoomEndTime time="603740001fs"></ZoomEndTime>
-      <Cursor1Time time="568660000fs"></Cursor1Time>
+      <ZoomStartTime time="669366667fs"></ZoomStartTime>
+      <ZoomEndTime time="896366668fs"></ZoomEndTime>
+      <Cursor1Time time="707200000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="284"></NameColumnWidth>
-      <ValueColumnWidth column_width="122"></ValueColumnWidth>
+      <ValueColumnWidth column_width="112"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="14" />
+   <WVObjectSize size="44" />
    <wvobject fp_name="/design_1_wrapper_TB/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -47,11 +47,12 @@
    <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/ALU_1/inst/status_flags" type="array">
       <obj_property name="ElementShortName">status_flags[3:0]</obj_property>
       <obj_property name="ObjectShortName">status_flags[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/ALU_1/inst/ALUResult1" type="array">
       <obj_property name="ElementShortName">ALUResult1[31:0]</obj_property>
       <obj_property name="ObjectShortName">ALUResult1[31:0]</obj_property>
-      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/ALU_1/inst/Negative" type="logic">
       <obj_property name="ElementShortName">Negative</obj_property>
@@ -78,6 +79,7 @@
       <obj_property name="ElementShortName">registerFile[0:15][31:0]</obj_property>
       <obj_property name="ObjectShortName">registerFile[0:15][31:0]</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[0]" type="array">
          <obj_property name="ElementShortName">[0][31:0]</obj_property>
          <obj_property name="ObjectShortName">[0][31:0]</obj_property>
@@ -141,22 +143,210 @@
       <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[12]" type="array">
          <obj_property name="ElementShortName">[12][31:0]</obj_property>
          <obj_property name="ObjectShortName">[12][31:0]</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[13]" type="array">
          <obj_property name="ElementShortName">[13][31:0]</obj_property>
          <obj_property name="ObjectShortName">[13][31:0]</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[14]" type="array">
          <obj_property name="ElementShortName">[14][31:0]</obj_property>
          <obj_property name="ObjectShortName">[14][31:0]</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[15]" type="array">
          <obj_property name="ElementShortName">[15][31:0]</obj_property>
          <obj_property name="ObjectShortName">[15][31:0]</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[0]" type="array">
+         <obj_property name="ElementShortName">[0][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[1]" type="array">
+         <obj_property name="ElementShortName">[1][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[2]" type="array">
+         <obj_property name="ElementShortName">[2][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[3]" type="array">
+         <obj_property name="ElementShortName">[3][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[4]" type="array">
+         <obj_property name="ElementShortName">[4][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[4][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[5]" type="array">
+         <obj_property name="ElementShortName">[5][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[6]" type="array">
+         <obj_property name="ElementShortName">[6][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[7]" type="array">
+         <obj_property name="ElementShortName">[7][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[8]" type="array">
+         <obj_property name="ElementShortName">[8][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[9]" type="array">
+         <obj_property name="ElementShortName">[9][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[10]" type="array">
+         <obj_property name="ElementShortName">[10][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[11]" type="array">
+         <obj_property name="ElementShortName">[11][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[11][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[12]" type="array">
+         <obj_property name="ElementShortName">[12][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[12][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[13]" type="array">
+         <obj_property name="ElementShortName">[13][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[13][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[14]" type="array">
+         <obj_property name="ElementShortName">[14][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[14][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/registerFile[15]" type="array">
+         <obj_property name="ElementShortName">[15][31:0]</obj_property>
+         <obj_property name="ObjectShortName">[15][31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/mode" type="array">
+      <obj_property name="ElementShortName">mode[1:0]</obj_property>
+      <obj_property name="ObjectShortName">mode[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/opcode" type="array">
+      <obj_property name="ElementShortName">opcode[3:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/sIn" type="logic">
+      <obj_property name="ElementShortName">sIn</obj_property>
+      <obj_property name="ObjectShortName">sIn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/aluCmd" type="array">
+      <obj_property name="ElementShortName">aluCmd[3:0]</obj_property>
+      <obj_property name="ObjectShortName">aluCmd[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/memRead" type="logic">
+      <obj_property name="ElementShortName">memRead</obj_property>
+      <obj_property name="ObjectShortName">memRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/memWrite" type="logic">
+      <obj_property name="ElementShortName">memWrite</obj_property>
+      <obj_property name="ObjectShortName">memWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/wbEn" type="logic">
+      <obj_property name="ElementShortName">wbEn</obj_property>
+      <obj_property name="ObjectShortName">wbEn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/branch" type="logic">
+      <obj_property name="ElementShortName">branch</obj_property>
+      <obj_property name="ObjectShortName">branch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/sOut" type="logic">
+      <obj_property name="ElementShortName">sOut</obj_property>
+      <obj_property name="ObjectShortName">sOut</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/slice_opc/Dout" type="array">
+      <obj_property name="ElementShortName">Dout[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/operand_in" type="array">
+      <obj_property name="ElementShortName">operand_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">operand_in[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/operand_out" type="array">
+      <obj_property name="ElementShortName">operand_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">operand_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/shift_operand" type="array">
+      <obj_property name="ElementShortName">shift_operand[11:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_operand[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/is_immediate" type="logic">
+      <obj_property name="ElementShortName">is_immediate</obj_property>
+      <obj_property name="ObjectShortName">is_immediate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/sign_extend" type="logic">
+      <obj_property name="ElementShortName">sign_extend</obj_property>
+      <obj_property name="ObjectShortName">sign_extend</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/shift_amount" type="array">
+      <obj_property name="ElementShortName">shift_amount[4:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_amount[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/shift_type" type="array">
+      <obj_property name="ElementShortName">shift_type[1:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_type[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/immediate_value" type="array">
+      <obj_property name="ElementShortName">immediate_value[7:0]</obj_property>
+      <obj_property name="ObjectShortName">immediate_value[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/rotate_amount" type="array">
+      <obj_property name="ElementShortName">rotate_amount[3:0]</obj_property>
+      <obj_property name="ObjectShortName">rotate_amount[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/val2_generator_0/inst/i" type="array">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Id_Exe_Pipeline_Regi_0/Shifter_Operand_In" type="array">
+      <obj_property name="ElementShortName">Shifter_Operand_In[11:0]</obj_property>
+      <obj_property name="ObjectShortName">Shifter_Operand_In[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Id_Exe_Pipeline_Regi_0/Shifter_Operand_Out" type="array">
+      <obj_property name="ElementShortName">Shifter_Operand_Out[11:0]</obj_property>
+      <obj_property name="ObjectShortName">Shifter_Operand_Out[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Id_Exe_Pipeline_Regi_0/inst/Val_Rn_out" type="array">
+      <obj_property name="ElementShortName">Val_Rn_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Val_Rn_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Id_Exe_Pipeline_Regi_0/inst/Val_Rm_out" type="array">
+      <obj_property name="ElementShortName">Val_Rm_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Val_Rm_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Id_Exe_Pipeline_Regi_0/inst/Val_Rn_In" type="array">
+      <obj_property name="ElementShortName">Val_Rn_In[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Val_Rn_In[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Id_Exe_Pipeline_Regi_0/inst/Val_Rm_In" type="array">
+      <obj_property name="ElementShortName">Val_Rm_In[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Val_Rm_In[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/readRegister1" type="array">
+      <obj_property name="ElementShortName">readRegister1[3:0]</obj_property>
+      <obj_property name="ObjectShortName">readRegister1[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/RegisterFile_0/inst/readRegister2" type="array">
+      <obj_property name="ElementShortName">readRegister2[3:0]</obj_property>
+      <obj_property name="ObjectShortName">readRegister2[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/Control_Unit_0/inst/memWrite" type="logic">
+      <obj_property name="ElementShortName">memWrite</obj_property>
+      <obj_property name="ObjectShortName">memWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_1_wrapper_TB/uut/design_1_i/slice_mem_W_En_exe/inst/Dout" type="array">
+      <obj_property name="ElementShortName">Dout[0:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout[0:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

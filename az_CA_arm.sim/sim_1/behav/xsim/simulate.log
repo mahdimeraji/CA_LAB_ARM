@@ -4,5 +4,5 @@ WARNING: This core is supplied with a behavioral model. To model cycle-accurate 
 WARNING: This core is supplied with a behavioral model. To model cycle-accurate behavior you must run timing simulation.
 WARNING in design_1_wrapper_TB.uut.design_1_i.data_memory.inst at time                35000 ns: 
 Reading from out-of-range address. Max address in design_1_wrapper_TB.uut.design_1_i.data_memory.inst is        8191
-WARNING in design_1_wrapper_TB.uut.design_1_i.dist_mem_gen_1.inst at time               575000 ns: 
+WARNING in design_1_wrapper_TB.uut.design_1_i.dist_mem_gen_1.inst at time               605000 ns: 
 Reading from out-of-range address. Max address in design_1_wrapper_TB.uut.design_1_i.dist_mem_gen_1.inst is        8191

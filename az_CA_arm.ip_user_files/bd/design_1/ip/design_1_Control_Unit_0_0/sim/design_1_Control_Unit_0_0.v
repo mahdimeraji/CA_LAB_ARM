@@ -55,46 +55,36 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_Control_Unit_0_0 (
-  clk,
-  rst,
-  Mode,
-  Op_Code,
-  S_In,
-  EXE_CMD,
-  MEM_R_EN,
-  MEM_W_EN,
-  WB_EN,
-  B,
-  S_Out
+  mode,
+  opcode,
+  sIn,
+  aluCmd,
+  memRead,
+  memWrite,
+  wbEn,
+  branch,
+  sOut
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_clk_0, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
-input wire clk;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
-input wire rst;
-input wire [1 : 0] Mode;
-input wire [3 : 0] Op_Code;
-input wire S_In;
-output wire [3 : 0] EXE_CMD;
-output wire MEM_R_EN;
-output wire MEM_W_EN;
-output wire WB_EN;
-output wire B;
-output wire S_Out;
+input wire [1 : 0] mode;
+input wire [3 : 0] opcode;
+input wire sIn;
+output wire [3 : 0] aluCmd;
+output wire memRead;
+output wire memWrite;
+output wire wbEn;
+output wire branch;
+output wire sOut;
 
   Control_Unit inst (
-    .clk(clk),
-    .rst(rst),
-    .Mode(Mode),
-    .Op_Code(Op_Code),
-    .S_In(S_In),
-    .EXE_CMD(EXE_CMD),
-    .MEM_R_EN(MEM_R_EN),
-    .MEM_W_EN(MEM_W_EN),
-    .WB_EN(WB_EN),
-    .B(B),
-    .S_Out(S_Out)
+    .mode(mode),
+    .opcode(opcode),
+    .sIn(sIn),
+    .aluCmd(aluCmd),
+    .memRead(memRead),
+    .memWrite(memWrite),
+    .wbEn(wbEn),
+    .branch(branch),
+    .sOut(sOut)
   );
 endmodule
