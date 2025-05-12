@@ -39,7 +39,7 @@ always @(N, Z, C, V, Cond) begin
         GT: condition_met = ((Z == 1'b0) && (N == V));
         LE: condition_met = ((Z != 1'b1) || (N != V));
         AL: condition_met = 1'b1;
-        default: condition_met = 1'b1; ///
+        default: condition_met = 1'b0; ///
     endcase
 end
 endmodule

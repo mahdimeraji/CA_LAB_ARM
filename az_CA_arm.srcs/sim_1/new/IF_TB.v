@@ -39,7 +39,7 @@ module design_1_wrapper_TB();
         #10 rst = 1;
         #20 rst = 0;
         
-        #1000;
+        #4000;
         $stop;
     end
 

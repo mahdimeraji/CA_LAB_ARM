@@ -26,7 +26,6 @@
       "not_gate_0": "",
       "OR_Gate_0": "",
       "slice_Im_24": "",
-      "Adder_32_0": "",
       "ALU_1": "",
       "OR_Gate_1": "",
       "slice_mem_W_En_exe": "",
@@ -52,7 +51,8 @@
       "Exe_Mem_Pipeline_Reg_0": "",
       "Id_Exe_Pipeline_Regi_0": "",
       "Control_Unit_0": "",
-      "slice_Rm": ""
+      "slice_Rm": "",
+      "Adder_32_0": ""
     },
     "ports": {
       "clk_0": {
@@ -480,32 +480,6 @@
           },
           "DOUT_WIDTH": {
             "value": "24"
-          }
-        }
-      },
-      "Adder_32_0": {
-        "vlnv": "xilinx.com:module_ref:Adder_32:1.0",
-        "xci_name": "design_1_Adder_32_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "Adder_32",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "a": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "b": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "w": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
           }
         }
       },
@@ -1360,6 +1334,32 @@
             "value": "4"
           }
         }
+      },
+      "Adder_32_0": {
+        "vlnv": "xilinx.com:module_ref:Adder_32:1.0",
+        "xci_name": "design_1_Adder_32_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Adder_32",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "a": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "b": {
+            "direction": "I",
+            "left": "23",
+            "right": "0"
+          },
+          "w": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
       }
     },
     "nets": {
@@ -1841,9 +1841,9 @@
       "Id_Exe_Pipeline_Regi_0_B_Out": {
         "ports": [
           "Id_Exe_Pipeline_Regi_0/B_Out",
-          "IF_0/mux_ctl",
           "if_id/flush",
-          "Id_Exe_Pipeline_Regi_0/flush"
+          "Id_Exe_Pipeline_Regi_0/flush",
+          "IF_0/mux_ctl"
         ]
       },
       "Adder_32_0_w": {

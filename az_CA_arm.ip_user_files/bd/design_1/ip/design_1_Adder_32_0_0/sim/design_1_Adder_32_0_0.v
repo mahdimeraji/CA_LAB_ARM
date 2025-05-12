@@ -61,7 +61,7 @@ module design_1_Adder_32_0_0 (
 );
 
 input wire [31 : 0] a;
-input wire [31 : 0] b;
+input wire [23 : 0] b;
 output wire [31 : 0] w;
 
   Adder_32 inst (

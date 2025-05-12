@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May 11 16:31:21 2025" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon May 12 12:24:39 2025" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -86,7 +86,7 @@
             <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="PC_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out">
+        <PORT DIR="I" LEFT="23" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="Signed_Imm_24_Out"/>
           </CONNECTIONS>
@@ -486,9 +486,9 @@
         </PORT>
         <PORT DIR="O" NAME="B_Out" SIGIS="undef" SIGNAME="Id_Exe_Pipeline_Regi_0_B_Out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="IF_0" PORT="mux_ctl"/>
             <CONNECTION INSTANCE="if_id" PORT="flush"/>
             <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="flush"/>
+            <CONNECTION INSTANCE="IF_0" PORT="mux_ctl"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="S_Out" SIGIS="undef" SIGNAME="Id_Exe_Pipeline_Regi_0_S_Out">
