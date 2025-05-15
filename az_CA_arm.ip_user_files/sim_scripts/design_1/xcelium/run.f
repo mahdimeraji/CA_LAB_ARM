@@ -66,6 +66,8 @@
   "../../../bd/design_1/ip/design_1_Adder_0_0_1/sim/design_1_Adder_0_0.v" \
   "../../../bd/design_1/ip/design_1_PC_0_0_1/sim/design_1_PC_0_0.v" \
   "../../../bd/design_1/ip/design_1_Mux_3_0_1/sim/design_1_Mux_3_0.v" \
+  "../../../bd/design_1/ip/design_1_xlconstant_1_0/sim/design_1_xlconstant_1_0.v" \
+  "../../../bd/design_1/ip/design_1_xlconstant_1_1/sim/design_1_xlconstant_1_1.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v

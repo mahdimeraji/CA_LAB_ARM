@@ -57,13 +57,13 @@
 module design_1_Mux_1_0 (
   input1,
   input2,
-  input3,
+  s,
   out
 );
 
 input wire [8 : 0] input1;
 input wire [8 : 0] input2;
-input wire input3;
+input wire s;
 output wire [8 : 0] out;
 
   Mux #(
@@ -71,7 +71,7 @@ output wire [8 : 0] out;
   ) inst (
     .input1(input1),
     .input2(input2),
-    .input3(input3),
+    .s(s),
     .out(out)
   );
 endmodule

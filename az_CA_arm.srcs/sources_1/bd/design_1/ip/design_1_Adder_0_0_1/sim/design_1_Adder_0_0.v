@@ -55,18 +55,24 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_Adder_0_0 (
-  in32,
-  O32,
-  Carry_out
+  A,
+  B,
+  Cin,
+  Sum,
+  Cout
 );
 
-input wire [31 : 0] in32;
-output wire [31 : 0] O32;
-output wire Carry_out;
+input wire [31 : 0] A;
+input wire [31 : 0] B;
+input wire Cin;
+output wire [31 : 0] Sum;
+output wire Cout;
 
   Adder inst (
-    .in32(in32),
-    .O32(O32),
-    .Carry_out(Carry_out)
+    .A(A),
+    .B(B),
+    .Cin(Cin),
+    .Sum(Sum),
+    .Cout(Cout)
   );
 endmodule

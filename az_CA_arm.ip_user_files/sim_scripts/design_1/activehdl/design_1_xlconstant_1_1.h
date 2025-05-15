@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2025 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2014 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -47,32 +47,21 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:Mux:1.0
+// IP VLNV: xilinx.com:ip:xlconstant:1.1
 // IP Revision: 1
 
-(* X_CORE_INFO = "Mux,Vivado 2018.3" *)
-(* CHECK_LICENSE_TYPE = "design_1_Mux_0_0,Mux,{}" *)
-(* CORE_GENERATION_INFO = "design_1_Mux_0_0,Mux,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=Mux,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,WIDTH=4}" *)
-(* IP_DEFINITION_SOURCE = "module_ref" *)
-(* DowngradeIPIdentifiedWarnings = "yes" *)
-module design_1_Mux_0_0 (
-  input1,
-  input2,
-  input3,
-  out
-);
+#ifndef _design_1_xlconstant_1_1_H_
+#define _design_1_xlconstant_1_1_H_
 
-input wire [3 : 0] input1;
-input wire [3 : 0] input2;
-input wire input3;
-output wire [3 : 0] out;
+#include "xlconstant_v1_1_5.h"
+#include "systemc.h"
+class design_1_xlconstant_1_1 : public sc_module {
+  public:
+xlconstant_v1_1_5<32,1> mod;
+  sc_out< sc_bv<32> > dout;
+design_1_xlconstant_1_1 (sc_core::sc_module_name name) :sc_module(name), mod("mod") {
+    mod.dout(dout);
+  }
+};
 
-  Mux #(
-    .WIDTH(4)
-  ) inst (
-    .input1(input1),
-    .input2(input2),
-    .input3(input3),
-    .out(out)
-  );
-endmodule
+#endif

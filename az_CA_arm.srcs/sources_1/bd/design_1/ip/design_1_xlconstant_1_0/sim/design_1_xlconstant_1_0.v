@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2014 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2025 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -48,20 +48,21 @@
 
 
 // IP VLNV: xilinx.com:ip:xlconstant:1.1
-// IP Revision: 1
+// IP Revision: 5
 
-#ifndef _design_1_xlconstant_3_0_H_
-#define _design_1_xlconstant_3_0_H_
+`timescale 1ns/1ps
 
-#include "xlconstant_v1_1_5.h"
-#include "systemc.h"
-class design_1_xlconstant_3_0 : public sc_module {
-  public:
-xlconstant_v1_1_5<1,1> mod;
-  sc_out< sc_bv<1> > dout;
-design_1_xlconstant_3_0 (sc_core::sc_module_name name) :sc_module(name), mod("mod") {
-    mod.dout(dout);
-  }
-};
+(* DowngradeIPIdentifiedWarnings = "yes" *)
+module design_1_xlconstant_1_0 (
+  dout
+);
 
-#endif
+output wire [0 : 0] dout;
+
+  xlconstant_v1_1_5_xlconstant #(
+    .CONST_WIDTH(1),
+    .CONST_VAL('H0)
+  ) inst (
+    .dout(dout)
+  );
+endmodule

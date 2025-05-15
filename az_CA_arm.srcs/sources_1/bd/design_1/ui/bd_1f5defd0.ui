@@ -4,131 +4,135 @@
 #  -string -flagsOSRD
 preplace port rst_0 -pg 1 -y 540 -defaultsOSRD
 preplace port clk_0 -pg 1 -y 510 -defaultsOSRD
-preplace inst Mux_1 -pg 1 -lvl 9 -y 480 -defaultsOSRD
-preplace inst RegisterFile_0 -pg 1 -lvl 9 -y 980 -defaultsOSRD
-preplace inst PC_0 -pg 1 -lvl 2 -y 710 -defaultsOSRD
-preplace inst Exe_Mem_Pipeline_Reg_0 -pg 1 -lvl 17 -y 960 -defaultsOSRD
-preplace inst Mux_2 -pg 1 -lvl 20 -y 1020 -defaultsOSRD
-preplace inst val2_generator_0 -pg 1 -lvl 14 -y 1180 -defaultsOSRD
+preplace inst Mux_1 -pg 1 -lvl 10 -y 480 -defaultsOSRD
+preplace inst RegisterFile_0 -pg 1 -lvl 10 -y 980 -defaultsOSRD
+preplace inst Mux_2 -pg 1 -lvl 21 -y 1020 -defaultsOSRD
+preplace inst PC_0 -pg 1 -lvl 3 -y 700 -defaultsOSRD
+preplace inst Exe_Mem_Pipeline_Reg_0 -pg 1 -lvl 18 -y 960 -defaultsOSRD
+preplace inst val2_generator_0 -pg 1 -lvl 15 -y 1180 -defaultsOSRD
 preplace inst Mux_3 -pg 1 -lvl 1 -y 720 -defaultsOSRD
-preplace inst Adder_0 -pg 1 -lvl 2 -y 850 -defaultsOSRD
-preplace inst slice_Rm -pg 1 -lvl 6 -y -220 -defaultsOSRD
-preplace inst slice_Im -pg 1 -lvl 6 -y -20 -defaultsOSRD
-preplace inst slice_mem_R_En_exe -pg 1 -lvl 10 -y 950 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 8 -y 1160 -defaultsOSRD
-preplace inst status_register_0 -pg 1 -lvl 5 -y 670 -defaultsOSRD
-preplace inst Hazard_unit_0 -pg 1 -lvl 17 -y 1340 -defaultsOSRD
-preplace inst slice_B_Exe -pg 1 -lvl 10 -y 1280 -defaultsOSRD
-preplace inst slice_mem_W_En_exe -pg 1 -lvl 10 -y 1180 -defaultsOSRD
-preplace inst slice_Rn -pg 1 -lvl 6 -y 180 -defaultsOSRD
-preplace inst slice_S -pg 1 -lvl 6 -y 620 -defaultsOSRD
-preplace inst slice_mode -pg 1 -lvl 6 -y 420 -defaultsOSRD
-preplace inst dist_mem_gen_1 -pg 1 -lvl 4 -y 360 -defaultsOSRD
-preplace inst Register_En -pg 1 -lvl 11 -y 690 -defaultsOSRD
-preplace inst slice_opc -pg 1 -lvl 6 -y 520 -defaultsOSRD
-preplace inst Mem_Wb_Pipeline_Regi_0 -pg 1 -lvl 19 -y 1020 -defaultsOSRD
-preplace inst data_memory -pg 1 -lvl 18 -y 1230 -defaultsOSRD
-preplace inst ALU_1 -pg 1 -lvl 16 -y 1100 -defaultsOSRD
-preplace inst xlconcat_0 -pg 1 -lvl 8 -y 460 -defaultsOSRD
-preplace inst xlconstant_3 -pg 1 -lvl 3 -y 820 -defaultsOSRD
-preplace inst Control_Unit_0 -pg 1 -lvl 7 -y 460 -defaultsOSRD
-preplace inst not_gate_0 -pg 1 -lvl 7 -y 960 -defaultsOSRD
-preplace inst slice_Rd -pg 1 -lvl 6 -y 280 -defaultsOSRD
-preplace inst not_gate_1 -pg 1 -lvl 15 -y 1450 -defaultsOSRD
-preplace inst Adder_32_0 -pg 1 -lvl 14 -y 870 -defaultsOSRD
-preplace inst Id_Exe_Pipeline_Regi_0 -pg 1 -lvl 12 -y 1020 -defaultsOSRD
-preplace inst slice_Cin -pg 1 -lvl 6 -y 960 -defaultsOSRD
-preplace inst Slice_S_exe -pg 1 -lvl 10 -y 1380 -defaultsOSRD
-preplace inst slice_Im_24 -pg 1 -lvl 6 -y 80 -defaultsOSRD
-preplace inst OR_Gate_0 -pg 1 -lvl 8 -y 1050 -defaultsOSRD
-preplace inst slice_cond -pg 1 -lvl 5 -y 820 -defaultsOSRD
-preplace inst OR_Gate_1 -pg 1 -lvl 13 -y 1130 -defaultsOSRD
-preplace inst OR_Gate_2 -pg 1 -lvl 16 -y 1440 -defaultsOSRD
-preplace inst slice_ShOp -pg 1 -lvl 6 -y -120 -defaultsOSRD
-preplace inst slice_exe_cmd_exe -pg 1 -lvl 10 -y 850 -defaultsOSRD
-preplace inst Condition_Check_0 -pg 1 -lvl 6 -y 780 -defaultsOSRD
-preplace inst if_id -pg 1 -lvl 4 -y 570 -defaultsOSRD
-preplace inst slice_WB_En_exe -pg 1 -lvl 10 -y 1050 -defaultsOSRD
-preplace inst Mux_0 -pg 1 -lvl 7 -y 210 -defaultsOSRD
-preplace netloc Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe 1 12 4 3490J 1020 NJ 1020 NJ 1020 4310
-preplace netloc Id_Exe_Pipeline_Regi_0_PC_out 1 12 2 3480 860 NJ
-preplace netloc Id_Exe_Pipeline_Regi_0_WB_EN_out 1 12 5 NJ 930 3710 940 N 940 N 940 4660
-preplace netloc status_register_0_statusout 1 5 1 1140
-preplace netloc xlconstant_3_dout 1 3 1 550
-preplace netloc Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out 1 12 2 3510 880 NJ
-preplace netloc Control_Unit_0_EXE_CMD 1 7 1 N
-preplace netloc not_gate_0_y 1 7 1 1800J
-preplace netloc Id_Exe_Pipeline_Regi_0_Im_Out 1 12 2 3520 1010 3710J
-preplace netloc Id_Exe_Pipeline_Regi_0_Shifter_Operand_Out 1 12 2 3460 1200 3720J
-preplace netloc Exe_Mem_Pipeline_Reg_0_Alu_Res_Out 1 17 2 5070 1070 N
-preplace netloc xlconcat_0_dout 1 8 1 N
-preplace netloc xlconstant_0_dout1 1 8 1 2000
-preplace netloc slice_Cin_Dout 1 6 6 1480J 790 NJ 790 NJ 790 NJ 790 NJ 790 2940J
-preplace netloc IF_0_pc_out 1 0 4 -280 580 N 580 370 510 N
-preplace netloc Mux_0_out 1 7 10 N 210 2040 560 2400 550 2690 540 N 540 N 540 N 540 N 540 N 540 4670
-preplace netloc OR_Gate_1_y 1 13 1 3700
-preplace netloc Id_Exe_Pipeline_Regi_0_B_Out 1 0 13 -270 590 N 590 380 610 540J 760 NJ 760 1150J 870 1500J 590 NJ 590 NJ 590 2450J 580 2720J 570 3040J 780 3460
-preplace netloc Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out 1 15 3 4300 1220 N 1220 5060
-preplace netloc Condition_Check_0_condition_met 1 6 1 1490
-preplace netloc slice_Im_24_Dout 1 6 6 NJ 80 NJ 80 NJ 80 NJ 80 NJ 80 2990
-preplace netloc slice_Im_Dout 1 6 9 NJ -20 NJ -20 NJ -20 NJ -20 NJ -20 3060 730 N 730 N 730 4070
-preplace netloc Control_Unit_0_S_Out 1 7 1 N
-preplace netloc slice_ShOp_Dout 1 6 6 NJ -120 NJ -120 NJ -120 NJ -120 NJ -120 3010
-preplace netloc slice_Rn_Dout 1 6 11 1480 340 N 340 2030J 770 N 770 N 770 N 770 N 770 N 770 N 770 N 770 4650
-preplace netloc slice_exe_cmd_exe_Dout 1 10 2 N 850 2920
-preplace netloc Mux_1_out 1 9 1 2440
-preplace netloc Mux_3_out 1 1 1 N
-preplace netloc dist_mem_gen_1_spo 1 3 2 570 420 820
-preplace netloc Control_Unit_0_WB_EN 1 7 1 N
-preplace netloc slice_mem_W_En_exe_Dout 1 6 6 1540 700 N 700 N 700 N 700 2690 1060 3050
-preplace netloc Mem_Wb_Pipeline_Regi_0_WB_EN_out 1 8 12 2080 760 NJ 760 NJ 760 2950J 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 5710
-preplace netloc Exe_Mem_Pipeline_Reg_0_Dest_out 1 16 3 4710 810 5110 1050 N
-preplace netloc ALU_1_status_flags 1 4 13 870 1030 NJ 1030 1520J 570 NJ 570 NJ 570 2410J 560 2700J 550 NJ 550 NJ 550 NJ 550 NJ 550 N 550 4630
-preplace netloc slice_mem_R_En_exe_Dout 1 10 2 2710 1010 N
-preplace netloc xlslice_1_Dout 1 6 1 1480J
-preplace netloc Id_Exe_Pipeline_Regi_0_MEM_R_EN_out 1 12 5 3530 960 N 960 N 960 N 960 N
-preplace netloc not_gate_1_y 1 15 1 4280
-preplace netloc xlslice_0_Dout 1 6 1 1490J
-preplace netloc rst_0_1 1 0 19 NJ 540 -20 600 360 620 580 710 860 560 1170 1020 N 1020 1820 980 2020 620 2460 590 N 590 3050 760 N 760 N 760 N 760 N 760 4690 790 N 790 5340
-preplace netloc Id_Exe_Pipeline_Regi_0_S_Out 1 4 9 880 880 NJ 880 1530J 610 NJ 610 NJ 610 NJ 610 2730J 580 NJ 580 3470
-preplace netloc Exe_Mem_Pipeline_Reg_0_WB_EN_Out 1 16 3 4720 820 5120 930 5330
-preplace netloc clk_0_1 1 0 19 NJ 510 -10 550 N 550 570 700 850 580 1160 890 N 890 N 890 2050 780 N 780 N 780 3030 790 N 790 N 790 N 790 N 790 4660 800 5090 950 N
-preplace netloc Register_En_dout 1 11 8 3020 740 N 740 N 740 N 740 N 740 4700 780 N 780 5350
-preplace netloc Net 1 12 5 3480 1210 3690 1090 N 1090 4280 1190 4690
-preplace netloc RegisterFile_0_readData1 1 9 3 2480J 620 2740J 610 2960
-preplace netloc Mem_Wb_Pipeline_Regi_0_Data_to_WB_Out 1 19 1 5740
-preplace netloc Net1 1 1 3 0J 610 350J 360 NJ
-preplace netloc RegisterFile_0_readData2 1 9 3 2470J 600 NJ 600 2970
-preplace netloc Exe_Mem_Pipeline_Reg_0_MEM_R_EN_out 1 17 2 5100 940 5320
-preplace netloc Mem_Wb_Pipeline_Regi_0_Dest_out 1 8 12 2070 750 NJ 750 NJ 750 2940J 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 5720
-preplace netloc Exe_Mem_Pipeline_Reg_0_Val_Rm_out 1 17 1 5080
-preplace netloc OR_Gate_0_y 1 8 1 2010
-preplace netloc Mem_Wb_Pipeline_Regi_0_Alu_Res_Out 1 19 1 5730
-preplace netloc Id_Exe_Pipeline_Regi_0_Val_Rn_out 1 12 4 NJ 1050 NJ 1050 N 1050 4280
-preplace netloc Mem_Wb_Pipeline_Regi_0_MEM_R_EN_out 1 19 1 5710
-preplace netloc val2_generator_0_operand_out 1 14 2 4080 1100 4290
-preplace netloc Id_Exe_Pipeline_Regi_0_MEM_W_EN_out 1 12 5 3500 980 N 980 N 980 N 980 N
-preplace netloc Id_Exe_Pipeline_Regi_0_EXE_CMD_out 1 12 4 NJ 1030 NJ 1030 N 1030 4300
-preplace netloc Slice_S_exe_Dout 1 10 2 2760J 1040 3030
-preplace netloc slice_WB_En_exe_Dout 1 10 2 N 1050 3040
-preplace netloc slice_Rm_Dout 1 6 1 1540
-preplace netloc if_id_out_1 1 4 2 830 540 1200
-preplace netloc Mux_2_out 1 8 13 2060 630 NJ 630 2750J 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 6050
-preplace netloc xlslice_0_Dout1 1 6 1 1490J
-preplace netloc Adder_32_0_w 1 0 15 -260 920 NJ 920 NJ 920 NJ 920 NJ 920 1200J 900 1510J 580 NJ 580 NJ 580 2430J 570 2710J 560 NJ 560 NJ 560 NJ 560 4060
-preplace netloc Control_Unit_0_B 1 7 1 N
-preplace netloc if_id_out_2 1 4 8 820J 550 1190J 680 N 680 1800 640 N 640 N 640 2760 630 2930
-preplace netloc xlslice_0_Dout2 1 6 6 1490 350 N 350 N 350 N 350 N 350 2980
-preplace netloc slice_B_Exe_Dout 1 10 2 2740J 1000 3000
-preplace netloc Control_Unit_0_memWrite 1 7 1 N
-preplace netloc Hazard_unit_0_hazard_Detected 1 1 17 10 620 340 630 560 690 840 570 1180 690 N 690 1810 650 NJ 650 2420J 540 2680J 530 NJ 530 NJ 530 NJ 530 NJ 530 NJ 530 NJ 530 5050
-preplace netloc Control_Unit_0_MEM_R_EN 1 7 1 N
-preplace netloc ALU_1_ALUResult1 1 16 1 4680
-preplace netloc Id_Exe_Pipeline_Regi_0_Val_Rm_out 1 12 5 3490 1060 3720J 1010 N 1010 N 1010 4640
-preplace netloc data_memory_spo 1 18 1 5340
-preplace netloc OR_Gate_2_y 1 16 1 4700
-preplace netloc slice_cond_Dout 1 5 1 1190J
-levelinfo -pg 1 -300 -140 220 460 700 1010 1350 1670 1910 2240 2580 2840 3260 3610 3890 4200 4490 4890 5220 5530 5930 6080 -top -770 -bot 1710
+preplace inst Adder_0 -pg 1 -lvl 3 -y 850 -defaultsOSRD
+preplace inst slice_Rm -pg 1 -lvl 7 -y -220 -defaultsOSRD
+preplace inst slice_Im -pg 1 -lvl 7 -y -20 -defaultsOSRD
+preplace inst slice_W_En -pg 1 -lvl 11 -y 1690 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 9 -y 1160 -defaultsOSRD
+preplace inst status_register_0 -pg 1 -lvl 6 -y 670 -defaultsOSRD
+preplace inst adder_in_B -pg 1 -lvl 2 -y 980 -defaultsOSRD
+preplace inst Hazard_unit_0 -pg 1 -lvl 18 -y 1340 -defaultsOSRD
+preplace inst slice_Rn -pg 1 -lvl 7 -y 180 -defaultsOSRD
+preplace inst slice_S -pg 1 -lvl 7 -y 620 -defaultsOSRD
+preplace inst slice_mode -pg 1 -lvl 7 -y 420 -defaultsOSRD
+preplace inst dist_mem_gen_1 -pg 1 -lvl 5 -y 360 -defaultsOSRD
+preplace inst Register_En -pg 1 -lvl 12 -y 690 -defaultsOSRD
+preplace inst slice_cmd -pg 1 -lvl 11 -y 1190 -defaultsOSRD
+preplace inst slice_opc -pg 1 -lvl 7 -y 520 -defaultsOSRD
+preplace inst Mem_Wb_Pipeline_Regi_0 -pg 1 -lvl 20 -y 1020 -defaultsOSRD
+preplace inst data_memory -pg 1 -lvl 19 -y 1230 -defaultsOSRD
+preplace inst slice_Mem_R -pg 1 -lvl 11 -y 1390 -defaultsOSRD
+preplace inst slice_WB -pg 1 -lvl 11 -y 1490 -defaultsOSRD
+preplace inst ALU_1 -pg 1 -lvl 17 -y 1100 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 9 -y 460 -defaultsOSRD
+preplace inst xlconstant_3 -pg 1 -lvl 4 -y 820 -defaultsOSRD
+preplace inst Control_Unit_0 -pg 1 -lvl 8 -y 460 -defaultsOSRD
+preplace inst not_gate_0 -pg 1 -lvl 8 -y 960 -defaultsOSRD
+preplace inst slice_Rd -pg 1 -lvl 7 -y 280 -defaultsOSRD
+preplace inst not_gate_1 -pg 1 -lvl 16 -y 1450 -defaultsOSRD
+preplace inst slice_S_ex -pg 1 -lvl 11 -y 1290 -defaultsOSRD
+preplace inst Cin_0 -pg 1 -lvl 2 -y 1080 -defaultsOSRD
+preplace inst Adder_32_0 -pg 1 -lvl 15 -y 870 -defaultsOSRD
+preplace inst Id_Exe_Pipeline_Regi_0 -pg 1 -lvl 13 -y 1020 -defaultsOSRD
+preplace inst slice_Cin -pg 1 -lvl 7 -y 960 -defaultsOSRD
+preplace inst slice_Im_24 -pg 1 -lvl 7 -y 80 -defaultsOSRD
+preplace inst OR_Gate_0 -pg 1 -lvl 9 -y 1050 -defaultsOSRD
+preplace inst slice_cond -pg 1 -lvl 6 -y 820 -defaultsOSRD
+preplace inst OR_Gate_1 -pg 1 -lvl 14 -y 1130 -defaultsOSRD
+preplace inst OR_Gate_2 -pg 1 -lvl 17 -y 1440 -defaultsOSRD
+preplace inst slice_ShOp -pg 1 -lvl 7 -y -120 -defaultsOSRD
+preplace inst Condition_Check_0 -pg 1 -lvl 7 -y 780 -defaultsOSRD
+preplace inst Mux_0 -pg 1 -lvl 8 -y 210 -defaultsOSRD
+preplace inst if_id -pg 1 -lvl 5 -y 570 -defaultsOSRD
+preplace inst slice_B -pg 1 -lvl 11 -y 1590 -defaultsOSRD
+preplace netloc Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe 1 13 4 NJ 1010 NJ 1010 NJ 1010 4360
+preplace netloc Id_Exe_Pipeline_Regi_0_PC_out 1 13 2 3550 860 NJ
+preplace netloc Id_Exe_Pipeline_Regi_0_WB_EN_out 1 13 5 NJ 930 3790 940 N 940 N 940 4700
+preplace netloc Cin_0_dout 1 2 1 130
+preplace netloc status_register_0_statusout 1 6 1 1180
+preplace netloc xlconstant_3_dout 1 4 1 600
+preplace netloc Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out 1 13 2 3590 880 NJ
+preplace netloc Control_Unit_0_EXE_CMD 1 8 1 N
+preplace netloc not_gate_0_y 1 8 1 1820J
+preplace netloc Id_Exe_Pipeline_Regi_0_Im_Out 1 13 2 3580 1000 3790J
+preplace netloc Id_Exe_Pipeline_Regi_0_Shifter_Operand_Out 1 13 2 3580 1200 3800J
+preplace netloc Exe_Mem_Pipeline_Reg_0_Alu_Res_Out 1 18 2 5110 1070 N
+preplace netloc xlconcat_0_dout 1 9 1 N
+preplace netloc xlconstant_0_dout1 1 9 1 2050
+preplace netloc slice_Cin_Dout 1 7 6 1500J 850 NJ 850 NJ 850 NJ 850 NJ 850 3050J
+preplace netloc IF_0_pc_out 1 0 5 -330 570 N 570 N 570 410 510 N
+preplace netloc Mux_0_out 1 8 10 N 210 2080 620 N 620 N 620 N 620 N 620 N 620 N 620 N 620 4720
+preplace netloc OR_Gate_1_y 1 14 1 3780
+preplace netloc Id_Exe_Pipeline_Regi_0_B_Out 1 0 14 -320 610 N 610 N 610 N 610 570J 760 NJ 760 1200J 690 NJ 690 NJ 690 NJ 690 NJ 690 2740J 790 3090J 790 3530
+preplace netloc Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out 1 16 3 4360 1220 N 1220 5090
+preplace netloc Condition_Check_0_condition_met 1 7 1 1510
+preplace netloc slice_Im_24_Dout 1 7 6 NJ 80 NJ 80 NJ 80 NJ 80 NJ 80 3020
+preplace netloc slice_Im_Dout 1 7 9 NJ -20 NJ -20 NJ -20 NJ -20 NJ -20 3070 750 N 750 N 750 4150
+preplace netloc Control_Unit_0_S_Out 1 8 1 N
+preplace netloc slice_ShOp_Dout 1 7 6 NJ -120 NJ -120 NJ -120 NJ -120 NJ -120 3040
+preplace netloc slice_Rn_Dout 1 7 11 1500 290 1830 340 2070J 630 N 630 N 630 N 630 N 630 N 630 N 630 N 630 4710
+preplace netloc slice_exe_cmd_exe_Dout 1 11 2 2780 1070 N
+preplace netloc Mux_1_out 1 10 1 2450
+preplace netloc xlconstant_1_dout 1 2 1 110
+preplace netloc Mux_3_out 1 1 2 -70 710 N
+preplace netloc dist_mem_gen_1_spo 1 4 2 610 420 850
+preplace netloc Control_Unit_0_WB_EN 1 8 1 N
+preplace netloc slice_mem_W_En_exe_Dout 1 7 6 1560 1020 1850 980 2030 1110 N 1110 2790 1030 N
+preplace netloc Mem_Wb_Pipeline_Regi_0_WB_EN_out 1 9 12 2120 770 NJ 770 NJ 770 3000J 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 5740
+preplace netloc Exe_Mem_Pipeline_Reg_0_Dest_out 1 17 3 4730 1100 5080 1050 N
+preplace netloc ALU_1_status_flags 1 5 13 900 880 NJ 880 1520J 590 NJ 590 NJ 590 NJ 590 NJ 590 NJ 590 NJ 590 NJ 590 NJ 590 N 590 4670
+preplace netloc slice_mem_R_En_exe_Dout 1 11 2 2770 1020 3100
+preplace netloc xlslice_1_Dout 1 7 1 1500J
+preplace netloc Id_Exe_Pipeline_Regi_0_MEM_R_EN_out 1 13 5 3610 960 N 960 N 960 N 960 N
+preplace netloc not_gate_1_y 1 16 1 4340
+preplace netloc xlslice_0_Dout 1 7 1 1510J
+preplace netloc rst_0_1 1 0 20 NJ 540 N 540 100 590 N 590 590 710 890 580 1190 1030 N 1030 1840 970 2040 1100 N 1100 N 1100 3080 770 N 770 N 770 N 770 N 770 4690 810 N 810 5360
+preplace netloc Id_Exe_Pipeline_Regi_0_S_Out 1 5 9 910 1020 NJ 1020 1550J 610 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 3540
+preplace netloc Exe_Mem_Pipeline_Reg_0_WB_EN_Out 1 17 3 4740 1110 5100 1010 N
+preplace netloc clk_0_1 1 0 20 NJ 510 N 510 110 560 N 560 610 700 880 570 1210 890 N 890 N 890 2090 840 N 840 N 840 3100 780 N 780 N 780 N 780 N 780 4680 820 5130 950 N
+preplace netloc Register_En_dout 1 12 8 3060 710 N 710 N 710 N 710 N 710 4700 800 N 800 5370
+preplace netloc Net 1 13 5 3620 1050 N 1050 N 1050 4370 1010 4680
+preplace netloc RegisterFile_0_readData1 1 10 3 NJ 970 NJ 970 3000
+preplace netloc Mem_Wb_Pipeline_Regi_0_Data_to_WB_Out 1 20 1 5770
+preplace netloc Net1 1 2 3 120J 580 400J 360 NJ
+preplace netloc RegisterFile_0_readData2 1 10 3 NJ 990 NJ 990 2980
+preplace netloc Exe_Mem_Pipeline_Reg_0_MEM_R_EN_out 1 18 2 N 930 5350
+preplace netloc OR_Gate_0_y 1 9 1 2060
+preplace netloc Mem_Wb_Pipeline_Regi_0_Dest_out 1 9 12 2100 750 NJ 750 NJ 750 2990J 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 NJ 730 5750
+preplace netloc Exe_Mem_Pipeline_Reg_0_Val_Rm_out 1 18 1 5120
+preplace netloc Mem_Wb_Pipeline_Regi_0_Alu_Res_Out 1 20 1 5760
+preplace netloc Id_Exe_Pipeline_Regi_0_Val_Rn_out 1 13 4 3560J 1040 NJ 1040 N 1040 4340
+preplace netloc Mem_Wb_Pipeline_Regi_0_MEM_R_EN_out 1 20 1 5740
+preplace netloc val2_generator_0_operand_out 1 15 2 4160 1090 N
+preplace netloc Id_Exe_Pipeline_Regi_0_MEM_W_EN_out 1 13 5 3570 980 N 980 N 980 N 980 N
+preplace netloc Id_Exe_Pipeline_Regi_0_EXE_CMD_out 1 13 4 NJ 1030 NJ 1030 N 1030 4350
+preplace netloc Slice_S_exe_Dout 1 11 2 2740J 980 3100
+preplace netloc slice_WB_En_exe_Dout 1 11 2 2760 1000 3100
+preplace netloc slice_Rm_Dout 1 7 1 1560
+preplace netloc if_id_out_1 1 5 2 870 540 1240
+preplace netloc Mux_2_out 1 9 13 2110 780 NJ 780 NJ 780 3030J 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 6050
+preplace netloc xlslice_0_Dout1 1 7 1 1510J
+preplace netloc Adder_32_0_w 1 0 16 -310 920 NJ 920 100J 930 NJ 930 NJ 930 NJ 930 1220J 900 1530J 600 NJ 600 NJ 600 NJ 600 NJ 600 NJ 600 NJ 600 NJ 600 4140
+preplace netloc Control_Unit_0_B 1 8 1 N
+preplace netloc if_id_out_2 1 5 8 850J 550 1230J 870 1540 860 N 860 N 860 N 860 N 860 2990
+preplace netloc xlslice_0_Dout2 1 7 6 1510 350 N 350 N 350 N 350 N 350 3010
+preplace netloc slice_B_Exe_Dout 1 11 2 2750J 960 3060
+preplace netloc Control_Unit_0_memWrite 1 8 1 N
+preplace netloc Hazard_unit_0_hazard_Detected 1 2 17 130 600 N 600 580 690 860 560 1220 680 N 680 1830 760 NJ 760 NJ 760 NJ 760 2980J 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 5070
+preplace netloc Control_Unit_0_MEM_R_EN 1 8 1 N
+preplace netloc ALU_1_ALUResult1 1 17 1 4690
+preplace netloc Id_Exe_Pipeline_Regi_0_Val_Rm_out 1 13 5 3600 1060 3800J 1020 N 1020 4340 1000 N
+preplace netloc data_memory_spo 1 19 1 5360
+preplace netloc OR_Gate_2_y 1 17 1 4720
+preplace netloc slice_cond_Dout 1 6 1 1220J
+levelinfo -pg 1 -350 -190 20 290 490 730 1050 1370 1690 1940 2290 2640 2900 3330 3700 3970 4260 4530 4910 5250 5560 5930 6080 -top -770 -bot 1750
 "
 }
 0

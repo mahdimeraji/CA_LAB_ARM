@@ -3,8 +3,8 @@ module Mux #(
 )(  
     input [WIDTH-1:0] input1,   
     input [WIDTH-1:0] input2,   
-    input input3,  
+    input s,  
     output [WIDTH-1:0] out   
 );   
-    assign out = input3 ? input2 : input1;   
+    assign out = s ? input2 : input1;   
 endmodule  

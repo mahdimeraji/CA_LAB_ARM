@@ -47,32 +47,22 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:Mux:1.0
-// IP Revision: 1
+// IP VLNV: xilinx.com:ip:xlconstant:1.1
+// IP Revision: 5
 
-(* X_CORE_INFO = "Mux,Vivado 2018.3" *)
-(* CHECK_LICENSE_TYPE = "design_1_Mux_1_0,Mux,{}" *)
-(* CORE_GENERATION_INFO = "design_1_Mux_1_0,Mux,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=Mux,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,WIDTH=32}" *)
-(* IP_DEFINITION_SOURCE = "module_ref" *)
+`timescale 1ns/1ps
+
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module design_1_Mux_1_0 (
-  input1,
-  input2,
-  input3,
-  out
+module design_1_xlconstant_1_0 (
+  dout
 );
 
-input wire [31 : 0] input1;
-input wire [31 : 0] input2;
-input wire input3;
-output wire [31 : 0] out;
+output wire [0 : 0] dout;
 
-  Mux #(
-    .WIDTH(32)
+  xlconstant_v1_1_5_xlconstant #(
+    .CONST_WIDTH(1),
+    .CONST_VAL('H0)
   ) inst (
-    .input1(input1),
-    .input2(input2),
-    .input3(input3),
-    .out(out)
+    .dout(dout)
   );
 endmodule

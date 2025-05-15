@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Thu May 15 13:29:33 2025
+//Date        : Thu May 15 16:25:59 2025
 //Host        : DESKTOP-GMJTJOR running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=46,numReposBlks=46,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=23,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=48,numReposBlks=48,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=23,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (clk_0,
     rst_0);
@@ -19,6 +19,7 @@ module design_1
   wire [31:0]ALU_1_ALUResult1;
   wire [3:0]ALU_1_status_flags;
   wire [31:0]Adder_32_0_w;
+  wire [0:0]Cin_0_dout;
   wire Condition_Check_0_condition_met;
   wire Control_Unit_0_B;
   wire [3:0]Control_Unit_0_EXE_CMD;
@@ -89,6 +90,7 @@ module design_1
   wire [31:0]val2_generator_0_operand_out;
   wire [8:0]xlconcat_0_dout;
   wire [8:0]xlconstant_0_dout1;
+  wire [31:0]xlconstant_1_dout;
   wire [0:0]xlconstant_3_dout;
   wire [1:0]xlslice_0_Dout;
   wire [0:0]xlslice_0_Dout1;
@@ -105,12 +107,16 @@ module design_1
         .SrcB1(val2_generator_0_operand_out),
         .status_flags(ALU_1_status_flags));
   design_1_Adder_0_0 Adder_0
-       (.O32(IF_0_pc_out),
-        .in32(Net1));
+       (.A(Net1),
+        .B(xlconstant_1_dout),
+        .Cin(Cin_0_dout),
+        .Sum(IF_0_pc_out));
   design_1_Adder_32_0_0 Adder_32_0
        (.a(Id_Exe_Pipeline_Regi_0_PC_out),
         .b(Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out),
         .w(Adder_32_0_w));
+  design_1_xlconstant_1_0 Cin_0
+       (.dout(Cin_0_dout));
   design_1_Condition_Check_0_0 Condition_Check_0
        (.Cond(slice_cond_Dout),
         .SR(status_register_0_statusout),
@@ -202,23 +208,23 @@ module design_1
   design_1_Mux_0_0 Mux_0
        (.input1(slice_Rm_Dout),
         .input2(xlslice_0_Dout2),
-        .input3(slice_mem_W_En_exe_Dout),
-        .out(Mux_0_out));
+        .out(Mux_0_out),
+        .s(slice_mem_W_En_exe_Dout));
   design_1_Mux_1_0 Mux_1
        (.input1(xlconcat_0_dout),
         .input2(xlconstant_0_dout1),
-        .input3(OR_Gate_0_y),
-        .out(Mux_1_out));
+        .out(Mux_1_out),
+        .s(OR_Gate_0_y));
   design_1_Mux_2_0 Mux_2
        (.input1(Mem_Wb_Pipeline_Regi_0_Alu_Res_Out),
         .input2(Mem_Wb_Pipeline_Regi_0_Data_to_WB_Out),
-        .input3(Mem_Wb_Pipeline_Regi_0_MEM_R_EN_out),
-        .out(Mux_2_out));
+        .out(Mux_2_out),
+        .s(Mem_Wb_Pipeline_Regi_0_MEM_R_EN_out));
   design_1_Mux_3_0 Mux_3
        (.input1(IF_0_pc_out),
         .input2(Adder_32_0_w),
-        .input3(Id_Exe_Pipeline_Regi_0_B_Out),
-        .out(Mux_3_out));
+        .out(Mux_3_out),
+        .s(Id_Exe_Pipeline_Regi_0_B_Out));
   design_1_OR_Gate_0_0 OR_Gate_0
        (.a(not_gate_0_y),
         .b(Hazard_unit_0_hazard_Detected),
@@ -249,9 +255,8 @@ module design_1
         .writeRegister(Mem_Wb_Pipeline_Regi_0_Dest_out));
   design_1_xlconstant_2_5 Register_En
        (.dout(Register_En_dout));
-  design_1_xlslice_0_11 Slice_S_exe
-       (.Din(Mux_1_out),
-        .Dout(Slice_S_exe_Dout));
+  design_1_xlconstant_1_1 adder_in_B
+       (.dout(xlconstant_1_dout));
   design_1_dist_mem_gen_0_0 data_memory
        (.a(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out[12:0]),
         .clk(clk_0_1),
@@ -277,7 +282,7 @@ module design_1
   design_1_not_gate_0_1 not_gate_1
        (.a(slice_Im_Dout),
         .y(not_gate_1_y));
-  design_1_xlslice_0_12 slice_B_Exe
+  design_1_xlslice_0_12 slice_B
        (.Din(Mux_1_out),
         .Dout(slice_B_Exe_Dout));
   design_1_xlslice_0_10 slice_Cin
@@ -289,6 +294,9 @@ module design_1
   design_1_xlslice_0_5 slice_Im_24
        (.Din(if_id_out_1),
         .Dout(slice_Im_24_Dout));
+  design_1_xlslice_0_14 slice_Mem_R
+       (.Din(Mux_1_out),
+        .Dout(slice_mem_R_En_exe_Dout));
   design_1_xlslice_0_4 slice_Rd
        (.Din(if_id_out_1),
         .Dout(xlslice_0_Dout2));
@@ -301,24 +309,24 @@ module design_1
   design_1_xlslice_0_1 slice_S
        (.Din(if_id_out_1),
         .Dout(xlslice_0_Dout1));
+  design_1_xlslice_0_11 slice_S_ex
+       (.Din(Mux_1_out),
+        .Dout(Slice_S_exe_Dout));
   design_1_xlslice_0_9 slice_ShOp
        (.Din(if_id_out_1),
         .Dout(slice_ShOp_Dout));
-  design_1_xlslice_0_13 slice_WB_En_exe
+  design_1_xlslice_0_13 slice_WB
        (.Din(Mux_1_out),
         .Dout(slice_WB_En_exe_Dout));
+  design_1_xlslice_0_6 slice_W_En
+       (.Din(Mux_1_out),
+        .Dout(slice_mem_W_En_exe_Dout));
+  design_1_xlslice_0_7 slice_cmd
+       (.Din(Mux_1_out),
+        .Dout(slice_exe_cmd_exe_Dout));
   design_1_xlslice_0_2 slice_cond
        (.Din(if_id_out_1),
         .Dout(slice_cond_Dout));
-  design_1_xlslice_0_7 slice_exe_cmd_exe
-       (.Din(Mux_1_out),
-        .Dout(slice_exe_cmd_exe_Dout));
-  design_1_xlslice_0_14 slice_mem_R_En_exe
-       (.Din(Mux_1_out),
-        .Dout(slice_mem_R_En_exe_Dout));
-  design_1_xlslice_0_6 slice_mem_W_En_exe
-       (.Din(Mux_1_out),
-        .Dout(slice_mem_W_En_exe_Dout));
   design_1_xlslice_0_0 slice_mode
        (.Din(if_id_out_1),
         .Dout(xlslice_0_Dout));

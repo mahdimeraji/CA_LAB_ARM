@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu May 15 13:29:33 2025" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu May 15 16:26:00 2025" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -81,18 +81,28 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="in32" RIGHT="0" SIGIS="undef" SIGNAME="PC_0_out">
+        <PORT DIR="I" LEFT="31" NAME="A" RIGHT="0" SIGIS="undef" SIGNAME="PC_0_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="PC_0" PORT="out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="O32" RIGHT="0" SIGIS="undef" SIGNAME="Adder_0_O32">
+        <PORT DIR="I" LEFT="31" NAME="B" RIGHT="0" SIGIS="undef" SIGNAME="adder_in_B_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="adder_in_B" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="Cin" SIGIS="undef" SIGNAME="Cin_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Cin_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="Sum" RIGHT="0" SIGIS="undef" SIGNAME="Adder_0_Sum">
           <CONNECTIONS>
             <CONNECTION INSTANCE="if_id" PORT="in_1"/>
             <CONNECTION INSTANCE="Mux_3" PORT="input1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="Carry_out" SIGIS="undef"/>
+        <PORT DIR="O" NAME="Cout" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -116,6 +126,23 @@
         <PORT DIR="O" LEFT="31" NAME="w" RIGHT="0" SIGIS="undef" SIGNAME="Adder_32_0_w">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Mux_3" PORT="input2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/Cin_0" HWVERSION="1.1" INSTANCE="Cin_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconstant_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="Cin_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Adder_0" PORT="Cin"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -399,29 +426,29 @@
             <CONNECTION INSTANCE="slice_Cin" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="B_In" SIGIS="undef" SIGNAME="slice_B_Exe_Dout">
+        <PORT DIR="I" NAME="B_In" SIGIS="undef" SIGNAME="slice_B_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="slice_B_Exe" PORT="Dout"/>
+            <CONNECTION INSTANCE="slice_B" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="S_In" SIGIS="undef" SIGNAME="Slice_S_exe_Dout">
+        <PORT DIR="I" NAME="S_In" SIGIS="undef" SIGNAME="slice_S_ex_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Slice_S_exe" PORT="Dout"/>
+            <CONNECTION INSTANCE="slice_S_ex" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="WB_EN" SIGIS="undef" SIGNAME="slice_WB_En_exe_Dout">
+        <PORT DIR="I" NAME="WB_EN" SIGIS="undef" SIGNAME="slice_WB_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="slice_WB_En_exe" PORT="Dout"/>
+            <CONNECTION INSTANCE="slice_WB" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="MEM_R_EN" SIGIS="undef" SIGNAME="slice_mem_R_En_exe_Dout">
+        <PORT DIR="I" NAME="MEM_R_EN" SIGIS="undef" SIGNAME="slice_Mem_R_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="slice_mem_R_En_exe" PORT="Dout"/>
+            <CONNECTION INSTANCE="slice_Mem_R" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="MEM_W_EN" SIGIS="undef" SIGNAME="slice_mem_W_En_exe_Dout">
+        <PORT DIR="I" NAME="MEM_W_EN" SIGIS="undef" SIGNAME="slice_W_En_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="slice_mem_W_En_exe" PORT="Dout"/>
+            <CONNECTION INSTANCE="slice_W_En" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="Im_In" SIGIS="undef" SIGNAME="slice_Im_Dout">
@@ -429,9 +456,9 @@
             <CONNECTION INSTANCE="slice_Im" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="EXE_CMD" RIGHT="0" SIGIS="undef" SIGNAME="slice_exe_cmd_exe_Dout">
+        <PORT DIR="I" LEFT="3" NAME="EXE_CMD" RIGHT="0" SIGIS="undef" SIGNAME="slice_cmd_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="slice_exe_cmd_exe" PORT="Dout"/>
+            <CONNECTION INSTANCE="slice_cmd" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="Val_Rn_In" RIGHT="0" SIGIS="undef" SIGNAME="RegisterFile_0_readData1">
@@ -468,7 +495,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="if_id" PORT="flush"/>
             <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="flush"/>
-            <CONNECTION INSTANCE="Mux_3" PORT="input3"/>
+            <CONNECTION INSTANCE="Mux_3" PORT="s"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="S_Out" SIGIS="undef" SIGNAME="Id_Exe_Pipeline_Regi_0_S_Out">
@@ -598,7 +625,7 @@
         </PORT>
         <PORT DIR="O" NAME="MEM_R_EN_out" SIGIS="undef" SIGNAME="Mem_Wb_Pipeline_Regi_0_MEM_R_EN_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Mux_2" PORT="input3"/>
+            <CONNECTION INSTANCE="Mux_2" PORT="s"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="3" NAME="Dest_out" RIGHT="0" SIGIS="undef" SIGNAME="Mem_Wb_Pipeline_Regi_0_Dest_out">
@@ -637,9 +664,9 @@
             <CONNECTION INSTANCE="slice_Rd" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="input3" SIGIS="undef" SIGNAME="slice_mem_W_En_exe_Dout">
+        <PORT DIR="I" NAME="s" SIGIS="undef" SIGNAME="slice_W_En_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="slice_mem_W_En_exe" PORT="Dout"/>
+            <CONNECTION INSTANCE="slice_W_En" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="3" NAME="out" RIGHT="0" SIGIS="undef" SIGNAME="Mux_0_out">
@@ -669,19 +696,19 @@
             <CONNECTION INSTANCE="xlconstant_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="input3" SIGIS="undef" SIGNAME="OR_Gate_0_y">
+        <PORT DIR="I" NAME="s" SIGIS="undef" SIGNAME="OR_Gate_0_y">
           <CONNECTIONS>
             <CONNECTION INSTANCE="OR_Gate_0" PORT="y"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="8" NAME="out" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="slice_exe_cmd_exe" PORT="Din"/>
-            <CONNECTION INSTANCE="slice_mem_R_En_exe" PORT="Din"/>
-            <CONNECTION INSTANCE="slice_mem_W_En_exe" PORT="Din"/>
-            <CONNECTION INSTANCE="slice_WB_En_exe" PORT="Din"/>
-            <CONNECTION INSTANCE="slice_B_Exe" PORT="Din"/>
-            <CONNECTION INSTANCE="Slice_S_exe" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_cmd" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_Mem_R" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_W_En" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_WB" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_B" PORT="Din"/>
+            <CONNECTION INSTANCE="slice_S_ex" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -705,7 +732,7 @@
             <CONNECTION INSTANCE="Mem_Wb_Pipeline_Regi_0" PORT="Data_to_WB_Out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="input3" SIGIS="undef" SIGNAME="Mem_Wb_Pipeline_Regi_0_MEM_R_EN_out">
+        <PORT DIR="I" NAME="s" SIGIS="undef" SIGNAME="Mem_Wb_Pipeline_Regi_0_MEM_R_EN_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Mem_Wb_Pipeline_Regi_0" PORT="MEM_R_EN_out"/>
           </CONNECTIONS>
@@ -726,9 +753,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="input1" RIGHT="0" SIGIS="undef" SIGNAME="Adder_0_O32">
+        <PORT DIR="I" LEFT="31" NAME="input1" RIGHT="0" SIGIS="undef" SIGNAME="Adder_0_Sum">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Adder_0" PORT="O32"/>
+            <CONNECTION INSTANCE="Adder_0" PORT="Sum"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="input2" RIGHT="0" SIGIS="undef" SIGNAME="Adder_32_0_w">
@@ -736,7 +763,7 @@
             <CONNECTION INSTANCE="Adder_32_0" PORT="w"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="input3" SIGIS="undef" SIGNAME="Id_Exe_Pipeline_Regi_0_B_Out">
+        <PORT DIR="I" NAME="s" SIGIS="undef" SIGNAME="Id_Exe_Pipeline_Regi_0_B_Out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="B_Out"/>
           </CONNECTIONS>
@@ -768,7 +795,7 @@
         </PORT>
         <PORT DIR="O" NAME="y" SIGIS="undef" SIGNAME="OR_Gate_0_y">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Mux_1" PORT="input3"/>
+            <CONNECTION INSTANCE="Mux_1" PORT="s"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -854,7 +881,7 @@
         <PORT DIR="O" LEFT="31" NAME="out" RIGHT="0" SIGIS="undef" SIGNAME="PC_0_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="dist_mem_gen_1" PORT="a"/>
-            <CONNECTION INSTANCE="Adder_0" PORT="in32"/>
+            <CONNECTION INSTANCE="Adder_0" PORT="A"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -934,25 +961,18 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/Slice_S_exe" HWVERSION="1.0" INSTANCE="Slice_S_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="5" FULLNAME="/adder_in_B" HWVERSION="1.1" INSTANCE="adder_in_B" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
-        <PARAMETER NAME="DIN_FROM" VALUE="8"/>
-        <PARAMETER NAME="DIN_TO" VALUE="8"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_11"/>
-        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x00000001"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconstant_1_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+        <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="adder_in_B_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="Slice_S_exe_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="S_In"/>
+            <CONNECTION INSTANCE="Adder_0" PORT="B"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1139,9 +1159,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="31" NAME="in_1" RIGHT="0" SIGIS="undef" SIGNAME="Adder_0_O32">
+        <PORT DIR="I" LEFT="31" NAME="in_1" RIGHT="0" SIGIS="undef" SIGNAME="Adder_0_Sum">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Adder_0" PORT="O32"/>
+            <CONNECTION INSTANCE="Adder_0" PORT="Sum"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="in_2" RIGHT="0" SIGIS="undef" SIGNAME="dist_mem_gen_1_spo">
@@ -1236,7 +1256,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/slice_B_Exe" HWVERSION="1.0" INSTANCE="slice_B_Exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/slice_B" HWVERSION="1.0" INSTANCE="slice_B" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
@@ -1252,7 +1272,7 @@
             <CONNECTION INSTANCE="Mux_1" PORT="out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_B_Exe_Dout">
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_B_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="B_In"/>
           </CONNECTIONS>
@@ -1333,6 +1353,30 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/slice_Mem_R" HWVERSION="1.0" INSTANCE="slice_Mem_R" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="4"/>
+        <PARAMETER NAME="DIN_TO" VALUE="4"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_14"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_Mem_R_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="MEM_R_EN"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/slice_Rd" HWVERSION="1.0" INSTANCE="slice_Rd" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -1351,8 +1395,8 @@
         </PORT>
         <PORT DIR="O" LEFT="3" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_Rd_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Mux_0" PORT="input2"/>
             <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="Dest"/>
+            <CONNECTION INSTANCE="Mux_0" PORT="input2"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1431,6 +1475,30 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/slice_S_ex" HWVERSION="1.0" INSTANCE="slice_S_ex" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="8"/>
+        <PARAMETER NAME="DIN_TO" VALUE="8"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_11"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_S_ex_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="S_In"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/slice_ShOp" HWVERSION="1.0" INSTANCE="slice_ShOp" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -1455,7 +1523,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/slice_WB_En_exe" HWVERSION="1.0" INSTANCE="slice_WB_En_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/slice_WB" HWVERSION="1.0" INSTANCE="slice_WB" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
@@ -1471,9 +1539,58 @@
             <CONNECTION INSTANCE="Mux_1" PORT="out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_WB_En_exe_Dout">
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_WB_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="WB_EN"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/slice_W_En" HWVERSION="1.0" INSTANCE="slice_W_En" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="5"/>
+        <PARAMETER NAME="DIN_TO" VALUE="5"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_6"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_W_En_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="MEM_W_EN"/>
+            <CONNECTION INSTANCE="Mux_0" PORT="s"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/slice_cmd" HWVERSION="1.0" INSTANCE="slice_cmd" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="3"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_7"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_cmd_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="EXE_CMD"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1498,79 +1615,6 @@
         <PORT DIR="O" LEFT="3" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_cond_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Condition_Check_0" PORT="Cond"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/slice_exe_cmd_exe" HWVERSION="1.0" INSTANCE="slice_exe_cmd_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
-        <PARAMETER NAME="DIN_FROM" VALUE="3"/>
-        <PARAMETER NAME="DIN_TO" VALUE="0"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_7"/>
-        <PARAMETER NAME="DOUT_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_exe_cmd_exe_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="EXE_CMD"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/slice_mem_R_En_exe" HWVERSION="1.0" INSTANCE="slice_mem_R_En_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
-        <PARAMETER NAME="DIN_FROM" VALUE="4"/>
-        <PARAMETER NAME="DIN_TO" VALUE="4"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_14"/>
-        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_mem_R_En_exe_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="MEM_R_EN"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/slice_mem_W_En_exe" HWVERSION="1.0" INSTANCE="slice_mem_W_En_exe" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
-        <PARAMETER NAME="DIN_FROM" VALUE="5"/>
-        <PARAMETER NAME="DIN_TO" VALUE="5"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_6"/>
-        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="Mux_1_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Mux_1" PORT="out"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="slice_mem_W_En_exe_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Id_Exe_Pipeline_Regi_0" PORT="MEM_W_EN"/>
-            <CONNECTION INSTANCE="Mux_0" PORT="input3"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
