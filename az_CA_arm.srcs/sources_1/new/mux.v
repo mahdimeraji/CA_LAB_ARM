@@ -1,4 +1,4 @@
-module Mux #(  
+module My_mux #(  
     parameter WIDTH = 32   
 )(  
     input [WIDTH-1:0] input1,   

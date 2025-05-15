@@ -34,7 +34,6 @@ vlog -work xil_defaultlib -64 -incr \
 "../../../bd/design_1/ip/design_1_status_register_0_0/sim/design_1_status_register_0_0.v" \
 "../../../bd/design_1/ip/design_1_Condition_Check_0_0/sim/design_1_Condition_Check_0_0.v" \
 "../../../bd/design_1/ip/design_1_xlslice_0_2/sim/design_1_xlslice_0_2.v" \
-"../../../bd/design_1/ip/design_1_Mux_0_0/sim/design_1_Mux_0_0.v" \
 "../../../bd/design_1/ip/design_1_RegisterFile_0_0/sim/design_1_RegisterFile_0_0.v" \
 "../../../bd/design_1/ip/design_1_xlslice_0_3/sim/design_1_xlslice_0_3.v" \
 "../../../bd/design_1/ip/design_1_xlslice_0_4/sim/design_1_xlslice_0_4.v" \
@@ -62,9 +61,6 @@ vlog -work xil_defaultlib -64 -incr \
 "../../../bd/design_1/ip/design_1_xlslice_0_9/sim/design_1_xlslice_0_9.v" \
 "../../../bd/design_1/ip/design_1_Id_Exe_Pipeline_Regi_0_0/sim/design_1_Id_Exe_Pipeline_Regi_0_0.v" \
 "../../../bd/design_1/ip/design_1_xlconstant_2_5/sim/design_1_xlconstant_2_5.v" \
-"../../../bd/design_1/ip/design_1_val2_generator_0_0/sim/design_1_val2_generator_0_0.v" \
-"../../../bd/design_1/ip/design_1_Exe_Mem_Pipeline_Reg_0_0/sim/design_1_Exe_Mem_Pipeline_Reg_0_0.v" \
-"../../../bd/design_1/ip/design_1_Mem_Wb_Pipeline_Regi_0_0/sim/design_1_Mem_Wb_Pipeline_Regi_0_0.v" \
 "../../../bd/design_1/ip/design_1_xlslice_0_10/sim/design_1_xlslice_0_10.v" \
 
 vlog -work dist_mem_gen_v8_0_12 -64 -incr \
@@ -73,16 +69,20 @@ vlog -work dist_mem_gen_v8_0_12 -64 -incr \
 vlog -work xil_defaultlib -64 -incr \
 "../../../bd/design_1/ip/design_1_dist_mem_gen_0_0/sim/design_1_dist_mem_gen_0_0.v" \
 "../../../bd/design_1/ip/design_1_dist_mem_gen_1_0/sim/design_1_dist_mem_gen_1_0.v" \
-"../../../bd/design_1/ip/design_1_Mux_2_0/sim/design_1_Mux_2_0.v" \
 "../../../bd/design_1/ip/design_1_Hazard_unit_0_4/sim/design_1_Hazard_unit_0_4.v" \
 "../../../bd/design_1/ip/design_1_not_gate_0_1/sim/design_1_not_gate_0_1.v" \
 "../../../bd/design_1/ip/design_1_OR_Gate_0_1/sim/design_1_OR_Gate_0_1.v" \
 "../../../bd/design_1/ip/design_1_xlslice_0_15/sim/design_1_xlslice_0_15.v" \
 "../../../bd/design_1/ip/design_1_Adder_0_0_1/sim/design_1_Adder_0_0.v" \
 "../../../bd/design_1/ip/design_1_PC_0_0_1/sim/design_1_PC_0_0.v" \
-"../../../bd/design_1/ip/design_1_Mux_3_0_1/sim/design_1_Mux_3_0.v" \
 "../../../bd/design_1/ip/design_1_xlconstant_1_0/sim/design_1_xlconstant_1_0.v" \
 "../../../bd/design_1/ip/design_1_xlconstant_1_1/sim/design_1_xlconstant_1_1.v" \
+"../../../bd/design_1/ip/design_1_Execute_Memory_Stage_0_0/sim/design_1_Execute_Memory_Stage_0_0.v" \
+"../../../bd/design_1/ip/design_1_Memory_WriteBack_Sta_0_0/sim/design_1_Memory_WriteBack_Sta_0_0.v" \
+"../../../bd/design_1/ip/design_1_Val2_Generator_1_0/sim/design_1_Val2_Generator_1_0.v" \
+"../../../bd/design_1/ip/design_1_My_mux_0_0/sim/design_1_My_mux_0_0.v" \
+"../../../bd/design_1/ip/design_1_My_mux_1_0/sim/design_1_My_mux_1_0.v" \
+"../../../bd/design_1/ip/design_1_My_mux_2_0/sim/design_1_My_mux_2_0.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

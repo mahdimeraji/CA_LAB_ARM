@@ -1,35 +1,35 @@
-module Mem_Wb_Pipeline_Register (
-    input wire clk,            
-    input wire reset,         
-    input wire enable,         
-
-    input wire WB_EN,          
-    input wire MEM_R_EN,      
-    input wire [3:0] Dest, 
-    input wire [31:0] Alu_Res_In,
-    input wire [31:0] Data_to_WB_In,     
-
-    output reg WB_EN_out,
-    output reg MEM_R_EN_out,
-    output reg [3:0] Dest_out,
-    output reg [31:0] Alu_Res_Out,
-    output reg [31:0] Data_to_WB_Out    
+module Memory_WriteBack_Stage_Register (
+    input wire clock,
+    input wire reset_signal,
+    input wire en,
+    
+    input wire writeback_enable,
+    input wire memory_read_enable,
+    input wire [3:0] destination_reg,
+    input wire [31:0] alu_result_input,
+    input wire [31:0] memory_data_input,
+    
+    output reg writeback_enable_out,
+    output reg memory_read_enable_out,
+    output reg [3:0] destination_reg_out,
+    output reg [31:0] alu_result_output,
+    output reg [31:0] memory_data_output
 );
 
-always @(posedge clk) begin
-    if (reset) begin
-        WB_EN_out     <= 0;
-        MEM_R_EN_out  <= 0;
-        Dest_out      <= 0;
-        Alu_Res_Out   <= 0;
-        Data_to_WB_Out <=0;
+always @(posedge clock) begin
+    if (reset_signal) begin
+        writeback_enable_out <= 0;
+        memory_read_enable_out <= 0;
+        destination_reg_out <= 0;
+        alu_result_output <= 0;
+        memory_data_output <= 0;
     end
-    else if (enable) begin
-        WB_EN_out     <= WB_EN;
-        MEM_R_EN_out  <= MEM_R_EN;
-        Dest_out      <= Dest;
-        Alu_Res_Out   <= Alu_Res_In;
-        Data_to_WB_Out <=Data_to_WB_In;
+    else if (en) begin
+        writeback_enable_out <= writeback_enable;
+        memory_read_enable_out <= memory_read_enable;
+        destination_reg_out <= destination_reg;
+        alu_result_output <= alu_result_input;
+        memory_data_output <= memory_data_input;
     end
 end
 
