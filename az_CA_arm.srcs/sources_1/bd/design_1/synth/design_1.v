@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Mon May 12 12:24:39 2025
+//Date        : Thu May 15 13:29:33 2025
 //Host        : DESKTOP-GMJTJOR running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=44,numReposBlks=44,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=21,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=46,numReposBlks=46,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=23,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (clk_0,
     rst_0);
@@ -55,7 +55,9 @@ module design_1
   wire [3:0]Mux_0_out;
   wire [8:0]Mux_1_out;
   wire [31:0]Mux_2_out;
+  wire [31:0]Mux_3_out;
   wire [3:0]Net;
+  wire [31:0]Net1;
   wire OR_Gate_0_y;
   wire OR_Gate_1_y;
   wire OR_Gate_2_y;
@@ -102,6 +104,9 @@ module design_1
         .SrcA1(Id_Exe_Pipeline_Regi_0_Val_Rn_out),
         .SrcB1(val2_generator_0_operand_out),
         .status_flags(ALU_1_status_flags));
+  design_1_Adder_0_0 Adder_0
+       (.O32(IF_0_pc_out),
+        .in32(Net1));
   design_1_Adder_32_0_0 Adder_32_0
        (.a(Id_Exe_Pipeline_Regi_0_PC_out),
         .b(Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out),
@@ -147,13 +152,6 @@ module design_1
         .hazard_Detected(Hazard_unit_0_hazard_Detected),
         .src1(slice_Rn_Dout),
         .src2(Mux_0_out));
-  design_1_IF_0_0 IF_0
-       (.Branch_Address(Adder_32_0_w),
-        .Frz(Hazard_unit_0_hazard_Detected),
-        .clk(clk_0_1),
-        .mux_ctl(Id_Exe_Pipeline_Regi_0_B_Out),
-        .pc_out(IF_0_pc_out),
-        .rst(rst_0_1));
   design_1_Id_Exe_Pipeline_Regi_0_0 Id_Exe_Pipeline_Regi_0
        (.Alu_Carry_In_Exe(Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe),
         .Alu_Carry_In_Id(slice_Cin_Dout),
@@ -216,6 +214,11 @@ module design_1
         .input2(Mem_Wb_Pipeline_Regi_0_Data_to_WB_Out),
         .input3(Mem_Wb_Pipeline_Regi_0_MEM_R_EN_out),
         .out(Mux_2_out));
+  design_1_Mux_3_0 Mux_3
+       (.input1(IF_0_pc_out),
+        .input2(Adder_32_0_w),
+        .input3(Id_Exe_Pipeline_Regi_0_B_Out),
+        .out(Mux_3_out));
   design_1_OR_Gate_0_0 OR_Gate_0
        (.a(not_gate_0_y),
         .b(Hazard_unit_0_hazard_Detected),
@@ -228,6 +231,12 @@ module design_1
        (.a(not_gate_1_y),
         .b(Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out),
         .y(OR_Gate_2_y));
+  design_1_PC_0_0 PC_0
+       (.clk(clk_0_1),
+        .freez(Hazard_unit_0_hazard_Detected),
+        .in(Mux_3_out),
+        .out(Net1),
+        .rst(rst_0_1));
   design_1_RegisterFile_0_0 RegisterFile_0
        (.clk(clk_0_1),
         .readData1(RegisterFile_0_readData1),
@@ -250,7 +259,7 @@ module design_1
         .spo(data_memory_spo),
         .we(Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out));
   design_1_dist_mem_gen_1_0 dist_mem_gen_1
-       (.a(IF_0_pc_out[12:0]),
+       (.a(Net1[12:0]),
         .spo(dist_mem_gen_1_spo));
   design_1_Register_0_0 if_id
        (.clk(clk_0_1),

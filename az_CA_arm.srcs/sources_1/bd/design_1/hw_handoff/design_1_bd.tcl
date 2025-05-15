@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# ALU, Adder_32, Condition_Check, Control_Unit, Exe_Mem_Pipeline_Register, Hazard_unit, IF, Id_Exe_Pipeline_Register, Mem_Wb_Pipeline_Register, Mux, Mux, Mux, OR_Gate, OR_Gate, OR_Gate, RegisterFile, Register, not_gate, not_gate, status_register, val2_generator
+# ALU, Adder, Adder_32, Condition_Check, Control_Unit, Exe_Mem_Pipeline_Register, Hazard_unit, Id_Exe_Pipeline_Register, Mem_Wb_Pipeline_Register, Mux, Mux, Mux, Mux, OR_Gate, OR_Gate, OR_Gate, PC, RegisterFile, Register, not_gate, not_gate, status_register, val2_generator
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -181,6 +181,17 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: Adder_0, and set properties
+  set block_name Adder
+  set block_cell_name Adder_0
+  if { [catch {set Adder_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $Adder_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: Adder_32_0, and set properties
   set block_name Adder_32
   set block_cell_name Adder_32_0
@@ -232,17 +243,6 @@ proc create_root_design { parentCell } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $Hazard_unit_0 eq "" } {
-     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: IF_0, and set properties
-  set block_name IF
-  set block_cell_name IF_0
-  if { [catch {set IF_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $IF_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -308,6 +308,17 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: Mux_3, and set properties
+  set block_name Mux
+  set block_cell_name Mux_3
+  if { [catch {set Mux_3 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $Mux_3 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: OR_Gate_0, and set properties
   set block_name OR_Gate
   set block_cell_name OR_Gate_0
@@ -337,6 +348,17 @@ proc create_root_design { parentCell } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $OR_Gate_2 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: PC_0, and set properties
+  set block_name PC
+  set block_cell_name PC_0
+  if { [catch {set PC_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $PC_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -586,7 +608,7 @@ proc create_root_design { parentCell } {
   # Create port connections
   connect_bd_net -net ALU_1_ALUResult1 [get_bd_pins ALU_1/ALUResult1] [get_bd_pins Exe_Mem_Pipeline_Reg_0/Alu_Res_In]
   connect_bd_net -net ALU_1_status_flags [get_bd_pins ALU_1/status_flags] [get_bd_pins status_register_0/status]
-  connect_bd_net -net Adder_32_0_w [get_bd_pins Adder_32_0/w] [get_bd_pins IF_0/Branch_Address]
+  connect_bd_net -net Adder_32_0_w [get_bd_pins Adder_32_0/w] [get_bd_pins Mux_3/input2]
   connect_bd_net -net Condition_Check_0_condition_met [get_bd_pins Condition_Check_0/condition_met] [get_bd_pins not_gate_0/a]
   connect_bd_net -net Control_Unit_0_B [get_bd_pins Control_Unit_0/branch] [get_bd_pins xlconcat_0/In4]
   connect_bd_net -net Control_Unit_0_EXE_CMD [get_bd_pins Control_Unit_0/aluCmd] [get_bd_pins xlconcat_0/In0]
@@ -600,10 +622,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out [get_bd_pins Exe_Mem_Pipeline_Reg_0/MEM_W_EN_out] [get_bd_pins OR_Gate_2/b] [get_bd_pins data_memory/we]
   connect_bd_net -net Exe_Mem_Pipeline_Reg_0_Val_Rm_out [get_bd_pins Exe_Mem_Pipeline_Reg_0/Val_Rm_out] [get_bd_pins data_memory/d]
   connect_bd_net -net Exe_Mem_Pipeline_Reg_0_WB_EN_Out [get_bd_pins Exe_Mem_Pipeline_Reg_0/WB_EN_out] [get_bd_pins Hazard_unit_0/Mem_WB_EN] [get_bd_pins Mem_Wb_Pipeline_Regi_0/WB_EN]
-  connect_bd_net -net Hazard_unit_0_hazard_Detected [get_bd_pins Hazard_unit_0/hazard_Detected] [get_bd_pins IF_0/Frz] [get_bd_pins OR_Gate_0/b] [get_bd_pins if_id/freeze]
-  connect_bd_net -net IF_0_pc_out [get_bd_pins IF_0/pc_out] [get_bd_pins dist_mem_gen_1/a] [get_bd_pins if_id/in_1]
+  connect_bd_net -net Hazard_unit_0_hazard_Detected [get_bd_pins Hazard_unit_0/hazard_Detected] [get_bd_pins OR_Gate_0/b] [get_bd_pins PC_0/freez] [get_bd_pins if_id/freeze]
+  connect_bd_net -net IF_0_pc_out [get_bd_pins Adder_0/O32] [get_bd_pins Mux_3/input1] [get_bd_pins if_id/in_1]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe [get_bd_pins ALU_1/CarryIn] [get_bd_pins Id_Exe_Pipeline_Regi_0/Alu_Carry_In_Exe]
-  connect_bd_net -net Id_Exe_Pipeline_Regi_0_B_Out [get_bd_pins IF_0/mux_ctl] [get_bd_pins Id_Exe_Pipeline_Regi_0/B_Out] [get_bd_pins Id_Exe_Pipeline_Regi_0/flush] [get_bd_pins if_id/flush]
+  connect_bd_net -net Id_Exe_Pipeline_Regi_0_B_Out [get_bd_pins Id_Exe_Pipeline_Regi_0/B_Out] [get_bd_pins Id_Exe_Pipeline_Regi_0/flush] [get_bd_pins Mux_3/input3] [get_bd_pins if_id/flush]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_EXE_CMD_out [get_bd_pins ALU_1/ALUcnt] [get_bd_pins Id_Exe_Pipeline_Regi_0/EXE_CMD_out]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_Im_Out [get_bd_pins Id_Exe_Pipeline_Regi_0/Im_Out] [get_bd_pins val2_generator_0/is_immediate]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_MEM_R_EN_out [get_bd_pins Exe_Mem_Pipeline_Reg_0/MEM_R_EN] [get_bd_pins Id_Exe_Pipeline_Regi_0/MEM_R_EN_out] [get_bd_pins OR_Gate_1/a]
@@ -623,7 +645,9 @@ proc create_root_design { parentCell } {
   connect_bd_net -net Mux_0_out [get_bd_pins Hazard_unit_0/src2] [get_bd_pins Mux_0/out] [get_bd_pins RegisterFile_0/readRegister2]
   connect_bd_net -net Mux_1_out [get_bd_pins Mux_1/out] [get_bd_pins Slice_S_exe/Din] [get_bd_pins slice_B_Exe/Din] [get_bd_pins slice_WB_En_exe/Din] [get_bd_pins slice_exe_cmd_exe/Din] [get_bd_pins slice_mem_R_En_exe/Din] [get_bd_pins slice_mem_W_En_exe/Din]
   connect_bd_net -net Mux_2_out [get_bd_pins Mux_2/out] [get_bd_pins RegisterFile_0/writeData]
+  connect_bd_net -net Mux_3_out [get_bd_pins Mux_3/out] [get_bd_pins PC_0/in]
   connect_bd_net -net Net [get_bd_pins Exe_Mem_Pipeline_Reg_0/Dest] [get_bd_pins Hazard_unit_0/Exe_Dest] [get_bd_pins Id_Exe_Pipeline_Regi_0/Dest_out]
+  connect_bd_net -net Net1 [get_bd_pins Adder_0/in32] [get_bd_pins PC_0/out] [get_bd_pins dist_mem_gen_1/a]
   connect_bd_net -net OR_Gate_0_y [get_bd_pins Mux_1/input3] [get_bd_pins OR_Gate_0/y]
   connect_bd_net -net OR_Gate_1_y [get_bd_pins OR_Gate_1/y] [get_bd_pins val2_generator_0/sign_extend]
   connect_bd_net -net OR_Gate_2_y [get_bd_pins Hazard_unit_0/Two_Src] [get_bd_pins OR_Gate_2/y]
@@ -631,14 +655,14 @@ proc create_root_design { parentCell } {
   connect_bd_net -net RegisterFile_0_readData2 [get_bd_pins Id_Exe_Pipeline_Regi_0/Val_Rm_In] [get_bd_pins RegisterFile_0/readData2]
   connect_bd_net -net Register_En_dout [get_bd_pins Exe_Mem_Pipeline_Reg_0/enable] [get_bd_pins Id_Exe_Pipeline_Regi_0/enable] [get_bd_pins Mem_Wb_Pipeline_Regi_0/enable] [get_bd_pins Register_En/dout]
   connect_bd_net -net Slice_S_exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/S_In] [get_bd_pins Slice_S_exe/Dout]
-  connect_bd_net -net clk_0_1 [get_bd_ports clk_0] [get_bd_pins Condition_Check_0/clk] [get_bd_pins Exe_Mem_Pipeline_Reg_0/clk] [get_bd_pins IF_0/clk] [get_bd_pins Id_Exe_Pipeline_Regi_0/clk] [get_bd_pins Mem_Wb_Pipeline_Regi_0/clk] [get_bd_pins RegisterFile_0/clk] [get_bd_pins data_memory/clk] [get_bd_pins if_id/clk] [get_bd_pins status_register_0/clk]
+  connect_bd_net -net clk_0_1 [get_bd_ports clk_0] [get_bd_pins Condition_Check_0/clk] [get_bd_pins Exe_Mem_Pipeline_Reg_0/clk] [get_bd_pins Id_Exe_Pipeline_Regi_0/clk] [get_bd_pins Mem_Wb_Pipeline_Regi_0/clk] [get_bd_pins PC_0/clk] [get_bd_pins RegisterFile_0/clk] [get_bd_pins data_memory/clk] [get_bd_pins if_id/clk] [get_bd_pins status_register_0/clk]
   connect_bd_net -net data_memory_spo [get_bd_pins Mem_Wb_Pipeline_Regi_0/Data_to_WB_In] [get_bd_pins data_memory/spo]
   connect_bd_net -net dist_mem_gen_1_spo [get_bd_pins dist_mem_gen_1/spo] [get_bd_pins if_id/in_2]
   connect_bd_net -net if_id_out_1 [get_bd_pins if_id/out_2] [get_bd_pins slice_Im/Din] [get_bd_pins slice_Im_24/Din] [get_bd_pins slice_Rd/Din] [get_bd_pins slice_Rm/Din] [get_bd_pins slice_Rn/Din] [get_bd_pins slice_S/Din] [get_bd_pins slice_ShOp/Din] [get_bd_pins slice_cond/Din] [get_bd_pins slice_mode/Din] [get_bd_pins slice_opc/Din]
   connect_bd_net -net if_id_out_2 [get_bd_pins Id_Exe_Pipeline_Regi_0/PC] [get_bd_pins if_id/out_1]
   connect_bd_net -net not_gate_0_y [get_bd_pins OR_Gate_0/a] [get_bd_pins not_gate_0/y]
   connect_bd_net -net not_gate_1_y [get_bd_pins OR_Gate_2/a] [get_bd_pins not_gate_1/y]
-  connect_bd_net -net rst_0_1 [get_bd_ports rst_0] [get_bd_pins Condition_Check_0/rst] [get_bd_pins Exe_Mem_Pipeline_Reg_0/reset] [get_bd_pins IF_0/rst] [get_bd_pins Id_Exe_Pipeline_Regi_0/reset] [get_bd_pins Mem_Wb_Pipeline_Regi_0/reset] [get_bd_pins RegisterFile_0/reset] [get_bd_pins if_id/rst] [get_bd_pins status_register_0/rst]
+  connect_bd_net -net rst_0_1 [get_bd_ports rst_0] [get_bd_pins Condition_Check_0/rst] [get_bd_pins Exe_Mem_Pipeline_Reg_0/reset] [get_bd_pins Id_Exe_Pipeline_Regi_0/reset] [get_bd_pins Mem_Wb_Pipeline_Regi_0/reset] [get_bd_pins PC_0/rst] [get_bd_pins RegisterFile_0/reset] [get_bd_pins if_id/rst] [get_bd_pins status_register_0/rst]
   connect_bd_net -net slice_B_Exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/B_In] [get_bd_pins slice_B_Exe/Dout]
   connect_bd_net -net slice_Cin_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Alu_Carry_In_Id] [get_bd_pins slice_Cin/Dout]
   connect_bd_net -net slice_Im_24_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Signed_Imm_24_In] [get_bd_pins slice_Im_24/Dout]

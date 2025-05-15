@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2025 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2014 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -47,42 +47,21 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:IF:1.0
+// IP VLNV: xilinx.com:ip:xlconstant:1.1
 // IP Revision: 1
 
-`timescale 1ns/1ps
+#ifndef _design_1_xlconstant_3_0_H_
+#define _design_1_xlconstant_3_0_H_
 
-(* IP_DEFINITION_SOURCE = "module_ref" *)
-(* DowngradeIPIdentifiedWarnings = "yes" *)
-module design_1_IF_0_0 (
-  clk,
-  rst,
-  Frz,
-  mux_ctl,
-  Branch_Address,
-  Prog_cnter,
-  pc_out
-);
+#include "xlconstant_v1_1_5.h"
+#include "systemc.h"
+class design_1_xlconstant_3_0 : public sc_module {
+  public:
+xlconstant_v1_1_5<1,1> mod;
+  sc_out< sc_bv<1> > dout;
+design_1_xlconstant_3_0 (sc_core::sc_module_name name) :sc_module(name), mod("mod") {
+    mod.dout(dout);
+  }
+};
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_clk_0, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
-input wire clk;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
-input wire rst;
-input wire Frz;
-input wire mux_ctl;
-input wire [31 : 0] Branch_Address;
-output wire [31 : 0] Prog_cnter;
-output wire [31 : 0] pc_out;
-
-  IF inst (
-    .clk(clk),
-    .rst(rst),
-    .Frz(Frz),
-    .mux_ctl(mux_ctl),
-    .Branch_Address(Branch_Address),
-    .Prog_cnter(Prog_cnter),
-    .pc_out(pc_out)
-  );
-endmodule
+#endif

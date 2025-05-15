@@ -46,13 +46,15 @@
       "Hazard_unit_0": "",
       "not_gate_1": "",
       "OR_Gate_2": "",
-      "IF_0": "",
       "if_id": "",
       "Exe_Mem_Pipeline_Reg_0": "",
       "Id_Exe_Pipeline_Regi_0": "",
       "Control_Unit_0": "",
       "slice_Rm": "",
-      "Adder_32_0": ""
+      "Adder_32_0": "",
+      "Adder_0": "",
+      "PC_0": "",
+      "Mux_3": ""
     },
     "ports": {
       "clk_0": {
@@ -944,56 +946,6 @@
           }
         }
       },
-      "IF_0": {
-        "vlnv": "xilinx.com:module_ref:IF:1.0",
-        "xci_name": "design_1_IF_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "IF",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "CLK_DOMAIN": {
-                "value": "design_1_clk_0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "Frz": {
-            "direction": "I"
-          },
-          "mux_ctl": {
-            "direction": "I"
-          },
-          "Branch_Address": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "Prog_cnter": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "pc_out": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          }
-        }
-      },
       "if_id": {
         "vlnv": "xilinx.com:module_ref:Register:1.0",
         "xci_name": "design_1_Register_0_0",
@@ -1360,6 +1312,101 @@
             "right": "0"
           }
         }
+      },
+      "Adder_0": {
+        "vlnv": "xilinx.com:module_ref:Adder:1.0",
+        "xci_name": "design_1_Adder_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Adder",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "in32": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "O32": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "Carry_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "PC_0": {
+        "vlnv": "xilinx.com:module_ref:PC:1.0",
+        "xci_name": "design_1_PC_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "PC",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "in": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "freez": {
+            "direction": "I"
+          },
+          "out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "Mux_3": {
+        "vlnv": "xilinx.com:module_ref:Mux:1.0",
+        "xci_name": "design_1_Mux_3_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "input1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "input2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "input3": {
+            "direction": "I"
+          },
+          "out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
       }
     },
     "nets": {
@@ -1371,10 +1418,10 @@
           "RegisterFile_0/clk",
           "data_memory/clk",
           "Mem_Wb_Pipeline_Regi_0/clk",
-          "IF_0/clk",
           "if_id/clk",
           "Exe_Mem_Pipeline_Reg_0/clk",
-          "Id_Exe_Pipeline_Regi_0/clk"
+          "Id_Exe_Pipeline_Regi_0/clk",
+          "PC_0/clk"
         ]
       },
       "rst_0_1": {
@@ -1384,17 +1431,17 @@
           "Condition_Check_0/rst",
           "RegisterFile_0/reset",
           "Mem_Wb_Pipeline_Regi_0/reset",
-          "IF_0/rst",
           "if_id/rst",
           "Exe_Mem_Pipeline_Reg_0/reset",
-          "Id_Exe_Pipeline_Regi_0/reset"
+          "Id_Exe_Pipeline_Regi_0/reset",
+          "PC_0/rst"
         ]
       },
       "IF_0_pc_out": {
         "ports": [
-          "IF_0/pc_out",
-          "dist_mem_gen_1/a",
-          "if_id/in_1"
+          "Adder_0/O32",
+          "if_id/in_1",
+          "Mux_3/input1"
         ]
       },
       "xlconstant_3_dout": {
@@ -1834,8 +1881,8 @@
         "ports": [
           "Hazard_unit_0/hazard_Detected",
           "OR_Gate_0/b",
-          "IF_0/Frz",
-          "if_id/freeze"
+          "if_id/freeze",
+          "PC_0/freez"
         ]
       },
       "Id_Exe_Pipeline_Regi_0_B_Out": {
@@ -1843,13 +1890,7 @@
           "Id_Exe_Pipeline_Regi_0/B_Out",
           "if_id/flush",
           "Id_Exe_Pipeline_Regi_0/flush",
-          "IF_0/mux_ctl"
-        ]
-      },
-      "Adder_32_0_w": {
-        "ports": [
-          "Adder_32_0/w",
-          "IF_0/Branch_Address"
+          "Mux_3/input3"
         ]
       },
       "Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe": {
@@ -1868,6 +1909,25 @@
         "ports": [
           "slice_Rm/Dout",
           "Mux_0/input1"
+        ]
+      },
+      "Net1": {
+        "ports": [
+          "PC_0/out",
+          "dist_mem_gen_1/a",
+          "Adder_0/in32"
+        ]
+      },
+      "Mux_3_out": {
+        "ports": [
+          "Mux_3/out",
+          "PC_0/in"
+        ]
+      },
+      "Adder_32_0_w": {
+        "ports": [
+          "Adder_32_0/w",
+          "Mux_3/input2"
         ]
       }
     }

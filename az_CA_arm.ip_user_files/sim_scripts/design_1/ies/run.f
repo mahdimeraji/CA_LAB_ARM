@@ -1,5 +1,4 @@
 -makelib ies_lib/xil_defaultlib \
-  "../../../bd/design_1/ip/design_1_IF_0_0/sim/design_1_IF_0_0.v" \
   "../../../bd/design_1/sim/design_1.v" \
   "../../../bd/design_1/ip/design_1_Register_0_0/sim/design_1_Register_0_0.v" \
 -endlib
@@ -64,6 +63,9 @@
   "../../../bd/design_1/ip/design_1_not_gate_0_1/sim/design_1_not_gate_0_1.v" \
   "../../../bd/design_1/ip/design_1_OR_Gate_0_1/sim/design_1_OR_Gate_0_1.v" \
   "../../../bd/design_1/ip/design_1_xlslice_0_15/sim/design_1_xlslice_0_15.v" \
+  "../../../bd/design_1/ip/design_1_Adder_0_0_1/sim/design_1_Adder_0_0.v" \
+  "../../../bd/design_1/ip/design_1_PC_0_0_1/sim/design_1_PC_0_0.v" \
+  "../../../bd/design_1/ip/design_1_Mux_3_0_1/sim/design_1_Mux_3_0.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v

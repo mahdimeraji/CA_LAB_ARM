@@ -6,23 +6,22 @@ Starting static elaboration
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/ALU.v" Line 1. Module ALU doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/adder.v" Line 1. Module Adder doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/adder_32.v" Line 1. Module Adder_32 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Condition_Check.v" Line 1. Module Condition_Check doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Controller_Unit.v" Line 1. Module Control_Unit doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Exe_Mem_Register.v" Line 1. Module Exe_Mem_Pipeline_Register doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/hazard_unit.v" Line 1. Module Hazard_unit doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/IF.v" Line 1. Module IF doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/adder.v" Line 1. Module Adder doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" Line 1. Module Mux doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/pc.v" Line 1. Module PC doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Id_exe_Register.v" Line 1. Module Id_Exe_Pipeline_Register doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Mem_Wb_Register.v" Line 1. Module Mem_Wb_Pipeline_Register doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" Line 1. Module Mux(WIDTH=4) doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" Line 1. Module Mux(WIDTH=9) doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" Line 1. Module Mux doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v" Line 1. Module Mux doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/or_gate.v" Line 1. Module OR_Gate doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/or_gate.v" Line 1. Module OR_Gate doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/or_gate.v" Line 1. Module OR_Gate doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/pc.v" Line 1. Module PC doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/RegisterFile.v" Line 1. Module RegisterFile doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/register.v" Line 1. Module Register doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/not.v" Line 1. Module not_gate doesn't have a timescale but at least one module in design has a timescale.
@@ -33,6 +32,8 @@ Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.ALU
 Compiling module xil_defaultlib.design_1_ALU_1_0
+Compiling module xil_defaultlib.Adder
+Compiling module xil_defaultlib.design_1_Adder_0_0
 Compiling module xil_defaultlib.Adder_32
 Compiling module xil_defaultlib.design_1_Adder_32_0_0
 Compiling module xil_defaultlib.Condition_Check
@@ -43,11 +44,6 @@ Compiling module xil_defaultlib.Exe_Mem_Pipeline_Register
 Compiling module xil_defaultlib.design_1_Exe_Mem_Pipeline_Reg_0_...
 Compiling module xil_defaultlib.Hazard_unit
 Compiling module xil_defaultlib.design_1_Hazard_unit_0_4
-Compiling module xil_defaultlib.Adder
-Compiling module xil_defaultlib.Mux
-Compiling module xil_defaultlib.PC
-Compiling module xil_defaultlib.IF
-Compiling module xil_defaultlib.design_1_IF_0_0
 Compiling module xil_defaultlib.Id_Exe_Pipeline_Register
 Compiling module xil_defaultlib.design_1_Id_Exe_Pipeline_Regi_0_...
 Compiling module xil_defaultlib.Mem_Wb_Pipeline_Register
@@ -56,11 +52,15 @@ Compiling module xil_defaultlib.Mux(WIDTH=4)
 Compiling module xil_defaultlib.design_1_Mux_0_0
 Compiling module xil_defaultlib.Mux(WIDTH=9)
 Compiling module xil_defaultlib.design_1_Mux_1_0
+Compiling module xil_defaultlib.Mux
 Compiling module xil_defaultlib.design_1_Mux_2_0
+Compiling module xil_defaultlib.design_1_Mux_3_0
 Compiling module xil_defaultlib.OR_Gate
 Compiling module xil_defaultlib.design_1_OR_Gate_0_0
 Compiling module xil_defaultlib.design_1_OR_Gate_1_0
 Compiling module xil_defaultlib.design_1_OR_Gate_0_1
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.design_1_PC_0_0
 Compiling module xil_defaultlib.RegisterFile
 Compiling module xil_defaultlib.design_1_RegisterFile_0_0
 Compiling module xlconstant_v1_1_5.xlconstant_v1_1_5_xlconstant(CON...
