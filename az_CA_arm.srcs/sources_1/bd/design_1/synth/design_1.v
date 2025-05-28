@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Mon May 26 18:13:10 2025
+//Date        : Wed May 28 20:55:33 2025
 //Host        : DESKTOP-GMJTJOR running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -166,16 +166,17 @@ module design_1
         .src2(Id_Exe_Pipeline_Regi_0_Src2_Out),
         .wbEnMem(Exe_Mem_Pipeline_Reg_0_WB_EN_Out),
         .wbEnWb(Memory_WriteBack_Sta_0_writeback_enable_out));
-  design_1_Hazard_unit_0_4 Hazard_unit_0
-       (.Exe_Dest(Net),
-        .Exe_Mem_R_En(Id_Exe_Pipeline_Regi_0_MEM_R_EN_out),
-        .Exe_WB_EN(Id_Exe_Pipeline_Regi_0_WB_EN_out),
-        .Fw_En(xlconstant_1_dout1),
-        .Mem_Dest(Exe_Mem_Pipeline_Reg_0_Dest_out),
-        .Mem_WB_EN(Exe_Mem_Pipeline_Reg_0_WB_EN_Out),
-        .Two_Src(OR_Gate_2_y),
-        .hazard_Detected(Hazard_unit_0_hazard_Detected),
-        .src1(slice_Rn_Dout));
+  design_1_HazardUnit_0_0 HazardUnit_0
+       (.destEx(Net),
+        .destMem(Exe_Mem_Pipeline_Reg_0_Dest_out),
+        .forwardEn(xlconstant_1_dout1),
+        .hazard(Hazard_unit_0_hazard_Detected),
+        .memREn(Execute_Memory_Stage_0_memory_read_enable_out),
+        .rdm(slice_Rm_Dout),
+        .rn(slice_Rn_Dout),
+        .twoSrc(OR_Gate_2_y),
+        .wbEnEx(Id_Exe_Pipeline_Regi_0_WB_EN_out),
+        .wbEnMem(Exe_Mem_Pipeline_Reg_0_WB_EN_Out));
   design_1_Id_Exe_Pipeline_Regi_0_0 Id_Exe_Pipeline_Regi_0
        (.Alu_Carry_In_Exe(Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe),
         .Alu_Carry_In_Id(slice_Cin_Dout),

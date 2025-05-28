@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# ALU, Adder, Adder_32, Condition_Check, Control_Unit, Execute_Memory_Stage_Register, ForwardingUnit, Hazard_unit, Id_Exe_Pipeline_Register, If_Id_Register, Memory_WriteBack_Stage_Register, Mux3To1, Mux3To1, My_mux, My_mux, My_mux, My_mux, OR_Gate, OR_Gate, OR_Gate, PC, RegisterFile, Val2_Generator, not_gate, not_gate, status_register
+# ALU, Adder, Adder_32, Condition_Check, Control_Unit, Execute_Memory_Stage_Register, ForwardingUnit, HazardUnit, Id_Exe_Pipeline_Register, If_Id_Register, Memory_WriteBack_Stage_Register, Mux3To1, Mux3To1, My_mux, My_mux, My_mux, My_mux, OR_Gate, OR_Gate, OR_Gate, PC, RegisterFile, Val2_Generator, not_gate, not_gate, status_register
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -253,13 +253,13 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: Hazard_unit_0, and set properties
-  set block_name Hazard_unit
-  set block_cell_name Hazard_unit_0
-  if { [catch {set Hazard_unit_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: HazardUnit_0, and set properties
+  set block_name HazardUnit
+  set block_cell_name HazardUnit_0
+  if { [catch {set HazardUnit_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $Hazard_unit_0 eq "" } {
+   } elseif { $HazardUnit_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -650,7 +650,7 @@ proc create_root_design { parentCell } {
   # Create instance: xlconstant_1, and set properties
   set xlconstant_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1 ]
   set_property -dict [ list \
-   CONFIG.CONST_VAL {0} \
+   CONFIG.CONST_VAL {1} \
  ] $xlconstant_1
 
   # Create instance: xlconstant_3, and set properties
@@ -669,20 +669,20 @@ proc create_root_design { parentCell } {
   connect_bd_net -net Control_Unit_0_WB_EN [get_bd_pins Control_Unit_0/wbEn] [get_bd_pins xlconcat_0/In3]
   connect_bd_net -net Control_Unit_0_memWrite [get_bd_pins Control_Unit_0/memWrite] [get_bd_pins xlconcat_0/In2]
   connect_bd_net -net Exe_Mem_Pipeline_Reg_0_Alu_Res_Out [get_bd_pins Execute_Memory_Stage_0/alu_result_output] [get_bd_pins Memory_WriteBack_Sta_0/alu_result_input] [get_bd_pins Mux3To1_0/a1] [get_bd_pins Mux3To1_1/a1] [get_bd_pins data_memory/a]
-  connect_bd_net -net Exe_Mem_Pipeline_Reg_0_Dest_out [get_bd_pins Execute_Memory_Stage_0/destination_output] [get_bd_pins ForwardingUnit_0/destMem] [get_bd_pins Hazard_unit_0/Mem_Dest] [get_bd_pins Memory_WriteBack_Sta_0/destination_reg]
+  connect_bd_net -net Exe_Mem_Pipeline_Reg_0_Dest_out [get_bd_pins Execute_Memory_Stage_0/destination_output] [get_bd_pins ForwardingUnit_0/destMem] [get_bd_pins HazardUnit_0/destMem] [get_bd_pins Memory_WriteBack_Sta_0/destination_reg]
   connect_bd_net -net Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out [get_bd_pins Execute_Memory_Stage_0/memory_write_enable_out] [get_bd_pins OR_Gate_2/b] [get_bd_pins data_memory/we]
-  connect_bd_net -net Exe_Mem_Pipeline_Reg_0_WB_EN_Out [get_bd_pins Execute_Memory_Stage_0/write_back_enable_out] [get_bd_pins ForwardingUnit_0/wbEnMem] [get_bd_pins Hazard_unit_0/Mem_WB_EN] [get_bd_pins Memory_WriteBack_Sta_0/writeback_enable]
+  connect_bd_net -net Exe_Mem_Pipeline_Reg_0_WB_EN_Out [get_bd_pins Execute_Memory_Stage_0/write_back_enable_out] [get_bd_pins ForwardingUnit_0/wbEnMem] [get_bd_pins HazardUnit_0/wbEnMem] [get_bd_pins Memory_WriteBack_Sta_0/writeback_enable]
   connect_bd_net -net Execute_Memory_Stage_0_Rm_value_Out [get_bd_pins Execute_Memory_Stage_0/Rm_value_Out] [get_bd_pins data_memory/d]
-  connect_bd_net -net Execute_Memory_Stage_0_memory_read_enable_out [get_bd_pins Execute_Memory_Stage_0/memory_read_enable_out] [get_bd_pins Memory_WriteBack_Sta_0/memory_read_enable]
+  connect_bd_net -net Execute_Memory_Stage_0_memory_read_enable_out [get_bd_pins Execute_Memory_Stage_0/memory_read_enable_out] [get_bd_pins HazardUnit_0/memREn] [get_bd_pins Memory_WriteBack_Sta_0/memory_read_enable]
   connect_bd_net -net ForwardingUnit_0_selSrc1 [get_bd_pins ForwardingUnit_0/selSrc1] [get_bd_pins Mux3To1_0/sel]
   connect_bd_net -net ForwardingUnit_0_selSrc2 [get_bd_pins ForwardingUnit_0/selSrc2] [get_bd_pins Mux3To1_1/sel]
-  connect_bd_net -net Hazard_unit_0_hazard_Detected [get_bd_pins Hazard_unit_0/hazard_Detected] [get_bd_pins If_Id_Register_0/freeze] [get_bd_pins OR_Gate_0/b] [get_bd_pins PC_0/freez]
+  connect_bd_net -net Hazard_unit_0_hazard_Detected [get_bd_pins HazardUnit_0/hazard] [get_bd_pins If_Id_Register_0/freeze] [get_bd_pins OR_Gate_0/b] [get_bd_pins PC_0/freez]
   connect_bd_net -net IF_0_pc_out [get_bd_pins Adder_0/Sum] [get_bd_pins If_Id_Register_0/PC_If] [get_bd_pins My_mux_0/input1]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe [get_bd_pins ALU_1/CarryIn] [get_bd_pins Id_Exe_Pipeline_Regi_0/Alu_Carry_In_Exe]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_B_Out [get_bd_pins Id_Exe_Pipeline_Regi_0/B_Out] [get_bd_pins Id_Exe_Pipeline_Regi_0/flush] [get_bd_pins If_Id_Register_0/flush] [get_bd_pins My_mux_0/s]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_EXE_CMD_out [get_bd_pins ALU_1/ALUcnt] [get_bd_pins Id_Exe_Pipeline_Regi_0/EXE_CMD_out]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_Im_Out [get_bd_pins Id_Exe_Pipeline_Regi_0/Im_Out] [get_bd_pins Val2_Generator_1/is_immediate]
-  connect_bd_net -net Id_Exe_Pipeline_Regi_0_MEM_R_EN_out [get_bd_pins Execute_Memory_Stage_0/memory_read_enable] [get_bd_pins Hazard_unit_0/Exe_Mem_R_En] [get_bd_pins Id_Exe_Pipeline_Regi_0/MEM_R_EN_out] [get_bd_pins OR_Gate_1/a]
+  connect_bd_net -net Id_Exe_Pipeline_Regi_0_MEM_R_EN_out [get_bd_pins Execute_Memory_Stage_0/memory_read_enable] [get_bd_pins Id_Exe_Pipeline_Regi_0/MEM_R_EN_out] [get_bd_pins OR_Gate_1/a]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_MEM_W_EN_out [get_bd_pins Execute_Memory_Stage_0/memory_write_enable] [get_bd_pins Id_Exe_Pipeline_Regi_0/MEM_W_EN_out] [get_bd_pins OR_Gate_1/b]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_PC_out [get_bd_pins Adder_32_0/a] [get_bd_pins Id_Exe_Pipeline_Regi_0/PC_out]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_S_Out [get_bd_pins Id_Exe_Pipeline_Regi_0/S_Out] [get_bd_pins status_register_0/SE]
@@ -692,7 +692,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_Src2_Out [get_bd_pins ForwardingUnit_0/src2] [get_bd_pins Id_Exe_Pipeline_Regi_0/Src2_Out]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_Val_Rm_out [get_bd_pins Id_Exe_Pipeline_Regi_0/Val_Rm_out] [get_bd_pins Mux3To1_1/a0]
   connect_bd_net -net Id_Exe_Pipeline_Regi_0_Val_Rn_out [get_bd_pins Id_Exe_Pipeline_Regi_0/Val_Rn_out] [get_bd_pins Mux3To1_0/a0]
-  connect_bd_net -net Id_Exe_Pipeline_Regi_0_WB_EN_out [get_bd_pins Execute_Memory_Stage_0/write_back_enable] [get_bd_pins Hazard_unit_0/Exe_WB_EN] [get_bd_pins Id_Exe_Pipeline_Regi_0/WB_EN_out]
+  connect_bd_net -net Id_Exe_Pipeline_Regi_0_WB_EN_out [get_bd_pins Execute_Memory_Stage_0/write_back_enable] [get_bd_pins HazardUnit_0/wbEnEx] [get_bd_pins Id_Exe_Pipeline_Regi_0/WB_EN_out]
   connect_bd_net -net If_Id_Register_0_PC_Id [get_bd_pins Id_Exe_Pipeline_Regi_0/PC] [get_bd_pins If_Id_Register_0/PC_Id]
   connect_bd_net -net Memory_WriteBack_Sta_0_alu_result_output [get_bd_pins Memory_WriteBack_Sta_0/alu_result_output] [get_bd_pins My_mux_1/input1]
   connect_bd_net -net Memory_WriteBack_Sta_0_destination_reg_out [get_bd_pins ForwardingUnit_0/destWb] [get_bd_pins Memory_WriteBack_Sta_0/destination_reg_out] [get_bd_pins RegisterFile_0/writeRegister]
@@ -705,11 +705,11 @@ proc create_root_design { parentCell } {
   connect_bd_net -net Mux_1_out [get_bd_pins My_mux_3/Mux_out] [get_bd_pins slice_B/Din] [get_bd_pins slice_Mem_R/Din] [get_bd_pins slice_S_ex/Din] [get_bd_pins slice_WB/Din] [get_bd_pins slice_W_En/Din] [get_bd_pins slice_cmd/Din]
   connect_bd_net -net My_mux_0_Mux_out [get_bd_pins My_mux_0/Mux_out] [get_bd_pins PC_0/Pc_in]
   connect_bd_net -net My_mux_1_out [get_bd_pins Mux3To1_0/a2] [get_bd_pins Mux3To1_1/a2] [get_bd_pins My_mux_1/Mux_out] [get_bd_pins RegisterFile_0/writeData]
-  connect_bd_net -net Net [get_bd_pins Execute_Memory_Stage_0/destination] [get_bd_pins Hazard_unit_0/Exe_Dest] [get_bd_pins Id_Exe_Pipeline_Regi_0/Dest_out]
+  connect_bd_net -net Net [get_bd_pins Execute_Memory_Stage_0/destination] [get_bd_pins HazardUnit_0/destEx] [get_bd_pins Id_Exe_Pipeline_Regi_0/Dest_out]
   connect_bd_net -net Net1 [get_bd_pins Adder_0/A] [get_bd_pins PC_0/Pc_out] [get_bd_pins dist_mem_gen_1/a]
   connect_bd_net -net OR_Gate_0_y [get_bd_pins My_mux_3/s] [get_bd_pins OR_Gate_0/y]
   connect_bd_net -net OR_Gate_1_y [get_bd_pins OR_Gate_1/y] [get_bd_pins Val2_Generator_1/sign_extend]
-  connect_bd_net -net OR_Gate_2_y [get_bd_pins Hazard_unit_0/Two_Src] [get_bd_pins OR_Gate_2/y]
+  connect_bd_net -net OR_Gate_2_y [get_bd_pins HazardUnit_0/twoSrc] [get_bd_pins OR_Gate_2/y]
   connect_bd_net -net RegisterFile_0_readData1 [get_bd_pins Id_Exe_Pipeline_Regi_0/Val_Rn_In] [get_bd_pins RegisterFile_0/readData1]
   connect_bd_net -net RegisterFile_0_readData2 [get_bd_pins Id_Exe_Pipeline_Regi_0/Val_Rm_In] [get_bd_pins RegisterFile_0/readData2]
   connect_bd_net -net Register_En_dout [get_bd_pins Execute_Memory_Stage_0/en] [get_bd_pins Id_Exe_Pipeline_Regi_0/enable] [get_bd_pins Memory_WriteBack_Sta_0/en] [get_bd_pins Register_En/dout]
@@ -726,8 +726,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net slice_Cin_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Alu_Carry_In_Id] [get_bd_pins slice_Cin/Dout]
   connect_bd_net -net slice_Im_24_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Signed_Imm_24_In] [get_bd_pins slice_Im_24/Dout]
   connect_bd_net -net slice_Im_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Im_In] [get_bd_pins not_gate_1/a] [get_bd_pins slice_Im/Dout]
-  connect_bd_net -net slice_Rm_Dout [get_bd_pins My_mux_2/input1] [get_bd_pins slice_Rm/Dout]
-  connect_bd_net -net slice_Rn_Dout [get_bd_pins Hazard_unit_0/src1] [get_bd_pins Id_Exe_Pipeline_Regi_0/Src1_In] [get_bd_pins RegisterFile_0/readRegister1] [get_bd_pins slice_Rn/Dout]
+  connect_bd_net -net slice_Rm_Dout [get_bd_pins HazardUnit_0/rdm] [get_bd_pins My_mux_2/input1] [get_bd_pins slice_Rm/Dout]
+  connect_bd_net -net slice_Rn_Dout [get_bd_pins HazardUnit_0/rn] [get_bd_pins Id_Exe_Pipeline_Regi_0/Src1_In] [get_bd_pins RegisterFile_0/readRegister1] [get_bd_pins slice_Rn/Dout]
   connect_bd_net -net slice_ShOp_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/Shifter_Operand_In] [get_bd_pins slice_ShOp/Dout]
   connect_bd_net -net slice_WB_En_exe_Dout [get_bd_pins Id_Exe_Pipeline_Regi_0/WB_EN] [get_bd_pins slice_WB/Dout]
   connect_bd_net -net slice_cond_Dout [get_bd_pins Condition_Check_0/Cond] [get_bd_pins slice_cond/Dout]
@@ -738,7 +738,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net xlconcat_0_dout [get_bd_pins My_mux_3/input1] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconstant_0_dout1 [get_bd_pins My_mux_3/input2] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlconstant_1_dout [get_bd_pins Adder_0/B] [get_bd_pins adder_in_B/dout]
-  connect_bd_net -net xlconstant_1_dout1 [get_bd_pins ForwardingUnit_0/forwardEn] [get_bd_pins Hazard_unit_0/Fw_En] [get_bd_pins xlconstant_1/dout]
+  connect_bd_net -net xlconstant_1_dout1 [get_bd_pins ForwardingUnit_0/forwardEn] [get_bd_pins HazardUnit_0/forwardEn] [get_bd_pins xlconstant_1/dout]
   connect_bd_net -net xlconstant_3_dout [get_bd_pins If_Id_Register_0/en] [get_bd_pins xlconstant_3/dout]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins Control_Unit_0/mode] [get_bd_pins slice_mode/Dout]
   connect_bd_net -net xlslice_0_Dout1 [get_bd_pins Control_Unit_0/sIn] [get_bd_pins slice_S/Dout]

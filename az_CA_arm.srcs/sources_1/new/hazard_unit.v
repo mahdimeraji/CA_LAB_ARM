@@ -1,46 +1,31 @@
-module Hazard_unit(Fw_En,Exe_Mem_R_En, src1, src1, Two_Src, Exe_Dest, Exe_WB_EN, Mem_Dest, Mem_WB_EN, hazard_Detected);	
-	input [3:0] src1, src2, Exe_Dest, Mem_Dest;
-	input Exe_WB_EN, Mem_WB_EN, Two_Src,Fw_En,Exe_Mem_R_En;
-	output reg hazard_Detected;
-	
-	always @(Exe_WB_EN, Mem_WB_EN, Two_Src, src1, src2, Exe_Dest, Mem_Dest) begin
-		hazard_Detected = 1'b0;
-		if(Fw_En == 1'b1) begin
-            if (Exe_Mem_R_En) begin
-                if (src1 == Exe_Dest || (Two_Src && src1 == Exe_Dest)) begin
-                    hazard = 1'b1;
-                end
+module ForwardingUnit(
+    input forwardEn,
+    input [3:0] src1, src2,
+    input wbEnMem, wbEnWb,
+    input [3:0] destMem, destWb,
+    output reg [1:0] selSrc1, selSrc2
+);
+    always @(forwardEn, src1, wbEnMem, wbEnWb, destMem, destWb) begin
+        selSrc1 = 2'b00;
+        if (forwardEn) begin
+            if (wbEnMem && (destMem == src1)) begin
+                selSrc1 = 2'b01;
+            end
+            else if (wbEnWb && (destWb == src1)) begin
+                selSrc1 = 2'b10;
             end
         end
+    end
 
-        else begin
-
-
-		    if (Exe_WB_EN == 1'b1) begin
-		    	if (Two_Src == 1'b1) begin
-		    		if (Exe_Dest == src1 || Exe_Dest == src2) begin
-		    			hazard_Detected = 1'b1;
-		    		end
-		    	end
-		    	else begin
-		    		if (Exe_Dest == src1) begin
-		    			hazard_Detected = 1'b1;
-		    		end
-		    	end
-		    end
-		    if (Mem_WB_EN == 1'b1) begin
-		    	if (Two_Src == 1'b1) begin
-		    		if (Mem_Dest == src1 || Mem_Dest == src2) begin
-		    			hazard_Detected = 1'b1;
-		    		end
-		    	end
-		    	else begin
-		    		if (Mem_Dest == src1) begin
-		    			hazard_Detected = 1'b1;
-		    		end
-		    	end
-		    end
+    always @(forwardEn, src2, wbEnMem, wbEnWb, destMem, destWb) begin
+        selSrc2 = 2'b00;
+        if (forwardEn) begin
+            if (wbEnMem && (destMem == src2)) begin
+                selSrc2 = 2'b01;
+            end
+            else if (wbEnWb && (destWb == src2)) begin
+                selSrc2 = 2'b10;
+            end
         end
-	end
-				 
+    end
 endmodule

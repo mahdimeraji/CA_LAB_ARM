@@ -60,7 +60,7 @@
       "Condition_Check_0": "",
       "Adder_32_0": "",
       "ALU_1": "",
-      "Hazard_unit_0": ""
+      "HazardUnit_0": ""
     },
     "ports": {
       "clk_0": {
@@ -1301,7 +1301,7 @@
         "xci_name": "design_1_xlconstant_1_2",
         "parameters": {
           "CONST_VAL": {
-            "value": "0"
+            "value": "1"
           }
         }
       },
@@ -1544,46 +1544,51 @@
           }
         }
       },
-      "Hazard_unit_0": {
-        "vlnv": "xilinx.com:module_ref:Hazard_unit:1.0",
-        "xci_name": "design_1_Hazard_unit_0_4",
+      "HazardUnit_0": {
+        "vlnv": "xilinx.com:module_ref:HazardUnit:1.0",
+        "xci_name": "design_1_HazardUnit_0_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "Hazard_unit",
+          "ref_name": "HazardUnit",
           "boundary_crc": "0x0"
         },
         "ports": {
-          "Fw_En": {
-            "direction": "I"
-          },
-          "Exe_Mem_R_En": {
-            "direction": "I"
-          },
-          "src1": {
+          "rn": {
             "direction": "I",
             "left": "3",
             "right": "0"
           },
-          "Two_Src": {
-            "direction": "I"
-          },
-          "Exe_Dest": {
+          "rdm": {
             "direction": "I",
             "left": "3",
             "right": "0"
           },
-          "Exe_WB_EN": {
+          "twoSrc": {
             "direction": "I"
           },
-          "Mem_Dest": {
+          "destEx": {
             "direction": "I",
             "left": "3",
             "right": "0"
           },
-          "Mem_WB_EN": {
+          "destMem": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "wbEnEx": {
             "direction": "I"
           },
-          "hazard_Detected": {
+          "wbEnMem": {
+            "direction": "I"
+          },
+          "memREn": {
+            "direction": "I"
+          },
+          "forwardEn": {
+            "direction": "I"
+          },
+          "hazard": {
             "direction": "O"
           }
         }
@@ -1681,7 +1686,7 @@
           "slice_Rn/Dout",
           "RegisterFile_0/readRegister1",
           "Id_Exe_Pipeline_Regi_0/Src1_In",
-          "Hazard_unit_0/src1"
+          "HazardUnit_0/rn"
         ]
       },
       "xlslice_0_Dout2": {
@@ -1861,8 +1866,7 @@
         "ports": [
           "Id_Exe_Pipeline_Regi_0/MEM_R_EN_out",
           "OR_Gate_1/a",
-          "Execute_Memory_Stage_0/memory_read_enable",
-          "Hazard_unit_0/Exe_Mem_R_En"
+          "Execute_Memory_Stage_0/memory_read_enable"
         ]
       },
       "Id_Exe_Pipeline_Regi_0_MEM_W_EN_out": {
@@ -1912,7 +1916,7 @@
         "ports": [
           "Id_Exe_Pipeline_Regi_0/WB_EN_out",
           "Execute_Memory_Stage_0/write_back_enable",
-          "Hazard_unit_0/Exe_WB_EN"
+          "HazardUnit_0/wbEnEx"
         ]
       },
       "Exe_Mem_Pipeline_Reg_0_WB_EN_Out": {
@@ -1920,7 +1924,7 @@
           "Execute_Memory_Stage_0/write_back_enable_out",
           "Memory_WriteBack_Sta_0/writeback_enable",
           "ForwardingUnit_0/wbEnMem",
-          "Hazard_unit_0/Mem_WB_EN"
+          "HazardUnit_0/wbEnMem"
         ]
       },
       "Exe_Mem_Pipeline_Reg_0_Alu_Res_Out": {
@@ -1967,7 +1971,7 @@
         "ports": [
           "Id_Exe_Pipeline_Regi_0/Dest_out",
           "Execute_Memory_Stage_0/destination",
-          "Hazard_unit_0/Exe_Dest"
+          "HazardUnit_0/destEx"
         ]
       },
       "Exe_Mem_Pipeline_Reg_0_Dest_out": {
@@ -1975,7 +1979,7 @@
           "Execute_Memory_Stage_0/destination_output",
           "Memory_WriteBack_Sta_0/destination_reg",
           "ForwardingUnit_0/destMem",
-          "Hazard_unit_0/Mem_Dest"
+          "HazardUnit_0/destMem"
         ]
       },
       "not_gate_1_y": {
@@ -1987,12 +1991,12 @@
       "OR_Gate_2_y": {
         "ports": [
           "OR_Gate_2/y",
-          "Hazard_unit_0/Two_Src"
+          "HazardUnit_0/twoSrc"
         ]
       },
       "Hazard_unit_0_hazard_Detected": {
         "ports": [
-          "Hazard_unit_0/hazard_Detected",
+          "HazardUnit_0/hazard",
           "OR_Gate_0/b",
           "If_Id_Register_0/freeze",
           "PC_0/freez"
@@ -2021,7 +2025,8 @@
       "slice_Rm_Dout": {
         "ports": [
           "slice_Rm/Dout",
-          "My_mux_2/input1"
+          "My_mux_2/input1",
+          "HazardUnit_0/rdm"
         ]
       },
       "Net1": {
@@ -2058,7 +2063,8 @@
       "Execute_Memory_Stage_0_memory_read_enable_out": {
         "ports": [
           "Execute_Memory_Stage_0/memory_read_enable_out",
-          "Memory_WriteBack_Sta_0/memory_read_enable"
+          "Memory_WriteBack_Sta_0/memory_read_enable",
+          "HazardUnit_0/memREn"
         ]
       },
       "Execute_Memory_Stage_0_Rm_value_Out": {
@@ -2159,7 +2165,7 @@
         "ports": [
           "xlconstant_1/dout",
           "ForwardingUnit_0/forwardEn",
-          "Hazard_unit_0/Fw_En"
+          "HazardUnit_0/forwardEn"
         ]
       },
       "Mux3To1_1_Mux_out1": {

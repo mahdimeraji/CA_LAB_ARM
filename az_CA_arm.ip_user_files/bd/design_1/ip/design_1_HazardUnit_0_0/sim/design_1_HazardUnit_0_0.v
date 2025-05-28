@@ -47,45 +47,47 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:Hazard_unit:1.0
+// IP VLNV: xilinx.com:module_ref:HazardUnit:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "Hazard_unit,Vivado 2018.3" *)
-(* CHECK_LICENSE_TYPE = "design_1_Hazard_unit_0_4,Hazard_unit,{}" *)
-(* CORE_GENERATION_INFO = "design_1_Hazard_unit_0_4,Hazard_unit,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=Hazard_unit,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+`timescale 1ns/1ps
+
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module design_1_Hazard_unit_0_4 (
-  Fw_En,
-  Exe_Mem_R_En,
-  src1,
-  Two_Src,
-  Exe_Dest,
-  Exe_WB_EN,
-  Mem_Dest,
-  Mem_WB_EN,
-  hazard_Detected
+module design_1_HazardUnit_0_0 (
+  rn,
+  rdm,
+  twoSrc,
+  destEx,
+  destMem,
+  wbEnEx,
+  wbEnMem,
+  memREn,
+  forwardEn,
+  hazard
 );
 
-input wire Fw_En;
-input wire Exe_Mem_R_En;
-input wire [3 : 0] src1;
-input wire Two_Src;
-input wire [3 : 0] Exe_Dest;
-input wire Exe_WB_EN;
-input wire [3 : 0] Mem_Dest;
-input wire Mem_WB_EN;
-output wire hazard_Detected;
+input wire [3 : 0] rn;
+input wire [3 : 0] rdm;
+input wire twoSrc;
+input wire [3 : 0] destEx;
+input wire [3 : 0] destMem;
+input wire wbEnEx;
+input wire wbEnMem;
+input wire memREn;
+input wire forwardEn;
+output wire hazard;
 
-  Hazard_unit inst (
-    .Fw_En(Fw_En),
-    .Exe_Mem_R_En(Exe_Mem_R_En),
-    .src1(src1),
-    .Two_Src(Two_Src),
-    .Exe_Dest(Exe_Dest),
-    .Exe_WB_EN(Exe_WB_EN),
-    .Mem_Dest(Mem_Dest),
-    .Mem_WB_EN(Mem_WB_EN),
-    .hazard_Detected(hazard_Detected)
+  HazardUnit inst (
+    .rn(rn),
+    .rdm(rdm),
+    .twoSrc(twoSrc),
+    .destEx(destEx),
+    .destMem(destMem),
+    .wbEnEx(wbEnEx),
+    .wbEnMem(wbEnMem),
+    .memREn(memREn),
+    .forwardEn(forwardEn),
+    .hazard(hazard)
   );
 endmodule

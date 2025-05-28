@@ -67,7 +67,6 @@ vlog -work dist_mem_gen_v8_0_12 -64 -incr \
 vlog -work xil_defaultlib -64 -incr \
 "../../../bd/design_1/ip/design_1_dist_mem_gen_0_0/sim/design_1_dist_mem_gen_0_0.v" \
 "../../../bd/design_1/ip/design_1_dist_mem_gen_1_0/sim/design_1_dist_mem_gen_1_0.v" \
-"../../../bd/design_1/ip/design_1_Hazard_unit_0_4/sim/design_1_Hazard_unit_0_4.v" \
 "../../../bd/design_1/ip/design_1_not_gate_0_1/sim/design_1_not_gate_0_1.v" \
 "../../../bd/design_1/ip/design_1_OR_Gate_0_1/sim/design_1_OR_Gate_0_1.v" \
 "../../../bd/design_1/ip/design_1_xlslice_0_15/sim/design_1_xlslice_0_15.v" \
@@ -87,6 +86,7 @@ vlog -work xil_defaultlib -64 -incr \
 "../../../bd/design_1/ip/design_1_Mux3To1_0_2/sim/design_1_Mux3To1_0_2.v" \
 "../../../bd/design_1/ip/design_1_Mux3To1_1_0/sim/design_1_Mux3To1_1_0.v" \
 "../../../bd/design_1/ip/design_1_xlconstant_1_2/sim/design_1_xlconstant_1_2.v" \
+"../../../bd/design_1/ip/design_1_HazardUnit_0_0/sim/design_1_HazardUnit_0_0.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"
