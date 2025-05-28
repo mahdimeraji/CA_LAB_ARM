@@ -1,6 +1,5 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"../../../../az_CA_arm.srcs/sources_1/new/register.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/Controller_Unit.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/status_register.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/Condition_Check.v" \
@@ -10,15 +9,17 @@ verilog xil_defaultlib  \
 "../../../../az_CA_arm.srcs/sources_1/new/adder_32.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/ALU.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/Id_exe_Register.v" \
-"../../../../az_CA_arm.srcs/sources_1/new/hazard_unit.v" \
+"../../../../az_CA_arm.srcs/sources_1/new/Hazard_Unit.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/adder.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/pc.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/Exe_Mem_Register.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/Mem_Wb_Register.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/Val2generate.v" \
 "../../../../az_CA_arm.srcs/sources_1/new/mux.v" \
+"../../../../az_CA_arm.srcs/sources_1/new/register.v" \
+"../../../../az_CA_arm.srcs/sources_1/new/ForwardingUnit.v" \
+"../../../../az_CA_arm.srcs/sources_1/new/Mux3To1.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/sim/design_1.v" \
-"../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Register_0_0/sim/design_1_Register_0_0.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlconstant_3_0/sim/design_1_xlconstant_3_0.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Control_Unit_0_0/sim/design_1_Control_Unit_0_0.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_0/sim/design_1_xlslice_0_0.v" \
@@ -30,7 +31,6 @@ verilog xil_defaultlib  \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_RegisterFile_0_0/sim/design_1_RegisterFile_0_0.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_3/sim/design_1_xlslice_0_3.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlslice_0_4/sim/design_1_xlslice_0_4.v" \
-"../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Mux_1_0/sim/design_1_Mux_1_0.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlconstant_0_1/sim/design_1_xlconstant_0_1.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlconcat_0_0/sim/design_1_xlconcat_0_0.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_not_gate_0_0/sim/design_1_not_gate_0_0.v" \
@@ -66,8 +66,14 @@ verilog xil_defaultlib  \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_My_mux_0_0/sim/design_1_My_mux_0_0.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_My_mux_1_0/sim/design_1_My_mux_1_0.v" \
 "../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_My_mux_2_0/sim/design_1_My_mux_2_0.v" \
+"../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_If_Id_Register_0_0/sim/design_1_If_Id_Register_0_0.v" \
+"../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_My_mux_3_0/sim/design_1_My_mux_3_0.v" \
+"../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_ForwardingUnit_0_0/sim/design_1_ForwardingUnit_0_0.v" \
+"../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Mux3To1_0_2/sim/design_1_Mux3To1_0_2.v" \
+"../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_Mux3To1_1_0/sim/design_1_Mux3To1_1_0.v" \
+"../../../../az_CA_arm.ip_user_files/bd/design_1/ip/design_1_xlconstant_1_2/sim/design_1_xlconstant_1_2.v" \
 "../../../../az_CA_arm.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v" \
-"../../../../az_CA_arm.srcs/sim_1/new/IF_TB.v" \
+"../../../../az_CA_arm.srcs/sim_1/new/arm_TB.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

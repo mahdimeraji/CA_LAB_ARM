@@ -57,9 +57,9 @@
 module design_1_PC_0_0 (
   clk,
   rst,
-  in,
+  Pc_in,
   freez,
-  out
+  Pc_out
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_clk_0, INSERT_VIP 0" *)
@@ -68,15 +68,15 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
-input wire [31 : 0] in;
+input wire [31 : 0] Pc_in;
 input wire freez;
-output wire [31 : 0] out;
+output wire [31 : 0] Pc_out;
 
   PC inst (
     .clk(clk),
     .rst(rst),
-    .in(in),
+    .Pc_in(Pc_in),
     .freez(freez),
-    .out(out)
+    .Pc_out(Pc_out)
   );
 endmodule

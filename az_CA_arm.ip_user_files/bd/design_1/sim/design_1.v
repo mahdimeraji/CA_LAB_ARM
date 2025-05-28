@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Thu May 15 17:47:47 2025
+//Date        : Mon May 26 18:13:10 2025
 //Host        : DESKTOP-GMJTJOR running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=48,numReposBlks=48,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=23,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=52,numReposBlks=52,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=26,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (clk_0,
     rst_0);
@@ -33,6 +33,8 @@ module design_1
   wire Exe_Mem_Pipeline_Reg_0_WB_EN_Out;
   wire [31:0]Execute_Memory_Stage_0_Rm_value_Out;
   wire Execute_Memory_Stage_0_memory_read_enable_out;
+  wire [1:0]ForwardingUnit_0_selSrc1;
+  wire [1:0]ForwardingUnit_0_selSrc2;
   wire Hazard_unit_0_hazard_Detected;
   wire [31:0]IF_0_pc_out;
   wire Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe;
@@ -45,17 +47,22 @@ module design_1
   wire Id_Exe_Pipeline_Regi_0_S_Out;
   wire [11:0]Id_Exe_Pipeline_Regi_0_Shifter_Operand_Out;
   wire [23:0]Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out;
+  wire [3:0]Id_Exe_Pipeline_Regi_0_Src1_Out;
+  wire [3:0]Id_Exe_Pipeline_Regi_0_Src2_Out;
   wire [31:0]Id_Exe_Pipeline_Regi_0_Val_Rm_out;
   wire [31:0]Id_Exe_Pipeline_Regi_0_Val_Rn_out;
   wire Id_Exe_Pipeline_Regi_0_WB_EN_out;
+  wire [31:0]If_Id_Register_0_PC_Id;
   wire [31:0]Memory_WriteBack_Sta_0_alu_result_output;
   wire [3:0]Memory_WriteBack_Sta_0_destination_reg_out;
   wire [31:0]Memory_WriteBack_Sta_0_memory_data_output;
   wire Memory_WriteBack_Sta_0_memory_read_enable_out;
   wire Memory_WriteBack_Sta_0_writeback_enable_out;
-  wire [31:0]Mux_0_out;
+  wire [31:0]Mux3To1_0_Mux_out;
+  wire [31:0]Mux3To1_1_Mux_out1;
+  wire [3:0]Mux_0_out;
   wire [8:0]Mux_1_out;
-  wire [31:0]My_mux_0_out;
+  wire [31:0]My_mux_0_Mux_out;
   wire [31:0]My_mux_1_out;
   wire [3:0]Net;
   wire [31:0]Net1;
@@ -71,7 +78,6 @@ module design_1
   wire [31:0]data_memory_spo;
   wire [31:0]dist_mem_gen_1_spo;
   wire [31:0]if_id_out_1;
-  wire [31:0]if_id_out_2;
   wire not_gate_0_y;
   wire not_gate_1_y;
   wire rst_0_1;
@@ -91,6 +97,7 @@ module design_1
   wire [8:0]xlconcat_0_dout;
   wire [8:0]xlconstant_0_dout1;
   wire [31:0]xlconstant_1_dout;
+  wire [0:0]xlconstant_1_dout1;
   wire [0:0]xlconstant_3_dout;
   wire [1:0]xlslice_0_Dout;
   wire [0:0]xlslice_0_Dout1;
@@ -103,7 +110,7 @@ module design_1
        (.ALUResult1(ALU_1_ALUResult1),
         .ALUcnt(Id_Exe_Pipeline_Regi_0_EXE_CMD_out),
         .CarryIn(Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe),
-        .SrcA1(Id_Exe_Pipeline_Regi_0_Val_Rn_out),
+        .SrcA1(Mux3To1_0_Mux_out),
         .SrcB1(Val2_Generator_1_operand_out),
         .status_flags(ALU_1_status_flags));
   design_1_Adder_0_0 Adder_0
@@ -134,7 +141,7 @@ module design_1
         .sOut(Control_Unit_0_S_Out),
         .wbEn(Control_Unit_0_WB_EN));
   design_1_Execute_Memory_Stage_0_0 Execute_Memory_Stage_0
-       (.Rm_value_In(Id_Exe_Pipeline_Regi_0_Val_Rm_out),
+       (.Rm_value_In(Mux3To1_1_Mux_out1),
         .Rm_value_Out(Execute_Memory_Stage_0_Rm_value_Out),
         .alu_result_input(ALU_1_ALUResult1),
         .alu_result_output(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out),
@@ -149,15 +156,26 @@ module design_1
         .rst(rst_0_1),
         .write_back_enable(Id_Exe_Pipeline_Regi_0_WB_EN_out),
         .write_back_enable_out(Exe_Mem_Pipeline_Reg_0_WB_EN_Out));
+  design_1_ForwardingUnit_0_0 ForwardingUnit_0
+       (.destMem(Exe_Mem_Pipeline_Reg_0_Dest_out),
+        .destWb(Memory_WriteBack_Sta_0_destination_reg_out),
+        .forwardEn(xlconstant_1_dout1),
+        .selSrc1(ForwardingUnit_0_selSrc1),
+        .selSrc2(ForwardingUnit_0_selSrc2),
+        .src1(Id_Exe_Pipeline_Regi_0_Src1_Out),
+        .src2(Id_Exe_Pipeline_Regi_0_Src2_Out),
+        .wbEnMem(Exe_Mem_Pipeline_Reg_0_WB_EN_Out),
+        .wbEnWb(Memory_WriteBack_Sta_0_writeback_enable_out));
   design_1_Hazard_unit_0_4 Hazard_unit_0
        (.Exe_Dest(Net),
+        .Exe_Mem_R_En(Id_Exe_Pipeline_Regi_0_MEM_R_EN_out),
         .Exe_WB_EN(Id_Exe_Pipeline_Regi_0_WB_EN_out),
+        .Fw_En(xlconstant_1_dout1),
         .Mem_Dest(Exe_Mem_Pipeline_Reg_0_Dest_out),
         .Mem_WB_EN(Exe_Mem_Pipeline_Reg_0_WB_EN_Out),
         .Two_Src(OR_Gate_2_y),
         .hazard_Detected(Hazard_unit_0_hazard_Detected),
-        .src1(slice_Rn_Dout),
-        .src2(Mux_0_out[3:0]));
+        .src1(slice_Rn_Dout));
   design_1_Id_Exe_Pipeline_Regi_0_0 Id_Exe_Pipeline_Regi_0
        (.Alu_Carry_In_Exe(Id_Exe_Pipeline_Regi_0_Alu_Carry_In_Exe),
         .Alu_Carry_In_Id(slice_Cin_Dout),
@@ -173,7 +191,7 @@ module design_1
         .MEM_R_EN_out(Id_Exe_Pipeline_Regi_0_MEM_R_EN_out),
         .MEM_W_EN(slice_mem_W_En_exe_Dout),
         .MEM_W_EN_out(Id_Exe_Pipeline_Regi_0_MEM_W_EN_out),
-        .PC(if_id_out_2),
+        .PC(If_Id_Register_0_PC_Id),
         .PC_out(Id_Exe_Pipeline_Regi_0_PC_out),
         .S_In(Slice_S_exe_Dout),
         .S_Out(Id_Exe_Pipeline_Regi_0_S_Out),
@@ -181,6 +199,10 @@ module design_1
         .Shifter_Operand_Out(Id_Exe_Pipeline_Regi_0_Shifter_Operand_Out),
         .Signed_Imm_24_In(slice_Im_24_Dout),
         .Signed_Imm_24_Out(Id_Exe_Pipeline_Regi_0_Signed_Imm_24_Out),
+        .Src1_In(slice_Rn_Dout),
+        .Src1_Out(Id_Exe_Pipeline_Regi_0_Src1_Out),
+        .Src2_In(Mux_0_out),
+        .Src2_Out(Id_Exe_Pipeline_Regi_0_Src2_Out),
         .Val_Rm_In(RegisterFile_0_readData2),
         .Val_Rm_out(Id_Exe_Pipeline_Regi_0_Val_Rm_out),
         .Val_Rn_In(RegisterFile_0_readData1),
@@ -191,6 +213,16 @@ module design_1
         .enable(Register_En_dout),
         .flush(Id_Exe_Pipeline_Regi_0_B_Out),
         .reset(rst_0_1));
+  design_1_If_Id_Register_0_0 If_Id_Register_0
+       (.Inst_Id(if_id_out_1),
+        .Inst_If(dist_mem_gen_1_spo),
+        .PC_Id(If_Id_Register_0_PC_Id),
+        .PC_If(IF_0_pc_out),
+        .clk(clk_0_1),
+        .en(xlconstant_3_dout),
+        .flush(Id_Exe_Pipeline_Regi_0_B_Out),
+        .freeze(Hazard_unit_0_hazard_Detected),
+        .rst(rst_0_1));
   design_1_Memory_WriteBack_Sta_0_0 Memory_WriteBack_Sta_0
        (.alu_result_input(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out),
         .alu_result_output(Memory_WriteBack_Sta_0_alu_result_output),
@@ -205,26 +237,38 @@ module design_1
         .reset_signal(rst_0_1),
         .writeback_enable(Exe_Mem_Pipeline_Reg_0_WB_EN_Out),
         .writeback_enable_out(Memory_WriteBack_Sta_0_writeback_enable_out));
-  design_1_Mux_1_0 Mux_1
-       (.input1(xlconcat_0_dout),
-        .input2(xlconstant_0_dout1),
-        .out(Mux_1_out),
-        .s(OR_Gate_0_y));
+  design_1_Mux3To1_0_2 Mux3To1_0
+       (.Mux_out(Mux3To1_0_Mux_out),
+        .a0(Id_Exe_Pipeline_Regi_0_Val_Rn_out),
+        .a1(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out),
+        .a2(My_mux_1_out),
+        .sel(ForwardingUnit_0_selSrc1));
+  design_1_Mux3To1_1_0 Mux3To1_1
+       (.Mux_out(Mux3To1_1_Mux_out1),
+        .a0(Id_Exe_Pipeline_Regi_0_Val_Rm_out),
+        .a1(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out),
+        .a2(My_mux_1_out),
+        .sel(ForwardingUnit_0_selSrc2));
   design_1_My_mux_0_0 My_mux_0
-       (.input1(IF_0_pc_out),
+       (.Mux_out(My_mux_0_Mux_out),
+        .input1(IF_0_pc_out),
         .input2(Adder_32_0_w),
-        .out(My_mux_0_out),
         .s(Id_Exe_Pipeline_Regi_0_B_Out));
   design_1_My_mux_1_0 My_mux_1
-       (.input1(Memory_WriteBack_Sta_0_alu_result_output),
+       (.Mux_out(My_mux_1_out),
+        .input1(Memory_WriteBack_Sta_0_alu_result_output),
         .input2(Memory_WriteBack_Sta_0_memory_data_output),
-        .out(My_mux_1_out),
         .s(Memory_WriteBack_Sta_0_memory_read_enable_out));
   design_1_My_mux_2_0 My_mux_2
-       (.input1(slice_Rm_Dout),
+       (.Mux_out(Mux_0_out),
+        .input1(slice_Rm_Dout),
         .input2(xlslice_0_Dout2),
-        .out(Mux_0_out),
         .s(slice_mem_W_En_exe_Dout));
+  design_1_My_mux_3_0 My_mux_3
+       (.Mux_out(Mux_1_out),
+        .input1(xlconcat_0_dout),
+        .input2(xlconstant_0_dout1),
+        .s(OR_Gate_0_y));
   design_1_OR_Gate_0_0 OR_Gate_0
        (.a(not_gate_0_y),
         .b(Hazard_unit_0_hazard_Detected),
@@ -238,17 +282,17 @@ module design_1
         .b(Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out),
         .y(OR_Gate_2_y));
   design_1_PC_0_0 PC_0
-       (.clk(clk_0_1),
+       (.Pc_in(My_mux_0_Mux_out),
+        .Pc_out(Net1),
+        .clk(clk_0_1),
         .freez(Hazard_unit_0_hazard_Detected),
-        .in(My_mux_0_out),
-        .out(Net1),
         .rst(rst_0_1));
   design_1_RegisterFile_0_0 RegisterFile_0
        (.clk(clk_0_1),
         .readData1(RegisterFile_0_readData1),
         .readData2(RegisterFile_0_readData2),
         .readRegister1(slice_Rn_Dout),
-        .readRegister2(Mux_0_out[3:0]),
+        .readRegister2(Mux_0_out),
         .regWrite(Memory_WriteBack_Sta_0_writeback_enable_out),
         .reset(rst_0_1),
         .writeData(My_mux_1_out),
@@ -257,7 +301,7 @@ module design_1
        (.dout(Register_En_dout));
   design_1_Val2_Generator_1_0 Val2_Generator_1
        (.is_immediate(Id_Exe_Pipeline_Regi_0_Im_Out),
-        .operand_in(Id_Exe_Pipeline_Regi_0_Val_Rm_out),
+        .operand_in(Mux3To1_1_Mux_out1),
         .operand_out(Val2_Generator_1_operand_out),
         .shift_operand(Id_Exe_Pipeline_Regi_0_Shifter_Operand_Out),
         .sign_extend(OR_Gate_1_y));
@@ -272,16 +316,6 @@ module design_1
   design_1_dist_mem_gen_1_0 dist_mem_gen_1
        (.a(Net1[12:0]),
         .spo(dist_mem_gen_1_spo));
-  design_1_Register_0_0 if_id
-       (.clk(clk_0_1),
-        .en(xlconstant_3_dout),
-        .flush(Id_Exe_Pipeline_Regi_0_B_Out),
-        .freeze(Hazard_unit_0_hazard_Detected),
-        .in_1(IF_0_pc_out),
-        .in_2(dist_mem_gen_1_spo),
-        .out_1(if_id_out_2),
-        .out_2(if_id_out_1),
-        .rst(rst_0_1));
   design_1_not_gate_0_0 not_gate_0
        (.a(Condition_Check_0_condition_met),
         .y(not_gate_0_y));
@@ -355,6 +389,8 @@ module design_1
         .dout(xlconcat_0_dout));
   design_1_xlconstant_0_1 xlconstant_0
        (.dout(xlconstant_0_dout1));
+  design_1_xlconstant_1_2 xlconstant_1
+       (.dout(xlconstant_1_dout1));
   design_1_xlconstant_3_0 xlconstant_3
        (.dout(xlconstant_3_dout));
 endmodule

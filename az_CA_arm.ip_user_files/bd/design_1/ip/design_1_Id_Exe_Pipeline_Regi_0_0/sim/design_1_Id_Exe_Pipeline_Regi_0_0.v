@@ -73,6 +73,8 @@ module design_1_Id_Exe_Pipeline_Regi_0_0 (
   Dest,
   Signed_Imm_24_In,
   Shifter_Operand_In,
+  Src1_In,
+  Src2_In,
   B_Out,
   S_Out,
   WB_EN_out,
@@ -86,7 +88,9 @@ module design_1_Id_Exe_Pipeline_Regi_0_0 (
   PC_out,
   Dest_out,
   Signed_Imm_24_Out,
-  Shifter_Operand_Out
+  Shifter_Operand_Out,
+  Src1_Out,
+  Src2_Out
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_clk_0, INSERT_VIP 0" *)
@@ -111,6 +115,8 @@ input wire [31 : 0] PC;
 input wire [3 : 0] Dest;
 input wire [23 : 0] Signed_Imm_24_In;
 input wire [11 : 0] Shifter_Operand_In;
+input wire [3 : 0] Src1_In;
+input wire [3 : 0] Src2_In;
 output wire B_Out;
 output wire S_Out;
 output wire WB_EN_out;
@@ -125,6 +131,8 @@ output wire [31 : 0] PC_out;
 output wire [3 : 0] Dest_out;
 output wire [23 : 0] Signed_Imm_24_Out;
 output wire [11 : 0] Shifter_Operand_Out;
+output wire [3 : 0] Src1_Out;
+output wire [3 : 0] Src2_Out;
 
   Id_Exe_Pipeline_Register inst (
     .clk(clk),
@@ -145,6 +153,8 @@ output wire [11 : 0] Shifter_Operand_Out;
     .Dest(Dest),
     .Signed_Imm_24_In(Signed_Imm_24_In),
     .Shifter_Operand_In(Shifter_Operand_In),
+    .Src1_In(Src1_In),
+    .Src2_In(Src2_In),
     .B_Out(B_Out),
     .S_Out(S_Out),
     .WB_EN_out(WB_EN_out),
@@ -158,6 +168,8 @@ output wire [11 : 0] Shifter_Operand_Out;
     .PC_out(PC_out),
     .Dest_out(Dest_out),
     .Signed_Imm_24_Out(Signed_Imm_24_Out),
-    .Shifter_Operand_Out(Shifter_Operand_Out)
+    .Shifter_Operand_Out(Shifter_Operand_Out),
+    .Src1_Out(Src1_Out),
+    .Src2_Out(Src2_Out)
   );
 endmodule

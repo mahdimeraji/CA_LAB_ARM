@@ -58,13 +58,13 @@ module design_1_My_mux_1_0 (
   input1,
   input2,
   s,
-  out
+  Mux_out
 );
 
 input wire [31 : 0] input1;
 input wire [31 : 0] input2;
 input wire s;
-output wire [31 : 0] out;
+output wire [31 : 0] Mux_out;
 
   My_mux #(
     .WIDTH(32)
@@ -72,6 +72,6 @@ output wire [31 : 0] out;
     .input1(input1),
     .input2(input2),
     .s(s),
-    .out(out)
+    .Mux_out(Mux_out)
   );
 endmodule

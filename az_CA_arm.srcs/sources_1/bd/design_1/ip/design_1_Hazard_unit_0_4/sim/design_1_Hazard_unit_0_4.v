@@ -55,8 +55,9 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_Hazard_unit_0_4 (
+  Fw_En,
+  Exe_Mem_R_En,
   src1,
-  src2,
   Two_Src,
   Exe_Dest,
   Exe_WB_EN,
@@ -65,8 +66,9 @@ module design_1_Hazard_unit_0_4 (
   hazard_Detected
 );
 
+input wire Fw_En;
+input wire Exe_Mem_R_En;
 input wire [3 : 0] src1;
-input wire [3 : 0] src2;
 input wire Two_Src;
 input wire [3 : 0] Exe_Dest;
 input wire Exe_WB_EN;
@@ -75,8 +77,9 @@ input wire Mem_WB_EN;
 output wire hazard_Detected;
 
   Hazard_unit inst (
+    .Fw_En(Fw_En),
+    .Exe_Mem_R_En(Exe_Mem_R_En),
     .src1(src1),
-    .src2(src2),
     .Two_Src(Two_Src),
     .Exe_Dest(Exe_Dest),
     .Exe_WB_EN(Exe_WB_EN),

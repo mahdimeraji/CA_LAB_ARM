@@ -1,25 +1,25 @@
-module Register (  
-    input [N-1:0] in_1,  
-    input [N-1:0] in_2,  
+module If_Id_Register (  
+    input [N-1:0] PC_If,  
+    input [N-1:0] Inst_If,  
     input clk, en, rst, flush, freeze,
-    output reg [N-1:0] out_1,  
-    output reg [N-1:0] out_2  
+    output reg [N-1:0] PC_Id,  
+    output reg [N-1:0] Inst_Id  
 );  
     parameter N = 32;  
 
     always @(posedge clk or posedge rst) begin  
         if (rst) begin  
-            out_1 <= {N{1'b0}};  
-            out_2 <= {N{1'b0}};  
+            PC_Id <= {N{1'b0}};  
+            Inst_Id <= {N{1'b0}};  
         end
-        else if (flush) begin  // Flush: Clear outputs (but don't reset the whole system)
-            out_1 <= {N{1'b0}};  
-            out_2 <= {N{1'b0}};  
+        else if (flush) begin  
+            PC_Id <= {N{1'b0}};  
+            Inst_Id <= {N{1'b0}};  
         end
-        else if (en && !freeze) begin  // Freeze: Hold current values (ignore new inputs)
-            out_1 <= in_1;  
-            out_2 <= in_2;  
+        else if (en && !freeze) begin  
+            PC_Id <= PC_If;  
+            Inst_Id <= Inst_If;  
         end  
-        // else: outputs retain their values (implicit)  
+         
     end  
 endmodule
