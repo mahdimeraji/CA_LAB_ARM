@@ -10,53 +10,70 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="10661fs"></ZoomEndTime>
-      <Cursor1Time time="200000fs"></Cursor1Time>
+      <ZoomEndTime time="1067001fs"></ZoomEndTime>
+      <Cursor1Time time="197000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="284"></NameColumnWidth>
-      <ValueColumnWidth column_width="132"></ValueColumnWidth>
+      <ValueColumnWidth column_width="127"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="5" />
+   <WVObjectSize size="7" />
    <wave_markers>
+      <marker time="803000" label="" />
    </wave_markers>
-   <wvobject fp_name="design_1_i/mem_wb1_out" type="array">
+   <wvobject fp_name="design_1_i/RegisterFile_0_R0" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">design_1_i/mem_wb1_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">mem_wb1_out[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="ElementShortName">design_1_i/RegisterFile_0_R0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RegisterFile_0_R0[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="design_1_i/ex_mem_out_1" type="array">
+   <wvobject fp_name="design_1_i/RegisterFile_0_R1" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">design_1_i/ex_mem_out_1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ex_mem_out_1[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="ElementShortName">design_1_i/RegisterFile_0_R1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RegisterFile_0_R1[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="design_1_i/id_exe_out_1" type="array">
+   <wvobject fp_name="design_1_i/RegisterFile_0_R2" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">design_1_i/id_exe_out_1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">id_exe_out_1[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="ElementShortName">design_1_i/RegisterFile_0_R2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RegisterFile_0_R2[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="design_1_i/if_id_out_1" type="array">
+   <wvobject fp_name="design_1_i/RegisterFile_0_R3" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">design_1_i/if_id_out_1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">if_id_out_1[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="ElementShortName">design_1_i/RegisterFile_0_R3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RegisterFile_0_R3[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject fp_name="design_1_i/IF_0_pc_out" type="array">
+   <wvobject fp_name="design_1_i/RegisterFile_0_R4" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">design_1_i/IF_0_pc_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">IF_0_pc_out[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="ElementShortName">design_1_i/RegisterFile_0_R4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RegisterFile_0_R4[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="design_1_i/RegisterFile_0_R5" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/RegisterFile_0_R5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RegisterFile_0_R5[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="design_1_i/RegisterFile_0_R6" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">design_1_i/RegisterFile_0_R6[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RegisterFile_0_R6[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>

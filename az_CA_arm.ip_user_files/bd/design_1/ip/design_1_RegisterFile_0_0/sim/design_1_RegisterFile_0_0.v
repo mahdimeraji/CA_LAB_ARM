@@ -63,6 +63,13 @@ module design_1_RegisterFile_0_0 (
   writeData,
   readData1,
   readData2,
+  R0,
+  R1,
+  R2,
+  R3,
+  R4,
+  R5,
+  R6,
   reset
 );
 
@@ -76,6 +83,13 @@ input wire [3 : 0] writeRegister;
 input wire [31 : 0] writeData;
 output wire [31 : 0] readData1;
 output wire [31 : 0] readData2;
+output wire [31 : 0] R0;
+output wire [31 : 0] R1;
+output wire [31 : 0] R2;
+output wire [31 : 0] R3;
+output wire [31 : 0] R4;
+output wire [31 : 0] R5;
+output wire [31 : 0] R6;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset RST" *)
 input wire reset;
@@ -89,6 +103,13 @@ input wire reset;
     .writeData(writeData),
     .readData1(readData1),
     .readData2(readData2),
+    .R0(R0),
+    .R1(R1),
+    .R2(R2),
+    .R3(R3),
+    .R4(R4),
+    .R5(R5),
+    .R6(R6),
     .reset(reset)
   );
 endmodule

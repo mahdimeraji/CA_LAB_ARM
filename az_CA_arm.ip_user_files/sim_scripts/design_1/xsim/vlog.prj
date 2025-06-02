@@ -1,4 +1,4 @@
-verilog xil_defaultlib  \
+verilog xil_defaultlib --include "../../../../az_CA_arm.srcs/sources_1/bd/design_1/ipshared/1b7e/hdl/verilog" --include "../../../../az_CA_arm.srcs/sources_1/bd/design_1/ipshared/122e/hdl/verilog" --include "../../../../az_CA_arm.srcs/sources_1/bd/design_1/ipshared/7d3c/hdl/verilog" --include "../../../../az_CA_arm.srcs/sources_1/bd/design_1/ipshared/c45e/hdl/verilog" --include "../../../../az_CA_arm.srcs/sources_1/bd/design_1/ipshared/46fd/hdl" \
 "../../../bd/design_1/sim/design_1.v" \
 "../../../bd/design_1/ip/design_1_xlconstant_3_0/sim/design_1_xlconstant_3_0.v" \
 "../../../bd/design_1/ip/design_1_Control_Unit_0_0/sim/design_1_Control_Unit_0_0.v" \
@@ -50,8 +50,12 @@ verilog xil_defaultlib  \
 "../../../bd/design_1/ip/design_1_ForwardingUnit_0_0/sim/design_1_ForwardingUnit_0_0.v" \
 "../../../bd/design_1/ip/design_1_Mux3To1_0_2/sim/design_1_Mux3To1_0_2.v" \
 "../../../bd/design_1/ip/design_1_Mux3To1_1_0/sim/design_1_Mux3To1_1_0.v" \
-"../../../bd/design_1/ip/design_1_xlconstant_1_2/sim/design_1_xlconstant_1_2.v" \
 "../../../bd/design_1/ip/design_1_HazardUnit_0_0/sim/design_1_HazardUnit_0_0.v" \
+"../../../bd/design_1/ip/design_1_debouncer_0_0/sim/design_1_debouncer_0_0.v" \
+"../../../bd/design_1/ip/design_1_xlslice_0_16/sim/design_1_xlslice_0_16.v" \
+"../../../bd/design_1/ip/design_1_xlslice_1_1/sim/design_1_xlslice_1_1.v" \
+"../../../bd/design_1/ip/design_1_ila_0_0/sim/design_1_ila_0_0.v" \
+"../../../bd/design_1/ip/design_1_vio_0_0/sim/design_1_vio_0_0.v" \
 
 verilog xil_defaultlib "glbl.v"
 

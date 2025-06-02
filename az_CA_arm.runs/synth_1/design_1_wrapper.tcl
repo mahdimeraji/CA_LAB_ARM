@@ -17,6 +17,8 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {HDL-1065} -limit 10000
 create_project -in_memory -part xc7z010clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -30,23 +32,39 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo c:/Users/meraj/az_CA_arm/az_CA_arm.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-add_files C:/Users/meraj/OneDrive/Desktop/output.coe
-add_files f:/403/403-2/ca/output.coe
+add_files C:/Users/meraj/OneDrive/Desktop/ultimate.coe
 read_verilog -library xil_defaultlib {
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Controller_Unit.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/status_register.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Condition_Check.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/RegisterFile.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/not.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/or_gate.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/adder_32.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/ALU.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Id_exe_Register.v
   C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/adder.v
-  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v
   C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/pc.v
-  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/IF.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Exe_Mem_Register.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Mem_Wb_Register.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Val2generate.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/mux.v
   C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/register.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/ForwardingUnit.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/Mux3To1.v
+  C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/new/HazardUnit.v
   C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v
 }
 read_vhdl -library xil_defaultlib C:/Users/meraj/OneDrive/Desktop/debouncer.vhd
 add_files C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/design_1.bd
-set_property used_in_implementation false [get_files -all c:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/ip/design_1_blk_mem_gen_0_0/design_1_blk_mem_gen_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/ip/design_1_dist_mem_gen_0_0/design_1_dist_mem_gen_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/ip/design_1_dist_mem_gen_1_0/design_1_dist_mem_gen_1_0_ooc.xdc]
 set_property used_in_synthesis false [get_files -all c:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/ip/design_1_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/ip/design_1_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/ip/design_1_ila_0_0/ila_v6_2/constraints/ila.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/ip/design_1_ila_0_0/design_1_ila_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/ip/design_1_vio_0_0/design_1_vio_0_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/ip/design_1_vio_0_0/design_1_vio_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all C:/Users/meraj/az_CA_arm/az_CA_arm.srcs/sources_1/bd/design_1/design_1_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being

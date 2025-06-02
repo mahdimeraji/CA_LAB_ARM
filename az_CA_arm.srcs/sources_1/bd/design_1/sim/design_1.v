@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Wed May 28 20:55:33 2025
+//Date        : Mon Jun  2 16:00:05 2025
 //Host        : DESKTOP-GMJTJOR running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=52,numReposBlks=52,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=26,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=56,numReposBlks=56,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=27,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (clk_0,
     rst_0);
@@ -69,6 +69,13 @@ module design_1
   wire OR_Gate_0_y;
   wire OR_Gate_1_y;
   wire OR_Gate_2_y;
+  wire [31:0]RegisterFile_0_R0;
+  wire [31:0]RegisterFile_0_R1;
+  wire [31:0]RegisterFile_0_R2;
+  wire [31:0]RegisterFile_0_R3;
+  wire [31:0]RegisterFile_0_R4;
+  wire [31:0]RegisterFile_0_R5;
+  wire [31:0]RegisterFile_0_R6;
   wire [31:0]RegisterFile_0_readData1;
   wire [31:0]RegisterFile_0_readData2;
   wire [0:0]Register_En_dout;
@@ -80,7 +87,8 @@ module design_1
   wire [31:0]if_id_out_1;
   wire not_gate_0_y;
   wire not_gate_1_y;
-  wire rst_0_1;
+  wire [0:0]rst_0_1;
+  wire rst_0_2;
   wire [0:0]slice_B_Exe_Dout;
   wire [0:0]slice_Cin_Dout;
   wire [23:0]slice_Im_24_Dout;
@@ -102,10 +110,12 @@ module design_1
   wire [1:0]xlslice_0_Dout;
   wire [0:0]xlslice_0_Dout1;
   wire [3:0]xlslice_0_Dout2;
+  wire [12:0]xlslice_0_Dout3;
   wire [3:0]xlslice_1_Dout;
+  wire [12:0]xlslice_1_Dout1;
 
   assign clk_0_1 = clk_0;
-  assign rst_0_1 = rst_0;
+  assign rst_0_2 = rst_0;
   design_1_ALU_1_0 ALU_1
        (.ALUResult1(ALU_1_ALUResult1),
         .ALUcnt(Id_Exe_Pipeline_Regi_0_EXE_CMD_out),
@@ -289,7 +299,14 @@ module design_1
         .freez(Hazard_unit_0_hazard_Detected),
         .rst(rst_0_1));
   design_1_RegisterFile_0_0 RegisterFile_0
-       (.clk(clk_0_1),
+       (.R0(RegisterFile_0_R0),
+        .R1(RegisterFile_0_R1),
+        .R2(RegisterFile_0_R2),
+        .R3(RegisterFile_0_R3),
+        .R4(RegisterFile_0_R4),
+        .R5(RegisterFile_0_R5),
+        .R6(RegisterFile_0_R6),
+        .clk(clk_0_1),
         .readData1(RegisterFile_0_readData1),
         .readData2(RegisterFile_0_readData2),
         .readRegister1(slice_Rn_Dout),
@@ -309,14 +326,28 @@ module design_1
   design_1_xlconstant_1_1 adder_in_B
        (.dout(xlconstant_1_dout));
   design_1_dist_mem_gen_0_0 data_memory
-       (.a(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out[12:0]),
+       (.a(xlslice_0_Dout3),
         .clk(clk_0_1),
         .d(Execute_Memory_Stage_0_Rm_value_Out),
         .spo(data_memory_spo),
         .we(Exe_Mem_Pipeline_Reg_0_MEM_W_EN_out));
+  design_1_debouncer_0_0 debouncer_0
+       (.CLK_I(clk_0_1),
+        .SIGNAL_I(rst_0_2),
+        .SIGNAL_O(rst_0_1));
   design_1_dist_mem_gen_1_0 dist_mem_gen_1
-       (.a(Net1[12:0]),
+       (.a(xlslice_1_Dout1),
         .spo(dist_mem_gen_1_spo));
+  design_1_ila_0_0 ila_0
+       (.clk(clk_0_1),
+        .probe0(RegisterFile_0_R0),
+        .probe1(RegisterFile_0_R1),
+        .probe2(RegisterFile_0_R2),
+        .probe3(RegisterFile_0_R3),
+        .probe4(RegisterFile_0_R4),
+        .probe5(RegisterFile_0_R5),
+        .probe6(RegisterFile_0_R6),
+        .probe7(rst_0_1));
   design_1_not_gate_0_0 not_gate_0
        (.a(Condition_Check_0_condition_met),
         .y(not_gate_0_y));
@@ -380,6 +411,9 @@ module design_1
         .rst(rst_0_1),
         .status(ALU_1_status_flags),
         .statusout(status_register_0_statusout));
+  design_1_vio_0_0 vio_0
+       (.clk(clk_0_1),
+        .probe_out0(xlconstant_1_dout1));
   design_1_xlconcat_0_0 xlconcat_0
        (.In0(Control_Unit_0_EXE_CMD),
         .In1(Control_Unit_0_MEM_R_EN),
@@ -390,8 +424,12 @@ module design_1
         .dout(xlconcat_0_dout));
   design_1_xlconstant_0_1 xlconstant_0
        (.dout(xlconstant_0_dout1));
-  design_1_xlconstant_1_2 xlconstant_1
-       (.dout(xlconstant_1_dout1));
   design_1_xlconstant_3_0 xlconstant_3
        (.dout(xlconstant_3_dout));
+  design_1_xlslice_0_16 xlslice_0
+       (.Din(Exe_Mem_Pipeline_Reg_0_Alu_Res_Out),
+        .Dout(xlslice_0_Dout3));
+  design_1_xlslice_1_1 xlslice_1
+       (.Din(Net1),
+        .Dout(xlslice_1_Dout1));
 endmodule
